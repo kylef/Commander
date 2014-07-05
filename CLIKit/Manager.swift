@@ -8,6 +8,14 @@
 
 class Manager {
     var commands = Command[]()
+    var defaultCommand: Command
+    
+    init() {
+        defaultCommand = Command("", "")
+        registerDefault {
+            println("No command specified")
+        }
+    }
 
     func register(name:String, _ description:String, handler:(()->())) {
         register(ClosureCommand(name:name, description:description, handler))
@@ -15,6 +23,10 @@ class Manager {
 
     func register(command:Command) {
         commands.append(command)
+    }
+    
+    func registerDefault(handler: ()->()) {
+        defaultCommand = ClosureCommand(name: "", description: "The default command", handler: handler)
     }
 
     /// Finds a command by name
@@ -52,7 +64,7 @@ class Manager {
         if let name = argv.shift() {
             run(name, arguments: argv)
         } else {
-            println("No command specified")
+            defaultCommand.run(argv)
         }
     }
 }

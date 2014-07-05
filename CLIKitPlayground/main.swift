@@ -2,7 +2,7 @@
 //  main.swift
 //  CLIKitPlayground
 //
-//  Created by Radosław Pietruszewski on 05/07/14.
+//  Created by Radoslaw Pietruszewski on 05/07/14.
 //  Copyright (c) 2014 Cocode. All rights reserved.
 //
 
@@ -20,6 +20,10 @@ manager.register("edit", "Edits an issue") {
 
 manager.register("close", "Closes an open issue") {
     println("Issue has been closed.")
+}
+
+manager.registerDefault {
+    println("The best default command")
 }
 
 manager.run()
