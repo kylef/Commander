@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6E89F6BC19683CFD004BAECA /* ARGV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BB19683CFD004BAECA /* ARGV.swift */; };
 		6E89F6BE19683E0C004BAECA /* ARGVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BD19683E0C004BAECA /* ARGVTests.swift */; };
+		6EAF099E196855DF0097C8EF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF099D196855DF0097C8EF /* main.swift */; };
+		6EAF09A5196858780097C8EF /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
+		6EAF09A6196858C20097C8EF /* CLIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
 		77B4D5A71968328D00B6821C /* CLIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B4D5A61968328D00B6821C /* CLIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B4D5AD1968328D00B6821C /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
 		77B4D5B41968328D00B6821C /* CLIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5B31968328D00B6821C /* CLIKitTests.swift */; };
@@ -20,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6EAF09A3196858510097C8EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B4D5981968328D00B6821C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77B4D5A01968328D00B6821C;
+			remoteInfo = CLIKit;
+		};
 		77B4D5AE1968328D00B6821C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B4D5981968328D00B6821C /* Project object */;
@@ -29,9 +39,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6EAF0999196855DF0097C8EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6EAF09A6196858C20097C8EF /* CLIKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6E89F6BB19683CFD004BAECA /* ARGV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARGV.swift; sourceTree = "<group>"; };
 		6E89F6BD19683E0C004BAECA /* ARGVTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARGVTests.swift; sourceTree = "<group>"; };
+		6EAF099B196855DF0097C8EF /* CLIKitPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CLIKitPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EAF099D196855DF0097C8EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		77B4D5A11968328D00B6821C /* CLIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CLIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B4D5A51968328D00B6821C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77B4D5A61968328D00B6821C /* CLIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLIKit.h; sourceTree = "<group>"; };
@@ -46,6 +71,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6EAF0998196855DF0097C8EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EAF09A5196858780097C8EF /* CLIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B4D59D1968328D00B6821C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,11 +97,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6EAF099C196855DF0097C8EF /* CLIKitPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				6EAF099D196855DF0097C8EF /* main.swift */,
+			);
+			path = CLIKitPlayground;
+			sourceTree = "<group>";
+		};
 		77B4D5971968328D00B6821C = {
 			isa = PBXGroup;
 			children = (
 				77B4D5A31968328D00B6821C /* CLIKit */,
 				77B4D5B01968328D00B6821C /* CLIKitTests */,
+				6EAF099C196855DF0097C8EF /* CLIKitPlayground */,
 				77B4D5A21968328D00B6821C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +120,7 @@
 			children = (
 				77B4D5A11968328D00B6821C /* CLIKit.framework */,
 				77B4D5AC1968328D00B6821C /* CLIKitTests.xctest */,
+				6EAF099B196855DF0097C8EF /* CLIKitPlayground */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +180,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		6EAF099A196855DF0097C8EF /* CLIKitPlayground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6EAF099F196855DF0097C8EF /* Build configuration list for PBXNativeTarget "CLIKitPlayground" */;
+			buildPhases = (
+				6EAF0997196855DF0097C8EF /* Sources */,
+				6EAF0998196855DF0097C8EF /* Frameworks */,
+				6EAF0999196855DF0097C8EF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6EAF09A4196858510097C8EF /* PBXTargetDependency */,
+			);
+			name = CLIKitPlayground;
+			productName = CLIKitPlayground;
+			productReference = 6EAF099B196855DF0097C8EF /* CLIKitPlayground */;
+			productType = "com.apple.product-type.tool";
+		};
 		77B4D5A01968328D00B6821C /* CLIKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77B4D5B71968328D00B6821C /* Build configuration list for PBXNativeTarget "CLIKit" */;
@@ -182,6 +243,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Cocode;
 				TargetAttributes = {
+					6EAF099A196855DF0097C8EF = {
+						CreatedOnToolsVersion = 6.0;
+					};
 					77B4D5A01968328D00B6821C = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -205,6 +269,7 @@
 			targets = (
 				77B4D5A01968328D00B6821C /* CLIKit */,
 				77B4D5AB1968328D00B6821C /* CLIKitTests */,
+				6EAF099A196855DF0097C8EF /* CLIKitPlayground */,
 			);
 		};
 /* End PBXProject section */
@@ -227,6 +292,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6EAF0997196855DF0097C8EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EAF099E196855DF0097C8EF /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B4D59C1968328D00B6821C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +325,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6EAF09A4196858510097C8EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77B4D5A01968328D00B6821C /* CLIKit */;
+			targetProxy = 6EAF09A3196858510097C8EF /* PBXContainerItemProxy */;
+		};
 		77B4D5AF1968328D00B6821C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 77B4D5A01968328D00B6821C /* CLIKit */;
@@ -260,6 +338,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		6EAF09A0196855DF0097C8EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6EAF09A1196855DF0097C8EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		77B4D5B51968328D00B6821C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -415,6 +513,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6EAF099F196855DF0097C8EF /* Build configuration list for PBXNativeTarget "CLIKitPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EAF09A0196855DF0097C8EF /* Debug */,
+				6EAF09A1196855DF0097C8EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		77B4D59B1968328D00B6821C /* Build configuration list for PBXProject "CLIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
