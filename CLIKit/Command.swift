@@ -25,14 +25,15 @@ class Command {
 }
 
 class ClosureCommand : Command {
-    let handler:(() -> ())
+    typealias ClosureType = (ARGV) -> ()
+    let handler: ClosureType
 
-    init(name:String, description:String, handler:(() -> ())) {
+    init(name:String, description:String, handler: ClosureType) {
         self.handler = handler
         super.init(name, description)
     }
 
     override func run(arguments: ARGV) {
-        self.handler()
+        self.handler(arguments)
     }
 }

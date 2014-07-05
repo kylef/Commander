@@ -12,12 +12,12 @@ class Manager {
     
     init() {
         defaultCommand = Command("", "")
-        registerDefault {
+        registerDefault { argv in
             println("No command specified")
         }
     }
 
-    func register(name:String, _ description:String, handler:(()->())) {
+    func register(name:String, _ description:String, handler: ClosureCommand.ClosureType) {
         register(ClosureCommand(name:name, description:description, handler))
     }
 
@@ -25,7 +25,7 @@ class Manager {
         commands.append(command)
     }
     
-    func registerDefault(handler: ()->()) {
+    func registerDefault(handler: ClosureCommand.ClosureType) {
         defaultCommand = ClosureCommand(name: "", description: "The default command", handler: handler)
     }
 

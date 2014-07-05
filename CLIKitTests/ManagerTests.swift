@@ -16,7 +16,7 @@ class ManagerTests: XCTestCase {
     override func setUp() {
         didExecuteTestCommand = false
         manager = Manager()
-        manager.register("test", "A command registered in the test") {
+        manager.register("test", "A command registered in the test") { argv in
             self.didExecuteTestCommand = true
         }
     }
