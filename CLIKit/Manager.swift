@@ -30,7 +30,7 @@ class Manager {
     }
 
     /// Executes the command with arguments
-    func run(name:String, arguments:String[]) {
+    func run(name:String, arguments:ARGV) {
         if let command = findCommand(name) {
             command.run(arguments)
         } else {

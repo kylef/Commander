@@ -17,8 +17,8 @@ class ARGV {
     var options = Dictionary<String, String>()
     var flags = Dictionary<String, Bool>()
     
-    init(_ args: String) {
-        originalArgs = args.componentsSeparatedByString(" ")
+    init(_ args: String[]) {
+        originalArgs = args
         
         for arg in originalArgs {
             switch _parameterType(arg) {

@@ -13,7 +13,7 @@ class ARGVTests: XCTestCase {
     var argv: ARGV!
     
     override func setUp() {
-        argv = ARGV("argument1 --flag1 argument2 --no-flag2 --option1=value1 argument3 --flag3 --option2=value2")
+        argv = ARGV("argument1 --flag1 argument2 --no-flag2 --option1=value1 argument3 --flag3 --option2=value2".componentsSeparatedByString(" "))
     }
     
     func testPresenceOfAllParameters() {

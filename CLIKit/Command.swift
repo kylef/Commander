@@ -15,7 +15,7 @@ class Command {
         self.description = description
     }
 
-    func run(arguments:String[]) {
+    func run(arguments: ARGV) {
 
     }
 }
@@ -28,7 +28,7 @@ class ClosureCommand : Command {
         super.init(name, description)
     }
 
-    override func run(arguments:String[]) {
+    override func run(arguments: ARGV) {
         self.handler()
     }
 }

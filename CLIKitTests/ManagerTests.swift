@@ -37,7 +37,7 @@ class ManagerTests: XCTestCase {
     }
 
     func testRoutesRegisteredCommand() {
-        manager.run("test", arguments:[])
+        manager.run("test", arguments:ARGV([]))
         XCTAssertTrue(didExecuteTestCommand)
     }
 }
