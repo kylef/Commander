@@ -15,7 +15,21 @@ manager.register("open", "Opens a new issue") { argv in
 }
 
 manager.register("edit", "Edits an issue") { argv in
-    println("The issue has been edited.")
+    if let id = argv.shift() {
+        var alert = "Editing issue #\(id). "
+        
+        if let assignee = argv.option("assignee") {
+            alert += "\(assignee) will be the new assignee. "
+        }
+        
+        if let milestone = argv.option("milestone") {
+            alert += "The issue must be completed before \(milestone). "
+        }
+        
+        println(alert)
+    } else {
+        println("Issue id not specified")
+    }
 }
 
 manager.register("close", "Closes an open issue") { argv in
@@ -27,4 +41,4 @@ manager.registerDefault { argv in
     print(argv.flags)
 }
 
-manager.run(arguments: ["--foo", "--bar"])
+manager.run(arguments: ["edit", "2222", "--assignee=radex", "--milestone=2.0"])

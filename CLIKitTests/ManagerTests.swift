@@ -46,4 +46,25 @@ class ManagerTests: XCTestCase {
         manager.run(arguments: ["test"])
         XCTAssertTrue(didExecuteTestCommand)
     }
+    
+    func testPassesArgumentsToCommand() {
+        var closureRan = false
+        manager.register("test_argument_passing", "A tester command") { argv in
+            closureRan = true
+            XCTAssertEqualObjects(argv.arguments, ["arg", "arg2"])
+            XCTAssertEqualObjects(argv.options, ["option": "value"])
+        }
+        manager.run(arguments: ["test_argument_passing", "arg", "arg2", "--option=value"])
+        XCTAssertTrue(closureRan)
+    }
+    
+    func testRunsDefaultCommand() {
+        var closureRan = false
+        manager.registerDefault { argv in
+            closureRan = true
+            XCTAssertEqualObjects(argv.options, ["option": "value"])
+        }
+        manager.run(arguments: ["--option=value"])
+        XCTAssertTrue(closureRan)
+    }
 }
