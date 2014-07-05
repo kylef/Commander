@@ -39,7 +39,16 @@ class Manager {
     }
     
     func run(arguments: String[]? = nil) {
-        let argv = arguments ? ARGV(arguments!) : ARGV(Process.arguments)
+        var argv: ARGV!
+        
+        if arguments {
+            argv = ARGV(arguments!)
+        } else {
+            var arguments = Process.arguments
+            arguments.removeAtIndex(0)
+            argv = ARGV(arguments)
+        }
+        
         if let name = argv.shift() {
             run(name, arguments: argv)
         } else {
