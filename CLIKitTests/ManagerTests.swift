@@ -11,11 +11,12 @@ import CLIKit
 
 class ManagerTests: XCTestCase {
     var manager:Manager!
+    var didExecuteTestCommand = false
 
     override func setUp() {
         manager = Manager()
         manager.register("test", "A command registered in the test") {
-
+            self.didExecuteTestCommand = true
         }
     }
 
@@ -33,5 +34,10 @@ class ManagerTests: XCTestCase {
     func testFindsCommandByNameReturnsOptionalWhenNoCommandNamesMatch() {
         let command = manager.findCommand("unknown")
         XCTAssertNil(command)
+    }
+
+    func testRoutesRegisteredCommand() {
+        manager.run("test", arguments:[])
+        XCTAssertTrue(didExecuteTestCommand)
     }
 }

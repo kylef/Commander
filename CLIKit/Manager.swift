@@ -28,4 +28,13 @@ class Manager {
 
         return command
     }
+
+    /// Executes the command with arguments
+    func run(name:String, arguments:String[]) {
+        if let command = findCommand(name) {
+            command.run()
+        } else {
+            println("Unknown command: \(name)")
+        }
+    }
 }
