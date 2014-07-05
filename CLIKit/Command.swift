@@ -18,6 +18,10 @@ class Command {
     func run(arguments: ARGV) {
 
     }
+
+    func run(manager:Manager, arguments: ARGV) {
+        run(arguments)
+    }
 }
 
 class ClosureCommand : Command {
