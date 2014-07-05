@@ -32,7 +32,7 @@ class Manager {
     /// Executes the command with arguments
     func run(name:String, arguments:String[]) {
         if let command = findCommand(name) {
-            command.run()
+            command.run(arguments)
         } else {
             println("Unknown command: \(name)")
         }
