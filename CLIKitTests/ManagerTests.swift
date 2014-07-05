@@ -14,16 +14,24 @@ class ManagerTests: XCTestCase {
 
     override func setUp() {
         manager = Manager()
+        manager.register("test", "A command registered in the test") {
+
+        }
     }
 
-    func testHasConvinienceMethodToAddCommand() {
-        manager.register("test", "A command registered in the test") {
-            
-        }
-
+    func testConvinienceMethodAddsCommand() {
         XCTAssertEqual(manager.commands.count, 1)
         XCTAssertEqual(manager.commands[0].name, "test")
         XCTAssertEqual(manager.commands[0].description, "A command registered in the test")
     }
-    
+
+    func testFindsCommandByNameFindsCommand() {
+        let command = manager.findCommand("test")
+        XCTAssertEqual(command!.name, "test")
+    }
+
+    func testFindsCommandByNameReturnsOptionalWhenNoCommandNamesMatch() {
+        let command = manager.findCommand("unknown")
+        XCTAssertNil(command)
+    }
 }

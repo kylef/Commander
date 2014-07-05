@@ -16,4 +16,16 @@ class Manager {
     func register(command:Command) {
         commands.append(command)
     }
+
+    /// Finds a command by name
+    func findCommand(name:String) -> Command? {
+        let foundCommands = commands.filter({ $0.name == name })
+        var command:Command?
+
+        if foundCommands.count > 0 {
+            command = foundCommands[0]
+        }
+
+        return command
+    }
 }
