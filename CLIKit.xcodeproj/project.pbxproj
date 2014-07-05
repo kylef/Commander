@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E89F6BC19683CFD004BAECA /* ARGV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BB19683CFD004BAECA /* ARGV.swift */; };
+		6E89F6BE19683E0C004BAECA /* ARGVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BD19683E0C004BAECA /* ARGVTests.swift */; };
 		77B4D5A71968328D00B6821C /* CLIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B4D5A61968328D00B6821C /* CLIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B4D5AD1968328D00B6821C /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
 		77B4D5B41968328D00B6821C /* CLIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5B31968328D00B6821C /* CLIKitTests.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E89F6BB19683CFD004BAECA /* ARGV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARGV.swift; sourceTree = "<group>"; };
+		6E89F6BD19683E0C004BAECA /* ARGVTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARGVTests.swift; sourceTree = "<group>"; };
 		77B4D5A11968328D00B6821C /* CLIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CLIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B4D5A51968328D00B6821C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77B4D5A61968328D00B6821C /* CLIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLIKit.h; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				77B4D5BD196832C200B6821C /* Command.swift */,
 				77B4D5C11968352800B6821C /* Manager.swift */,
 				77B4D5A41968328D00B6821C /* Supporting Files */,
+				6E89F6BB19683CFD004BAECA /* ARGV.swift */,
 			);
 			path = CLIKit;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				77B4D5BF196832D800B6821C /* CommandTests.swift */,
 				77B4D5C31968354000B6821C /* ManagerTests.swift */,
 				77B4D5B11968328D00B6821C /* Supporting Files */,
+				6E89F6BD19683E0C004BAECA /* ARGVTests.swift */,
 			);
 			path = CLIKitTests;
 			sourceTree = "<group>";
@@ -223,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B4D5BE196832C200B6821C /* Command.swift in Sources */,
+				6E89F6BC19683CFD004BAECA /* ARGV.swift in Sources */,
 				77B4D5C21968352800B6821C /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B4D5B41968328D00B6821C /* CLIKitTests.swift in Sources */,
+				6E89F6BE19683E0C004BAECA /* ARGVTests.swift in Sources */,
 				77B4D5C0196832D800B6821C /* CommandTests.swift in Sources */,
 				77B4D5C41968354000B6821C /* ManagerTests.swift in Sources */,
 			);
