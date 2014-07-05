@@ -31,7 +31,7 @@ class Manager {
 
     /// Finds a command by name
     func findCommand(name:String) -> Command? {
-        let foundCommands = commands.filter({ $0.name == name })
+        let foundCommands = commands.filter { $0.name == name }
         var command:Command?
 
         if foundCommands.count > 0 {
@@ -40,19 +40,29 @@ class Manager {
 
         return command
     }
-
-    /// Executes the command with arguments
-    func run(name:String, arguments:ARGV) {
-        if let command = findCommand(name) {
-            command.run(self, arguments: arguments)
-        } else {
-            println("Unknown command: \(name)")
+    
+    /// Finds the command to execute based on input arguments
+    func findCommand(argv: ARGV) -> Command? {
+        let args = argv.arguments
+        // try to find the deepest command name matching the arguments
+        for depth in ReverseRange(range: 1...args.count) {
+            let slicedArgs = Array(args[0..depth]) as NSArray
+            let maybeCommandName = slicedArgs.componentsJoinedByString(" ")
+            
+            if let command = findCommand(maybeCommandName) {
+                argv.arguments = Array(args[depth..args.count]) // strip the command name from arguments
+                return command
+            }
         }
+        
+        return nil
     }
     
+    /// Runs the correct command based on input arguments
     func run(arguments: String[]? = nil) {
         var argv: ARGV!
         
+        // Swift, Y U NO ||= ?!
         if arguments {
             argv = ARGV(arguments!)
         } else {
@@ -61,8 +71,12 @@ class Manager {
             argv = ARGV(arguments)
         }
         
-        if let name = argv.shift() {
-            run(name, arguments: argv)
+        if argv.arguments.count > 0 {
+            if let command = findCommand(argv) {
+                command.run(self, arguments: argv)
+            } else {
+                println("Unknown command.")
+            }
         } else {
             defaultCommand.run(argv)
         }

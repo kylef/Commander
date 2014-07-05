@@ -10,35 +10,19 @@ import CLIKit
 
 var manager = Manager()
 
-manager.register("open", "Opens a new issue") { argv in
-    println("A new issue has been created!")
+manager.register("issue", "") { argv in
+    println("Issues will be managed!")
+    print(argv.arguments)
 }
 
-manager.register("edit", "Edits an issue") { argv in
-    if let id = argv.shift() {
-        var alert = "Editing issue #\(id). "
-        
-        if let assignee = argv.option("assignee") {
-            alert += "\(assignee) will be the new assignee. "
-        }
-        
-        if let milestone = argv.option("milestone") {
-            alert += "The issue must be completed before \(milestone). "
-        }
-        
-        println(alert)
-    } else {
-        println("Issue id not specified")
-    }
+manager.register("issue edit", "") { argv in
+    println("Issues will be edited!")
+    print(argv.arguments)
 }
 
-manager.register("close", "Closes an open issue") { argv in
-    println("Issue has been closed.")
+manager.register("issue delete", "") { argv in
+    println("Issues will be edited!")
+    print(argv.arguments)
 }
 
-manager.registerDefault { argv in
-    println("The best default command")
-    print(argv.flags)
-}
-
-manager.run(arguments: ["edit", "2222", "--assignee=radex", "--milestone=2.0"])
+manager.run(arguments: ["issue", "foo", "bar"])
