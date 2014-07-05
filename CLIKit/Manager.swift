@@ -37,4 +37,13 @@ class Manager {
             println("Unknown command: \(name)")
         }
     }
+    
+    func run(arguments: String[]? = nil) {
+        let argv = arguments ? ARGV(arguments!) : ARGV(Process.arguments)
+        if let name = argv.shift() {
+            run(name, arguments: argv)
+        } else {
+            println("No command specified")
+        }
+    }
 }

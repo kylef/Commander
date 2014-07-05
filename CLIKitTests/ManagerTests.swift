@@ -14,6 +14,7 @@ class ManagerTests: XCTestCase {
     var didExecuteTestCommand = false
 
     override func setUp() {
+        didExecuteTestCommand = false
         manager = Manager()
         manager.register("test", "A command registered in the test") {
             self.didExecuteTestCommand = true
@@ -38,6 +39,11 @@ class ManagerTests: XCTestCase {
 
     func testRoutesRegisteredCommand() {
         manager.run("test", arguments:ARGV([]))
+        XCTAssertTrue(didExecuteTestCommand)
+    }
+    
+    func testAutomaticRun() {
+        manager.run(arguments: ["test"])
         XCTAssertTrue(didExecuteTestCommand)
     }
 }
