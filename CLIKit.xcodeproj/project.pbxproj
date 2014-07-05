@@ -16,6 +16,7 @@
 		77B4D5C0196832D800B6821C /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5BF196832D800B6821C /* CommandTests.swift */; };
 		77B4D5C21968352800B6821C /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5C11968352800B6821C /* Manager.swift */; };
 		77B4D5C41968354000B6821C /* ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5C31968354000B6821C /* ManagerTests.swift */; };
+		77B4D5C6196853C200B6821C /* HelpCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5C5196853C200B6821C /* HelpCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		77B4D5BF196832D800B6821C /* CommandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
 		77B4D5C11968352800B6821C /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		77B4D5C31968354000B6821C /* ManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerTests.swift; sourceTree = "<group>"; };
+		77B4D5C5196853C200B6821C /* HelpCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCommand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				77B4D5A61968328D00B6821C /* CLIKit.h */,
 				77B4D5BD196832C200B6821C /* Command.swift */,
 				77B4D5C11968352800B6821C /* Manager.swift */,
+				77B4D5C5196853C200B6821C /* HelpCommand.swift */,
 				77B4D5A41968328D00B6821C /* Supporting Files */,
 				6E89F6BB19683CFD004BAECA /* ARGV.swift */,
 			);
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B4D5C6196853C200B6821C /* HelpCommand.swift in Sources */,
 				77B4D5BE196832C200B6821C /* Command.swift in Sources */,
 				6E89F6BC19683CFD004BAECA /* ARGV.swift in Sources */,
 				77B4D5C21968352800B6821C /* Manager.swift in Sources */,
