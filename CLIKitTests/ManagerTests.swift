@@ -36,10 +36,16 @@ class ManagerTests: XCTestCase {
         let command = manager.findCommand("unknown")
         XCTAssertNil(command)
     }
-
-    func testRoutesRegisteredCommand() {
-        manager.run("test", arguments:ARGV([]))
-        XCTAssertTrue(didExecuteTestCommand)
+    
+    func testFindsSubcommands() {
+        manager.register("test foo", "") { argv in }
+        manager.register("test foo bar", "") { argv in }
+        
+        let command = manager.findCommand(ARGV(["test", "foo", "arg", "arg"]))
+        XCTAssertEqual(command!.name, "test foo")
+        
+        let command2 = manager.findCommand(ARGV(["test", "foo", "bar", "arg"]))
+        XCTAssertEqual(command2!.name, "test foo bar")
     }
     
     func testAutomaticRun() {
@@ -65,6 +71,16 @@ class ManagerTests: XCTestCase {
             XCTAssertEqualObjects(argv.options, ["option": "value"])
         }
         manager.run(arguments: ["--option=value"])
+        XCTAssertTrue(closureRan)
+    }
+    
+    func testStripsArgumentsForSubcommandsCorrectly() {
+        var closureRan = false
+        manager.register("test foo bar", "") { argv in
+            closureRan = true
+            XCTAssertEqualObjects(argv.arguments, ["arg", "arg"])
+        }
+        manager.run(arguments: ["test", "foo", "bar", "arg", "arg"])
         XCTAssertTrue(closureRan)
     }
 }
