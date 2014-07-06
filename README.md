@@ -10,15 +10,19 @@ Code:
 ```swift
 var manager = Manager()
 
-manager.register("open", "Opens a new issue") { argv in
+manager.register("issue", "Options for issue") { argv in
+    println("Say `open`, `close` or `edit`")
+}
+
+manager.register("issue open", "Opens a new issue") { argv in
     println("A new issue has been created!")
 }
 
-manager.register("close", "Closes an open issue") { argv in
+manager.register("issue close", "Closes an open issue") { argv in
     println("Issue has been closed.")
 }
 
-manager.register("edit", "Edits an issue") { argv in
+manager.register("issue edit", "Edits an issue") { argv in
     if let id = argv.shift() {
         var alert = "Editing issue #\(id). "
         
@@ -42,12 +46,20 @@ manager.run()
 
 Result:
 ```
-$ ./my_cli open
+$ ./my_cli issue open
 A new issue has been created!
-$ ./my_cli edit 22 --assignee=radex --milestone=2.0
+$ ./my_cli issue edit 22 --assignee=radex --milestone=2.0
 Editing issue #22. radex will be the new assignee. The issue must be completed before 2.0. 
+$ ./my_cli issue
+Say `open`, `close` or `edit`
 ```
 
+## Features
+
+* Specify commands and subcommands
+* Arguments (`edit 22`)
+* Boolean flags (`coffee make --sugar --no-milk`)
+* Options (`open --title=foo --author=bar`)
 
 ## Authors
 
