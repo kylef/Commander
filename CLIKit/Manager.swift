@@ -7,15 +7,13 @@
 //
 
 class Manager {
-    var commands = Command[]()
-    var defaultCommand: Command
+    var commands = [Command]()
     
-    init() {
-        defaultCommand = Command("", "")
-        registerDefault { argv in
+    @lazy var defaultCommand: Command = {
+        ClosureCommand(name: "", description: "The default command") { argv in
             println("No command specified")
         }
-    }
+    }()
 
     func register(name:String, _ description:String, handler: ClosureCommand.ClosureType) {
         register(ClosureCommand(name:name, description:description, handler))
@@ -46,11 +44,11 @@ class Manager {
         let args = argv.arguments
         // try to find the deepest command name matching the arguments
         for depth in ReverseRange(range: 1...args.count) {
-            let slicedArgs = Array(args[0..depth]) as NSArray
+            let slicedArgs = Array(args[0 ..< depth]) as NSArray
             let maybeCommandName = slicedArgs.componentsJoinedByString(" ")
             
             if let command = findCommand(maybeCommandName) {
-                argv.arguments = Array(args[depth..args.count]) // strip the command name from arguments
+                argv.arguments = Array(args[depth ..< args.count]) // strip the command name from arguments
                 return command
             }
         }
@@ -59,7 +57,7 @@ class Manager {
     }
     
     /// Runs the correct command based on input arguments
-    func run(arguments: String[]? = nil) {
+    func run(arguments: [String]? = nil) {
         var argv: ARGV!
         
         // Swift, Y U NO ||= ?!

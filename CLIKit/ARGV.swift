@@ -12,12 +12,12 @@ class ARGV {
         case Argument, Option, Flag
     }
     
-    let originalArgs: String[]
-    var arguments = String[]()
-    var options = Dictionary<String, String>()
-    var flags = Dictionary<String, Bool>()
+    let originalArgs: [String]
+    var arguments = [String]()
+    var options = [String: String]()
+    var flags = [String: Bool]()
     
-    init(_ args: String[]) {
+    init(_ args: [String]) {
         originalArgs = args
         
         for arg in originalArgs {
@@ -51,7 +51,7 @@ class ARGV {
     }
     
     func _parameterType(arg: String) -> ParameterType {
-        if startsWith(arg, "--") {
+        if arg.hasPrefix("--") {
             if contains(arg, "=") {
                 return .Option
             } else {
@@ -63,13 +63,13 @@ class ARGV {
     }
     
     func _optionParameter(arg: String) -> (key: String, value: String) {
-        let components = arg.substringFromIndex(2).componentsSeparatedByString("=") as String[]
+        let components = arg.substringFromIndex(2).componentsSeparatedByString("=") as [String]
         assert(components.count == 2)
         return (components[0], components[1])
     }
     
     func _flagParameter(arg: String) -> (key: String, value: Bool) {
-        if startsWith(arg, "--no-") {
+        if arg.hasPrefix("--no-") {
             return (arg.substringFromIndex(5), false)
         } else {
             return (arg.substringFromIndex(2), true)
