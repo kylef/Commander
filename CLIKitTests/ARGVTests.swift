@@ -17,28 +17,28 @@ class ARGVTests: XCTestCase {
     }
     
     func testPresenceOfAllParameters() {
-        XCTAssertEqualObjects(argv.arguments, ["argument1", "argument2", "argument3"])
-        XCTAssertEqualObjects(argv.options, ["option1": "value1", "option2": "value2"])
-        XCTAssertEqualObjects(argv.flags, ["flag1": true, "flag2": false, "flag3": true])
+        XCTAssertEqual(argv.arguments, ["argument1", "argument2", "argument3"])
+        XCTAssertEqual(argv.options, ["option1": "value1", "option2": "value2"])
+        XCTAssertEqual(argv.flags, ["flag1": true, "flag2": false, "flag3": true])
     }
     
     func testShiftingOfArguments() {
         XCTAssert(argv.shift() == "argument1")
-        XCTAssertEqualObjects(argv.arguments, ["argument2", "argument3"])
+        XCTAssertEqual(argv.arguments, ["argument2", "argument3"])
         XCTAssert(argv.shift() == "argument2")
         XCTAssert(argv.shift() == "argument3")
-        XCTAssertEqualObjects(argv.arguments, [])
+        XCTAssertEqual(argv.arguments, [])
         XCTAssert(argv.shift() == nil)
     }
     
     func testOptions() {
         XCTAssert(argv.option("option1") == "value1")
         XCTAssert(argv.option("option1") == nil)
-        XCTAssertEqualObjects(argv.options, ["option2": "value2"])
+        XCTAssertEqual(argv.options, ["option2": "value2"])
         
         XCTAssert(argv.option("option2") == "value2")
         XCTAssert(argv.option("option2") == nil)
-        XCTAssertEqualObjects(argv.options, [:])
+        XCTAssertEqual(argv.options, [:])
         
         XCTAssert(argv.option("doesn't exist") == nil)
     }
@@ -46,11 +46,11 @@ class ARGVTests: XCTestCase {
     func testFlags() {
         XCTAssert(argv.flag("flag1") == true)
         XCTAssert(argv.flag("flag1") == nil)
-        XCTAssertEqualObjects(argv.flags, ["flag2": false, "flag3": true])
+        XCTAssertEqual(argv.flags, ["flag2": false, "flag3": true])
         
         XCTAssert(argv.flag("flag2") == false)
         XCTAssert(argv.flag("flag2") == nil)
-        XCTAssertEqualObjects(argv.flags, ["flag3": true])
+        XCTAssertEqual(argv.flags, ["flag3": true])
         
         XCTAssert(argv.flag("doesn't exist") == nil)
     }

@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Cocode. All rights reserved.
 //
 
-class ARGV {
+public class ARGV {
     
-    enum ParameterType {
+    public enum ParameterType {
         case Argument, Option, Flag
     }
     
     let originalArgs: [String]
-    var arguments = [String]()
-    var options = [String: String]()
-    var flags = [String: Bool]()
+    public var arguments = [String]()
+    public var options = [String: String]()
+    public var flags = [String: Bool]()
     
-    init(_ args: [String]) {
+    public init(_ args: [String]) {
         originalArgs = args
         
         for arg in originalArgs {
@@ -34,7 +34,7 @@ class ARGV {
         }
     }
     
-    func shift() -> String? {
+    public func shift() -> String? {
         if arguments.count > 0 {
             return arguments.removeAtIndex(0)
         } else {
@@ -42,11 +42,11 @@ class ARGV {
         }
     }
     
-    func option(name: String) -> String? {
+    public func option(name: String) -> String? {
         return options.removeValueForKey(name)
     }
     
-    func flag(name: String) -> Bool? {
+    public func flag(name: String) -> Bool? {
         return flags.removeValueForKey(name)
     }
     
@@ -63,16 +63,16 @@ class ARGV {
     }
     
     func _optionParameter(arg: String) -> (key: String, value: String) {
-        let components = arg.substringFromIndex(2).componentsSeparatedByString("=") as [String]
+        let components = arg.substringFromIndex(advance(arg.startIndex, 2)).componentsSeparatedByString("=") as [String]
         assert(components.count == 2)
         return (components[0], components[1])
     }
     
     func _flagParameter(arg: String) -> (key: String, value: Bool) {
         if arg.hasPrefix("--no-") {
-            return (arg.substringFromIndex(5), false)
+            return (arg.substringFromIndex(advance(arg.startIndex, 5)), false)
         } else {
-            return (arg.substringFromIndex(2), true)
+            return (arg.substringFromIndex(advance(arg.startIndex, 2)), true)
         }
     }
 }

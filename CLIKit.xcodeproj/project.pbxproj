@@ -11,7 +11,7 @@
 		6E89F6BE19683E0C004BAECA /* ARGVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BD19683E0C004BAECA /* ARGVTests.swift */; };
 		6EAF099E196855DF0097C8EF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF099D196855DF0097C8EF /* main.swift */; };
 		6EAF09A5196858780097C8EF /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
-		6EAF09A6196858C20097C8EF /* CLIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
+		6EAF09A6196858C20097C8EF /* CLIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		77B4D5A71968328D00B6821C /* CLIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B4D5A61968328D00B6821C /* CLIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B4D5AD1968328D00B6821C /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
 		77B4D5B41968328D00B6821C /* CLIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5B31968328D00B6821C /* CLIKitTests.swift */; };
@@ -129,11 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				77B4D5A61968328D00B6821C /* CLIKit.h */,
-				77B4D5BD196832C200B6821C /* Command.swift */,
-				77B4D5C11968352800B6821C /* Manager.swift */,
-				77B4D5C5196853C200B6821C /* HelpCommand.swift */,
-				77B4D5A41968328D00B6821C /* Supporting Files */,
 				6E89F6BB19683CFD004BAECA /* ARGV.swift */,
+				77B4D5BD196832C200B6821C /* Command.swift */,
+				77B4D5C5196853C200B6821C /* HelpCommand.swift */,
+				77B4D5C11968352800B6821C /* Manager.swift */,
+				77B4D5A41968328D00B6821C /* Supporting Files */,
 			);
 			path = CLIKit;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 		77B4D5981968328D00B6821C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Cocode;
 				TargetAttributes = {
 					6EAF099A196855DF0097C8EF = {
@@ -520,6 +520,7 @@
 				6EAF09A1196855DF0097C8EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77B4D59B1968328D00B6821C /* Build configuration list for PBXProject "CLIKit" */ = {
 			isa = XCConfigurationList;
