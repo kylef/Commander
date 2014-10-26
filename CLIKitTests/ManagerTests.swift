@@ -57,8 +57,8 @@ class ManagerTests: XCTestCase {
         var closureRan = false
         manager.register("test_argument_passing", "A tester command") { argv in
             closureRan = true
-            XCTAssertEqualObjects(argv.arguments, ["arg", "arg2"])
-            XCTAssertEqualObjects(argv.options, ["option": "value"])
+            XCTAssertEqual(argv.arguments, ["arg", "arg2"])
+            XCTAssertEqual(argv.options, ["option": "value"])
         }
         manager.run(arguments: ["test_argument_passing", "arg", "arg2", "--option=value"])
         XCTAssertTrue(closureRan)
@@ -68,7 +68,7 @@ class ManagerTests: XCTestCase {
         var closureRan = false
         manager.registerDefault { argv in
             closureRan = true
-            XCTAssertEqualObjects(argv.options, ["option": "value"])
+            XCTAssertEqual(argv.options, ["option": "value"])
         }
         manager.run(arguments: ["--option=value"])
         XCTAssertTrue(closureRan)
@@ -78,7 +78,7 @@ class ManagerTests: XCTestCase {
         var closureRan = false
         manager.register("test foo bar", "") { argv in
             closureRan = true
-            XCTAssertEqualObjects(argv.arguments, ["arg", "arg"])
+            XCTAssertEqual(argv.arguments, ["arg", "arg"])
         }
         manager.run(arguments: ["test", "foo", "bar", "arg", "arg"])
         XCTAssertTrue(closureRan)

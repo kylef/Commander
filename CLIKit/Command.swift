@@ -6,34 +6,34 @@
 //  Copyright (c) 2014 Cocode. All rights reserved.
 //
 
-class Command {
-    let name:String
-    let description:String
+public class Command {
+    public let name:String
+    public let description:String
 
-    init(_ name:String, _ description:String) {
+    public init(_ name:String, _ description:String) {
         self.name = name
         self.description = description
     }
 
-    func run(arguments: ARGV) {
+    public func run(arguments: ARGV) {
 
     }
 
-    func run(manager:Manager, arguments: ARGV) {
+    public func run(manager:Manager, arguments: ARGV) {
         run(arguments)
     }
 }
 
-class ClosureCommand : Command {
-    typealias ClosureType = (ARGV) -> ()
+public class ClosureCommand : Command {
+    public typealias ClosureType = (ARGV) -> ()
     let handler: ClosureType
 
-    init(name:String, description:String, handler: ClosureType) {
+    public init(name:String, description:String, handler: ClosureType) {
         self.handler = handler
         super.init(name, description)
     }
 
-    override func run(arguments: ARGV) {
+    public override func run(arguments: ARGV) {
         self.handler(arguments)
     }
 }
