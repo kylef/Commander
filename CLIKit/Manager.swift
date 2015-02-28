@@ -19,7 +19,7 @@ public class Manager {
     }()
 
     public func register(name:String, _ description:String, handler: ClosureCommand.ClosureType) {
-        register(ClosureCommand(name:name, description:description, handler))
+        register(ClosureCommand(name: name, description: description, handler: handler))
     }
 
     public func register(command:Command) {
