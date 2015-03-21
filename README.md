@@ -1,6 +1,8 @@
 CLIKit
 ======
 
+[![Build Status](http://img.shields.io/travis/kylef/CLIKit/master.svg?style=flat)](https://travis-ci.org/kylef/CLIKit)
+
 The swiftest way to write a command line tool.
 
 ## Usage

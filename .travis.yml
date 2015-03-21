@@ -1,0 +1,6 @@
+language: objective-c
+before_install:
+- gem install xcpretty --no-document
+script:
+- set -o pipefail
+- xcodebuild -project CLIKit.xcodeproj -scheme CLIKit -sdk macosx test | xcpretty -c
