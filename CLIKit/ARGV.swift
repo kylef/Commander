@@ -21,14 +21,14 @@ public class ARGV {
         originalArgs = args
         
         for arg in originalArgs {
-            switch _parameterType(arg) {
+            switch parameterType(arg) {
             case .Argument:
                 arguments.append(arg)
             case .Option:
-                let (key, value) = _optionParameter(arg)
+                let (key, value) = optionParameter(arg)
                 options[key] = value
             case .Flag:
-                let (key, value) = _flagParameter(arg)
+                let (key, value) = flagParameter(arg)
                 flags[key] = value
             }
         }
@@ -50,7 +50,7 @@ public class ARGV {
         return flags.removeValueForKey(name)
     }
     
-    func _parameterType(arg: String) -> ParameterType {
+    private func parameterType(arg: String) -> ParameterType {
         if arg.hasPrefix("--") {
             if contains(arg, "=") {
                 return .Option
@@ -62,13 +62,14 @@ public class ARGV {
         }
     }
     
-    func _optionParameter(arg: String) -> (key: String, value: String) {
-        let components = arg.substringFromIndex(advance(arg.startIndex, 2)).componentsSeparatedByString("=") as [String]
+    private func optionParameter(arg: String) -> (key: String, value: String) {
+        let argument = arg.substringFromIndex(advance(arg.startIndex, 2))
+        let components = split(argument) { $0 == "=" }
         assert(components.count == 2)
         return (components[0], components[1])
     }
     
-    func _flagParameter(arg: String) -> (key: String, value: Bool) {
+    private func flagParameter(arg: String) -> (key: String, value: Bool) {
         if arg.hasPrefix("--no-") {
             return (arg.substringFromIndex(advance(arg.startIndex, 5)), false)
         } else {
