@@ -10,11 +10,10 @@
 		6E89F6BC19683CFD004BAECA /* ARGV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BB19683CFD004BAECA /* ARGV.swift */; };
 		6E89F6BE19683E0C004BAECA /* ARGVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E89F6BD19683E0C004BAECA /* ARGVTests.swift */; };
 		6EAF099E196855DF0097C8EF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF099D196855DF0097C8EF /* main.swift */; };
-		6EAF09A5196858780097C8EF /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
-		6EAF09A6196858C20097C8EF /* CLIKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		77B4D5A71968328D00B6821C /* CLIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B4D5A61968328D00B6821C /* CLIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		77B4D5AD1968328D00B6821C /* CLIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CLIKit.framework */; };
-		77B4D5B41968328D00B6821C /* CLIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5B31968328D00B6821C /* CLIKitTests.swift */; };
+		6EAF09A5196858780097C8EF /* CommandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CommandKit.framework */; };
+		6EAF09A6196858C20097C8EF /* CommandKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CommandKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		77B4D5A71968328D00B6821C /* CommandKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B4D5A61968328D00B6821C /* CommandKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77B4D5AD1968328D00B6821C /* CommandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4D5A11968328D00B6821C /* CommandKit.framework */; };
 		77B4D5BE196832C200B6821C /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5BD196832C200B6821C /* Command.swift */; };
 		77B4D5C0196832D800B6821C /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5BF196832D800B6821C /* CommandTests.swift */; };
 		77B4D5C21968352800B6821C /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B4D5C11968352800B6821C /* Manager.swift */; };
@@ -28,14 +27,14 @@
 			containerPortal = 77B4D5981968328D00B6821C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 77B4D5A01968328D00B6821C;
-			remoteInfo = CLIKit;
+			remoteInfo = CommandKit;
 		};
 		77B4D5AE1968328D00B6821C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B4D5981968328D00B6821C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 77B4D5A01968328D00B6821C;
-			remoteInfo = CLIKit;
+			remoteInfo = CommandKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -46,7 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6EAF09A6196858C20097C8EF /* CLIKit.framework in CopyFiles */,
+				6EAF09A6196858C20097C8EF /* CommandKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -55,14 +54,13 @@
 /* Begin PBXFileReference section */
 		6E89F6BB19683CFD004BAECA /* ARGV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARGV.swift; sourceTree = "<group>"; };
 		6E89F6BD19683E0C004BAECA /* ARGVTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARGVTests.swift; sourceTree = "<group>"; };
-		6EAF099B196855DF0097C8EF /* CLIKitPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CLIKitPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EAF099B196855DF0097C8EF /* CommandKitPlayground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CommandKitPlayground; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EAF099D196855DF0097C8EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		77B4D5A11968328D00B6821C /* CLIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CLIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77B4D5A11968328D00B6821C /* CommandKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommandKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B4D5A51968328D00B6821C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77B4D5A61968328D00B6821C /* CLIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLIKit.h; sourceTree = "<group>"; };
-		77B4D5AC1968328D00B6821C /* CLIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77B4D5A61968328D00B6821C /* CommandKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommandKit.h; sourceTree = "<group>"; };
+		77B4D5AC1968328D00B6821C /* CommandKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommandKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B4D5B21968328D00B6821C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77B4D5B31968328D00B6821C /* CLIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLIKitTests.swift; sourceTree = "<group>"; };
 		77B4D5BD196832C200B6821C /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		77B4D5BF196832D800B6821C /* CommandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
 		77B4D5C11968352800B6821C /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
@@ -75,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EAF09A5196858780097C8EF /* CLIKit.framework in Frameworks */,
+				6EAF09A5196858780097C8EF /* CommandKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,27 +88,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77B4D5AD1968328D00B6821C /* CLIKit.framework in Frameworks */,
+				77B4D5AD1968328D00B6821C /* CommandKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6EAF099C196855DF0097C8EF /* CLIKitPlayground */ = {
+		6EAF099C196855DF0097C8EF /* CommandKitPlayground */ = {
 			isa = PBXGroup;
 			children = (
 				6EAF099D196855DF0097C8EF /* main.swift */,
 			);
-			path = CLIKitPlayground;
+			path = CommandKitPlayground;
 			sourceTree = "<group>";
 		};
 		77B4D5971968328D00B6821C = {
 			isa = PBXGroup;
 			children = (
-				77B4D5A31968328D00B6821C /* CLIKit */,
-				77B4D5B01968328D00B6821C /* CLIKitTests */,
-				6EAF099C196855DF0097C8EF /* CLIKitPlayground */,
+				77B4D5A31968328D00B6821C /* CommandKit */,
+				77B4D5B01968328D00B6821C /* CommandKitTests */,
+				6EAF099C196855DF0097C8EF /* CommandKitPlayground */,
 				77B4D5A21968328D00B6821C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,24 +116,24 @@
 		77B4D5A21968328D00B6821C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				77B4D5A11968328D00B6821C /* CLIKit.framework */,
-				77B4D5AC1968328D00B6821C /* CLIKitTests.xctest */,
-				6EAF099B196855DF0097C8EF /* CLIKitPlayground */,
+				77B4D5A11968328D00B6821C /* CommandKit.framework */,
+				77B4D5AC1968328D00B6821C /* CommandKitTests.xctest */,
+				6EAF099B196855DF0097C8EF /* CommandKitPlayground */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		77B4D5A31968328D00B6821C /* CLIKit */ = {
+		77B4D5A31968328D00B6821C /* CommandKit */ = {
 			isa = PBXGroup;
 			children = (
-				77B4D5A61968328D00B6821C /* CLIKit.h */,
+				77B4D5A61968328D00B6821C /* CommandKit.h */,
 				6E89F6BB19683CFD004BAECA /* ARGV.swift */,
 				77B4D5BD196832C200B6821C /* Command.swift */,
 				77B4D5C5196853C200B6821C /* HelpCommand.swift */,
 				77B4D5C11968352800B6821C /* Manager.swift */,
 				77B4D5A41968328D00B6821C /* Supporting Files */,
 			);
-			path = CLIKit;
+			path = CommandKit;
 			sourceTree = "<group>";
 		};
 		77B4D5A41968328D00B6821C /* Supporting Files */ = {
@@ -146,16 +144,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		77B4D5B01968328D00B6821C /* CLIKitTests */ = {
+		77B4D5B01968328D00B6821C /* CommandKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				77B4D5B31968328D00B6821C /* CLIKitTests.swift */,
 				77B4D5BF196832D800B6821C /* CommandTests.swift */,
 				77B4D5C31968354000B6821C /* ManagerTests.swift */,
-				77B4D5B11968328D00B6821C /* Supporting Files */,
 				6E89F6BD19683E0C004BAECA /* ARGVTests.swift */,
+				77B4D5B11968328D00B6821C /* Supporting Files */,
 			);
-			path = CLIKitTests;
+			path = CommandKitTests;
 			sourceTree = "<group>";
 		};
 		77B4D5B11968328D00B6821C /* Supporting Files */ = {
@@ -173,16 +170,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77B4D5A71968328D00B6821C /* CLIKit.h in Headers */,
+				77B4D5A71968328D00B6821C /* CommandKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6EAF099A196855DF0097C8EF /* CLIKitPlayground */ = {
+		6EAF099A196855DF0097C8EF /* CommandKitPlayground */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6EAF099F196855DF0097C8EF /* Build configuration list for PBXNativeTarget "CLIKitPlayground" */;
+			buildConfigurationList = 6EAF099F196855DF0097C8EF /* Build configuration list for PBXNativeTarget "CommandKitPlayground" */;
 			buildPhases = (
 				6EAF0997196855DF0097C8EF /* Sources */,
 				6EAF0998196855DF0097C8EF /* Frameworks */,
@@ -193,14 +190,14 @@
 			dependencies = (
 				6EAF09A4196858510097C8EF /* PBXTargetDependency */,
 			);
-			name = CLIKitPlayground;
-			productName = CLIKitPlayground;
-			productReference = 6EAF099B196855DF0097C8EF /* CLIKitPlayground */;
+			name = CommandKitPlayground;
+			productName = CommandKitPlayground;
+			productReference = 6EAF099B196855DF0097C8EF /* CommandKitPlayground */;
 			productType = "com.apple.product-type.tool";
 		};
-		77B4D5A01968328D00B6821C /* CLIKit */ = {
+		77B4D5A01968328D00B6821C /* CommandKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 77B4D5B71968328D00B6821C /* Build configuration list for PBXNativeTarget "CLIKit" */;
+			buildConfigurationList = 77B4D5B71968328D00B6821C /* Build configuration list for PBXNativeTarget "CommandKit" */;
 			buildPhases = (
 				77B4D59C1968328D00B6821C /* Sources */,
 				77B4D59D1968328D00B6821C /* Frameworks */,
@@ -211,14 +208,14 @@
 			);
 			dependencies = (
 			);
-			name = CLIKit;
-			productName = CLIKit;
-			productReference = 77B4D5A11968328D00B6821C /* CLIKit.framework */;
+			name = CommandKit;
+			productName = CommandKit;
+			productReference = 77B4D5A11968328D00B6821C /* CommandKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		77B4D5AB1968328D00B6821C /* CLIKitTests */ = {
+		77B4D5AB1968328D00B6821C /* CommandKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 77B4D5BA1968328D00B6821C /* Build configuration list for PBXNativeTarget "CLIKitTests" */;
+			buildConfigurationList = 77B4D5BA1968328D00B6821C /* Build configuration list for PBXNativeTarget "CommandKitTests" */;
 			buildPhases = (
 				77B4D5A81968328D00B6821C /* Sources */,
 				77B4D5A91968328D00B6821C /* Frameworks */,
@@ -229,9 +226,9 @@
 			dependencies = (
 				77B4D5AF1968328D00B6821C /* PBXTargetDependency */,
 			);
-			name = CLIKitTests;
-			productName = CLIKitTests;
-			productReference = 77B4D5AC1968328D00B6821C /* CLIKitTests.xctest */;
+			name = CommandKitTests;
+			productName = CommandKitTests;
+			productReference = 77B4D5AC1968328D00B6821C /* CommandKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -240,6 +237,7 @@
 		77B4D5981968328D00B6821C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Cocode;
 				TargetAttributes = {
@@ -255,7 +253,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 77B4D59B1968328D00B6821C /* Build configuration list for PBXProject "CLIKit" */;
+			buildConfigurationList = 77B4D59B1968328D00B6821C /* Build configuration list for PBXProject "CommandKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -267,9 +265,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				77B4D5A01968328D00B6821C /* CLIKit */,
-				77B4D5AB1968328D00B6821C /* CLIKitTests */,
-				6EAF099A196855DF0097C8EF /* CLIKitPlayground */,
+				77B4D5A01968328D00B6821C /* CommandKit */,
+				77B4D5AB1968328D00B6821C /* CommandKitTests */,
+				6EAF099A196855DF0097C8EF /* CommandKitPlayground */,
 			);
 		};
 /* End PBXProject section */
@@ -315,7 +313,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77B4D5B41968328D00B6821C /* CLIKitTests.swift in Sources */,
 				6E89F6BE19683E0C004BAECA /* ARGVTests.swift in Sources */,
 				77B4D5C0196832D800B6821C /* CommandTests.swift in Sources */,
 				77B4D5C41968354000B6821C /* ManagerTests.swift in Sources */,
@@ -327,12 +324,12 @@
 /* Begin PBXTargetDependency section */
 		6EAF09A4196858510097C8EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 77B4D5A01968328D00B6821C /* CLIKit */;
+			target = 77B4D5A01968328D00B6821C /* CommandKit */;
 			targetProxy = 6EAF09A3196858510097C8EF /* PBXContainerItemProxy */;
 		};
 		77B4D5AF1968328D00B6821C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 77B4D5A01968328D00B6821C /* CLIKit */;
+			target = 77B4D5A01968328D00B6821C /* CommandKit */;
 			targetProxy = 77B4D5AE1968328D00B6821C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -346,7 +343,7 @@
 					"$(inherited)",
 				);
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CommandKitPlayground;
 			};
 			name = Debug;
 		};
@@ -354,7 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CommandKitPlayground;
 			};
 			name = Release;
 		};
@@ -449,10 +446,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CLIKit/Info.plist;
+				INFOPLIST_FILE = CommandKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CommandKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -468,10 +465,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CLIKit/Info.plist;
+				INFOPLIST_FILE = CommandKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CommandKit;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -488,10 +485,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CLIKitTests/Info.plist;
+				INFOPLIST_FILE = CommandKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CommandKitTests;
 			};
 			name = Debug;
 		};
@@ -503,17 +500,17 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CLIKitTests/Info.plist;
+				INFOPLIST_FILE = CommandKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CommandKitTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6EAF099F196855DF0097C8EF /* Build configuration list for PBXNativeTarget "CLIKitPlayground" */ = {
+		6EAF099F196855DF0097C8EF /* Build configuration list for PBXNativeTarget "CommandKitPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6EAF09A0196855DF0097C8EF /* Debug */,
@@ -522,7 +519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77B4D59B1968328D00B6821C /* Build configuration list for PBXProject "CLIKit" */ = {
+		77B4D59B1968328D00B6821C /* Build configuration list for PBXProject "CommandKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				77B4D5B51968328D00B6821C /* Debug */,
@@ -531,7 +528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77B4D5B71968328D00B6821C /* Build configuration list for PBXNativeTarget "CLIKit" */ = {
+		77B4D5B71968328D00B6821C /* Build configuration list for PBXNativeTarget "CommandKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				77B4D5B81968328D00B6821C /* Debug */,
@@ -540,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77B4D5BA1968328D00B6821C /* Build configuration list for PBXNativeTarget "CLIKitTests" */ = {
+		77B4D5BA1968328D00B6821C /* Build configuration list for PBXNativeTarget "CommandKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				77B4D5BB1968328D00B6821C /* Debug */,

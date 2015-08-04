@@ -1,11 +1,3 @@
-//
-//  ARGV.swift
-//  CLIKit
-//
-//  Created by Radoslaw Pietruszewski on 05/07/14.
-//  Copyright (c) 2014 Cocode. All rights reserved.
-//
-
 public class ARGV {
     
     public enum ParameterType {

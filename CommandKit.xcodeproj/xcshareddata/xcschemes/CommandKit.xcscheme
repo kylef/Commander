@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "77B4D5A01968328D00B6821C"
-               BuildableName = "CLIKit.framework"
-               BlueprintName = "CLIKit"
-               ReferencedContainer = "container:CLIKit.xcodeproj">
+               BuildableName = "CommandKit.framework"
+               BlueprintName = "CommandKit"
+               ReferencedContainer = "container:CommandKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "77B4D5AB1968328D00B6821C"
-               BuildableName = "CLIKitTests.xctest"
-               BlueprintName = "CLIKitTests"
-               ReferencedContainer = "container:CLIKit.xcodeproj">
+               BuildableName = "CommandKitTests.xctest"
+               BlueprintName = "CommandKitTests"
+               ReferencedContainer = "container:CommandKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "77B4D5AB1968328D00B6821C"
-               BuildableName = "CLIKitTests.xctest"
-               BlueprintName = "CLIKitTests"
-               ReferencedContainer = "container:CLIKit.xcodeproj">
+               BuildableName = "CommandKitTests.xctest"
+               BlueprintName = "CommandKitTests"
+               ReferencedContainer = "container:CommandKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "77B4D5A01968328D00B6821C"
-            BuildableName = "CLIKit.framework"
-            BlueprintName = "CLIKit"
-            ReferencedContainer = "container:CLIKit.xcodeproj">
+            BuildableName = "CommandKit.framework"
+            BlueprintName = "CommandKit"
+            ReferencedContainer = "container:CommandKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "77B4D5A01968328D00B6821C"
-            BuildableName = "CLIKit.framework"
-            BlueprintName = "CLIKit"
-            ReferencedContainer = "container:CLIKit.xcodeproj">
+            BuildableName = "CommandKit.framework"
+            BlueprintName = "CommandKit"
+            ReferencedContainer = "container:CommandKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "77B4D5A01968328D00B6821C"
-            BuildableName = "CLIKit.framework"
-            BlueprintName = "CLIKit"
-            ReferencedContainer = "container:CLIKit.xcodeproj">
+            BuildableName = "CommandKit.framework"
+            BlueprintName = "CommandKit"
+            ReferencedContainer = "container:CommandKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

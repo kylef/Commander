@@ -1,11 +1,3 @@
-//
-//  Command.swift
-//  CLIKit
-//
-//  Created by Kyle Fuller on 05/07/2014.
-//  Copyright (c) 2014 Cocode. All rights reserved.
-//
-
 public class Command {
     public let name:String
     public let description:String

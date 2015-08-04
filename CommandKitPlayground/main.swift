@@ -1,12 +1,4 @@
-//
-//  main.swift
-//  CLIKitPlayground
-//
-//  Created by Radoslaw Pietruszewski on 05/07/14.
-//  Copyright (c) 2014 Cocode. All rights reserved.
-//
-
-import CLIKit
+import CommandKit
 
 var manager = Manager()
 
