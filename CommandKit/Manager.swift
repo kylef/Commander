@@ -5,7 +5,7 @@ public class Manager {
 
     lazy var defaultCommand: Command = {
         ClosureCommand(name: "", description: "The default command") { argv in
-            println("No command specified")
+            print("No command specified")
         }
     }()
 
@@ -30,9 +30,9 @@ public class Manager {
     public func findCommand(argv: ARGV) -> Command? {
         let args = argv.arguments
         // try to find the deepest command name matching the arguments
-        for depth in reverse(1...args.count) {
+        for depth in (1...args.count).reverse() {
             let slicedArgs = args[0 ..< depth]
-            let maybeCommandName = " ".join(slicedArgs)
+            let maybeCommandName = slicedArgs.joinWithSeparator(" ")
 
             if let command = findCommand(maybeCommandName) {
                 argv.arguments = Array(args[depth ..< args.count]) // strip the command name from arguments
@@ -44,7 +44,7 @@ public class Manager {
     }
 
     /// Runs the correct command based on input arguments
-    public func run(arguments: [String]? = nil) {
+    public func run(arguments arguments: [String]? = nil) {
         let argv: ARGV
 
         if let arguments = arguments {
@@ -59,7 +59,7 @@ public class Manager {
             if let command = findCommand(argv) {
                 command.run(self, arguments: argv)
             } else {
-                println("Unknown command.")
+                print("Unknown command.")
             }
         } else {
             defaultCommand.run(argv)

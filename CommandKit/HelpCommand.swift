@@ -6,14 +6,14 @@ class HelpCommand : Command {
     override func run(manager: Manager, arguments: ARGV) {
         if let commandName = arguments.shift() {
             if let command = manager.findCommand(commandName) {
-                println("\(command.name):\n")
-                println("    \(command.description)")
+                print("\(command.name):\n")
+                print("    \(command.description)")
             } else {
-                println("\(commandName) not found.")
+                print("\(commandName) not found.")
             }
         } else {
             for command in manager.commands {
-                println("- \(command.name): \(command.description)")
+                print("- \(command.name): \(command.description)")
             }
         }
     }
