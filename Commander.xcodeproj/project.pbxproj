@@ -46,6 +46,7 @@
 		279256B31BB3260D00E66B9E /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		279256B51BB32A8E00E66B9E /* ArgumentConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertible.swift; sourceTree = "<group>"; };
 		279256B71BB32B3F00E66B9E /* ArgumentConvertibleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertibleTests.swift; sourceTree = "<group>"; };
+		279256B91BB32E4200E66B9E /* Commander.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Commander.playground; sourceTree = "<group>"; };
 		27B1A0FE1BACD69500B1260F /* ArgumentParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +72,7 @@
 		2768A2161BACC38C00F994EE = {
 			isa = PBXGroup;
 			children = (
+				279256B91BB32E4200E66B9E /* Commander.playground */,
 				2768A2221BACC38C00F994EE /* Commander */,
 				2768A22E1BACC38C00F994EE /* CommanderTests */,
 				2768A2211BACC38C00F994EE /* Products */,
