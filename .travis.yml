@@ -3,5 +3,4 @@ osx_image: xcode7
 before_install:
 - gem install xcpretty --no-document
 script:
-- set -o pipefail
-- xcodebuild -project CommandKit.xcodeproj -scheme CommandKit -sdk macosx test | xcpretty -c
+- set -o pipefail && xcodebuild -project Commander.xcodeproj -scheme Commander -sdk macosx test | xcpretty -c
