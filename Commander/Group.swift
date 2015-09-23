@@ -11,10 +11,10 @@ public class Group : CommandType {
   }
 
   /// Run the group command
-  public func run(parser:ArgumentParser) {
+  public func run(parser:ArgumentParser) throws {
     if let name = parser.shift() {
       if let command = commands[name] {
-        command.run(parser)
+        try command.run(parser)
       }
     }
   }

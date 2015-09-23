@@ -7,7 +7,7 @@ class CommandTests : XCTestCase {
     let parser = ArgumentParser(arguments: [])
     var didRun = false
 
-    command {
+    try! command {
       didRun = true
     }.run(parser)
 
@@ -18,7 +18,7 @@ class CommandTests : XCTestCase {
     let parser = ArgumentParser(arguments: ["Kyle", "Fuller"])
     var ranName:String? = nil
 
-    command { (name:String) in
+    try! command { (name:String) in
       ranName = name
     }.run(parser)
 

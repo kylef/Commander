@@ -13,10 +13,10 @@ class GroupTests : XCTestCase {
 
     XCTAssertFalse(didRunHelpCommand)
 
-    group.run(["unknown"])
+    try! group.run(["unknown"])
     XCTAssertFalse(didRunHelpCommand)
 
-    group.run(["help"])
+    try! group.run(["help"])
     XCTAssertTrue(didRunHelpCommand)
   }
 
@@ -31,17 +31,17 @@ class GroupTests : XCTestCase {
       })
     }
 
-    group.run(["unknown"])
+    try! group.run(["unknown"])
     XCTAssertFalse(didRunHelpCommand)
 
-    group.run(["help"])
+    try! group.run(["help"])
     XCTAssertTrue(didRunHelpCommand)
   }
 
   func testSubGroup() {
     var didRun = false
 
-    Group {
+    try! Group {
       $0.group("group") {
         $0.command("test") {
           didRun = true
@@ -55,11 +55,11 @@ class GroupTests : XCTestCase {
   func testSubCommand() {
     var didRun = false
 
-    Group {
+    try! Group {
       $0.command("test") {
         didRun = true
       }
-      }.run(["test"])
+    }.run(["test"])
 
     XCTAssertTrue(didRun)
   }
@@ -67,7 +67,7 @@ class GroupTests : XCTestCase {
   func testSubCommandWithArgument() {
     var givenName:String? = nil
 
-    Group {
+    try! Group {
       $0.command("test") { (name:String) in
         givenName = name
       }

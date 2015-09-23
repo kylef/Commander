@@ -10,6 +10,6 @@ let group = Group {
   }
 }
 
-group.run([])
-group.run(["login", "kyle"])
-group.run(["logout"])
+try group.run([])
+try group.run(["login", "kyle"])
+try group.run(["logout"])
