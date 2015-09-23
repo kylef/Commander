@@ -6,7 +6,7 @@ public class Group : CommandType {
   public init() {}
 
   /// Add a named sub-command to the group
-  public func addCommand(name:String, command:CommandType) {
+  public func addCommand(name:String, _ command:CommandType) {
     commands[name] = command
   }
 
@@ -24,5 +24,20 @@ extension Group {
   public convenience init(closure:Group -> ()) {
     self.init()
     closure(self)
+  }
+
+  /// Add a sub-group using a closure
+  public func group(name:String, closure:Group -> ()) {
+    addCommand(name, Group(closure: closure))
+  }
+
+  /// Add a command using a closure
+  public func command(name:String, closure:() -> ()) {
+    addCommand(name, AnonymousCommand { parser in closure() })
+  }
+
+  /// Add a command which takes one argument using a closure
+  public func command<A : ArgumentConvertible>(name:String, closure:A -> ()) {
+    addCommand(name, Commander.command(closure))
   }
 }

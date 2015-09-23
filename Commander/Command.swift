@@ -18,7 +18,7 @@ public func command(closure:() -> ()) -> CommandType {
   }
 }
 
-/// Create a command which takes the argument parser using a closure
+/// Create a command which takes one argument using a closure
 public func command<A : ArgumentConvertible>(closure:A -> ()) -> CommandType {
   return AnonymousCommand { parser in
     if let argument = A(parser: parser) {

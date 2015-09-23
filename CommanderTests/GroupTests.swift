@@ -7,7 +7,7 @@ class GroupTests : XCTestCase {
     var didRunHelpCommand = false
 
     let group = Group()
-    group.addCommand("help", command: command {
+    group.addCommand("help", command {
       didRunHelpCommand = true
     })
 
@@ -26,7 +26,7 @@ class GroupTests : XCTestCase {
     var didRunHelpCommand = false
 
     let group = Group {
-      $0.addCommand("help", command: command {
+      $0.addCommand("help", command {
         didRunHelpCommand = true
       })
     }
@@ -36,5 +36,43 @@ class GroupTests : XCTestCase {
 
     group.run(["help"])
     XCTAssertTrue(didRunHelpCommand)
+  }
+
+  func testSubGroup() {
+    var didRun = false
+
+    Group {
+      $0.group("group") {
+        $0.command("test") {
+          didRun = true
+        }
+      }
+    }.run(["group", "test"])
+
+    XCTAssertTrue(didRun)
+  }
+
+  func testSubCommand() {
+    var didRun = false
+
+    Group {
+      $0.command("test") {
+        didRun = true
+      }
+      }.run(["test"])
+
+    XCTAssertTrue(didRun)
+  }
+
+  func testSubCommandWithArgument() {
+    var givenName:String? = nil
+
+    Group {
+      $0.command("test") { (name:String) in
+        givenName = name
+      }
+    }.run(["test", "kyle"])
+
+    XCTAssertEqual(givenName, "kyle")
   }
 }
