@@ -1,13 +1,11 @@
-# CommandKit
+# Commander
 
-[![Build Status](http://img.shields.io/travis/kylef/CommandKit/master.svg?style=flat)](https://travis-ci.org/kylef/CommandKit)
-
-The swiftest way to write a command line tool.
+[![Build Status](http://img.shields.io/travis/kylef/Commander/master.svg?style=flat)](https://travis-ci.org/kylef/Commander)
 
 ## Usage
 
 ## License
 
-CommandKit is available under the BSD license. See the [LICENSE file](LICENSE)
+Commander is available under the BSD license. See the [LICENSE file](LICENSE)
 for more info.
 
