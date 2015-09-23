@@ -75,7 +75,17 @@ extension Group {
   }
 
   /// Add a command which takes one argument using a closure
-  public func command<A : ArgumentConvertible>(name:String, closure:A -> ()) {
+  public func command<A:ArgumentConvertible>(name:String, closure:A -> ()) {
+    addCommand(name, Commander.command(closure))
+  }
+
+  /// Add a command which takes two argument using a closure
+  public func command<A:ArgumentConvertible, B:ArgumentConvertible>(name:String, closure:(A,B) -> ()) {
+    addCommand(name, Commander.command(closure))
+  }
+
+  /// Add a command which takes three argument using a closure
+  public func command<A:ArgumentConvertible, B:ArgumentConvertible, C:ArgumentConvertible>(name:String, closure:(A,B,C) -> ()) {
     addCommand(name, Commander.command(closure))
   }
 }
