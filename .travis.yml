@@ -4,3 +4,4 @@ before_install:
 - gem install xcpretty --no-document
 script:
 - set -o pipefail && xcodebuild -project Commander.xcodeproj -scheme Commander -sdk macosx test | xcpretty -c
+- pod lib lint
