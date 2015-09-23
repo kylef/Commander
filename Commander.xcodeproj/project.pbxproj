@@ -18,6 +18,7 @@
 		279256B41BB3260D00E66B9E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279256B31BB3260D00E66B9E /* Group.swift */; settings = {ASSET_TAGS = (); }; };
 		279256B61BB32A8E00E66B9E /* ArgumentConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279256B51BB32A8E00E66B9E /* ArgumentConvertible.swift */; settings = {ASSET_TAGS = (); }; };
 		279256B81BB32B3F00E66B9E /* ArgumentConvertibleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279256B71BB32B3F00E66B9E /* ArgumentConvertibleTests.swift */; settings = {ASSET_TAGS = (); }; };
+		27A119101BB337A30005318E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1190F1BB337A30005318E /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
 		27B1A0FF1BACD69500B1260F /* ArgumentParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1A0FE1BACD69500B1260F /* ArgumentParserTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		279256B51BB32A8E00E66B9E /* ArgumentConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertible.swift; sourceTree = "<group>"; };
 		279256B71BB32B3F00E66B9E /* ArgumentConvertibleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertibleTests.swift; sourceTree = "<group>"; };
 		279256B91BB32E4200E66B9E /* Commander.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Commander.playground; sourceTree = "<group>"; };
+		27A1190F1BB337A30005318E /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		27B1A0FE1BACD69500B1260F /* ArgumentParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 				279256AD1BB3237300E66B9E /* CommandTypeTests.swift */,
 				279256AF1BB3237D00E66B9E /* CommandTests.swift */,
 				279256B11BB325F400E66B9E /* GroupTests.swift */,
+				27A1190F1BB337A30005318E /* Utilities.swift */,
 				2768A2311BACC38C00F994EE /* Info.plist */,
 			);
 			path = CommanderTests;
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A119101BB337A30005318E /* Utilities.swift in Sources */,
 				279256B81BB32B3F00E66B9E /* ArgumentConvertibleTests.swift in Sources */,
 				279256B01BB3237D00E66B9E /* CommandTests.swift in Sources */,
 				27B1A0FF1BACD69500B1260F /* ArgumentParserTests.swift in Sources */,

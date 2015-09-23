@@ -12,9 +12,17 @@ extension CommandType {
   }
 
   /// Run the command using the `Process.argument`, removing the executable name
-  public func run() throws {
+  @noreturn public func run() {
     let parser = ArgumentParser(arguments: Process.arguments)
     parser.shift()  // Executable Name
-    try run(parser)
+
+    do {
+      try run(parser)
+    } catch {
+      fputs("\(error)\n", stderr)
+      exit(1)
+    }
+
+    exit(0)
   }
 }
