@@ -1,3 +1,5 @@
+<img src="Commander.png" width=80 height=83 alt="Commander" />
+
 # Commander
 
 [![Build Status](http://img.shields.io/travis/kylef/Commander/master.svg?style=flat)](https://travis-ci.org/kylef/Commander)
