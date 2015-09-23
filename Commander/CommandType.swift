@@ -12,8 +12,16 @@ extension CommandType {
   }
 
   /// Run the command using the `Process.argument`, removing the executable name
-  @noreturn public func run() {
+  @noreturn public func run(version:String? = nil) {
     let parser = ArgumentParser(arguments: Process.arguments)
+
+    if parser.hasOption("version") {
+      if let version = version {
+        print(version)
+        exit(0)
+      }
+    }
+
     parser.shift()  // Executable Name
 
     do {
