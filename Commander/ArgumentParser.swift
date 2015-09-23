@@ -10,7 +10,7 @@ private enum Arg {
 }
 
 
-public final class ArgumentParser {
+public final class ArgumentParser : ArgumentConvertible {
   private var arguments:[Arg]
 
   /// Initialises the ArgumentParser with an array of arguments
@@ -29,6 +29,10 @@ public final class ArgumentParser {
 
       return .Argument(argument)
     }
+  }
+
+  public init?(parser: ArgumentParser) {
+    arguments = parser.arguments
   }
 
   /// Returns the first positional argument in the remaining arguments.

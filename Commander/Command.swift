@@ -11,7 +11,6 @@ struct AnonymousCommand : CommandType {
   }
 }
 
-
 /// Create a command using a closure
 public func command(closure:() -> ()) -> CommandType {
   return AnonymousCommand { parser in
@@ -20,6 +19,10 @@ public func command(closure:() -> ()) -> CommandType {
 }
 
 /// Create a command which takes the argument parser using a closure
-public func command(closure:ArgumentParser -> ()) -> CommandType {
-  return AnonymousCommand(closure)
+public func command<A : ArgumentConvertible>(closure:A -> ()) -> CommandType {
+  return AnonymousCommand { parser in
+    if let argument = A(parser: parser) {
+      closure(argument)
+    }
+  }
 }

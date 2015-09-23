@@ -14,14 +14,14 @@ class CommandTests : XCTestCase {
     XCTAssertTrue(didRun)
   }
 
-  func testCommandWithArgumentParser() {
-    let parser = ArgumentParser(arguments: [])
-    var ranParser:ArgumentParser? = nil
+  func testCommandWithOnePositionalArgument() {
+    let parser = ArgumentParser(arguments: ["Kyle", "Fuller"])
+    var ranName:String? = nil
 
-    command { parser in
-      ranParser = parser
+    command { (name:String) in
+      ranName = name
     }.run(parser)
 
-    XCTAssertTrue(ranParser === parser)
+    XCTAssertEqual(ranName, "Kyle")
   }
 }

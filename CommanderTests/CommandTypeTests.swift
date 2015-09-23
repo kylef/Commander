@@ -6,7 +6,7 @@ class CommandTypeTests : XCTestCase {
   func testRunWithArgumentsArray() {
     var firstArgument:String? = nil
 
-    command { parser in
+    command { (parser:ArgumentParser) in
       firstArgument = parser.shift()
     }.run(["test"])
 
