@@ -54,6 +54,48 @@ $ tool logout
 Goodbye.
 ```
 
+#### Describing arguments
+
+You can describe arguments and options for a command to auto-generate help.
+
+For example, to describe a command which takes two options, `--name` and
+`--count` where the default value for name is "world" and the default value for
+count is 1.
+
+```swift
+command(
+  Option("name", `default`: "world")
+  Option("count", `default`: 1, description: "The number of times to print.")
+) { name:String, count:Int
+  for _ in count {
+    print("Hello \(name)")
+  }
+}
+```
+
+```shell
+./command --help
+Usage:
+
+    $ ./command
+
+Options:
+    --name
+    --count - The number of times to print.
+
+./command
+Hello world
+
+./command --name Kyle
+Hello Kyle
+
+./command --name Kyle --count 4
+Hello Kyle
+Hello Kyle
+Hello Kyle
+Hello Kyle
+```
+
 #### Using the argument parser
 
 You can get hold of the argument parser to do custom argument handling

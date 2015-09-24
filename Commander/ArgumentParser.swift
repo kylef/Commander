@@ -41,7 +41,7 @@ public struct ArgumentParserError : ErrorType, CustomStringConvertible {
 }
 
 
-public final class ArgumentParser : ArgumentConvertible {
+public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible {
   private var arguments:[Arg]
 
   /// Initialises the ArgumentParser with an array of arguments
@@ -64,6 +64,10 @@ public final class ArgumentParser : ArgumentConvertible {
 
   public init(parser: ArgumentParser) throws {
     arguments = parser.arguments
+  }
+
+  public var description:String {
+    return ""
   }
 
   /// Returns the first positional argument in the remaining arguments.

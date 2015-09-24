@@ -48,6 +48,8 @@ public class Group : CommandType {
           }
 
           throw GroupError.NoCommand(name, group)
+        } catch let error as Help {
+          throw error.reraise(name)
         }
       } else {
         throw GroupError.UnknownCommand(name)

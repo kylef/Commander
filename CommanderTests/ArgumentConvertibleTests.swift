@@ -4,13 +4,13 @@ import Commander
 
 class ArgumentErrorTests : XCTestCase {
   func testMissingValueDescription() {
-    let error = ArgumentError.MissingValue(nil)
+    let error = ArgumentError.MissingValue(argument: nil)
     XCTAssertEqual(error.description, "Missing argument")
   }
 
   func testNoValue() {
-    let error = ArgumentError.InvalidType(value: "five", type: "number")
-    XCTAssertEqual(error.description, "five is not a number")
+    let error = ArgumentError.InvalidType(value: "five", type: "number", argument: nil)
+    XCTAssertEqual(error.description, "`five` is not a `number`")
   }
 }
 
