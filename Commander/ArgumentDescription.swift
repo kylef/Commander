@@ -26,40 +26,58 @@ extension ArgumentConvertible {
 
 public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
+  public typealias Validator = ValueType throws -> ValueType
 
   public let name:String
   public let description:String?
+  public let validator:Validator?
 
   public var type:ArgumentType { return .Argument }
 
-  public init(_ name:String, description:String? = nil) {
+  public init(_ name:String, description:String? = nil, validator: Validator? = nil) {
     self.name = name
     self.description = description
+    self.validator = validator
   }
 
   public func parse(parser:ArgumentParser) throws -> ValueType {
-    return try T(parser: parser)
+    let value = try T(parser: parser)
+
+    if let validator = validator {
+      return try validator(value)
+    }
+
+    return value
   }
 }
 
 
 public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
+  public typealias Validator = ValueType throws -> ValueType
 
   public let name:String
   public let description:String?
   public let `default`:ValueType
   public var type:ArgumentType { return .Option }
+  public let validator:Validator?
 
-  public init(_ name:String, _ `default`:ValueType, description:String? = nil) {
+  public init(_ name:String, _ `default`:ValueType, description:String? = nil, validator: Validator? = nil) {
     self.name = name
     self.description = description
     self.`default` = `default`
+    self.validator = validator
   }
 
   public func parse(parser:ArgumentParser) throws -> ValueType {
     if let value = try parser.shiftValueForOption(name) {
-      return try T(string: value)
+      let value = try T(string: value)
+
+      if let validator = validator {
+        return try validator(value)
+      }
+
+      return value
     }
 
     return `default`
