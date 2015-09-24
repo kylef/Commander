@@ -62,7 +62,7 @@ public final class ArgumentParser : ArgumentConvertible {
     }
   }
 
-  public init?(parser: ArgumentParser) {
+  public init(parser: ArgumentParser) throws {
     arguments = parser.arguments
   }
 

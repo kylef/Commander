@@ -2,88 +2,108 @@ import XCTest
 import Commander
 
 
-class StringArgumentConvertibleTests : XCTestCase {
-  func testValue() {
-    let parser = ArgumentParser(arguments: ["argument"])
-    let value = String(parser: parser)
-
-    XCTAssertEqual(value, "argument")
+class ArgumentErrorTests : XCTestCase {
+  func testMissingValueDescription() {
+    let error = ArgumentError.MissingValue(nil)
+    XCTAssertEqual(error.description, "Missing argument")
   }
 
   func testNoValue() {
-    let parser = ArgumentParser(arguments: [])
-    let value = String(parser: parser)
+    let error = ArgumentError.InvalidType(value: "five", type: "number")
+    XCTAssertEqual(error.description, "five is not a number")
+  }
+}
 
-    XCTAssertNil(value)
+class StringArgumentConvertibleTests : XCTestCase {
+  func testValue() {
+    let parser = ArgumentParser(arguments: ["argument"])
+    let value = try? String(parser: parser)
+
+    XCTAssertEqual(value!, "argument")
+  }
+
+  func testNoValue() {
+    testMissingValue { try String(parser: $0) }
   }
 }
 
 
 class IntArgumentConvertibleTests : XCTestCase {
   func testValue() {
-    let parser = ArgumentParser(arguments: ["5"])
-    let value = Int(parser: parser)
-
-    XCTAssertEqual(value, 5)
+    testValidValue("5", value: 5) { try Int(parser: $0) }
   }
 
-  func testInvalidValue() {
-    let parser = ArgumentParser(arguments: ["five"])
-    let value = Int(parser: parser)
-
-    XCTAssertNil(value)
+  func testInvalidInput() {
+    testInvalidValue("five") { try Int(parser: $0) }
   }
 
   func testNoValue() {
-    let parser = ArgumentParser(arguments: [])
-    let value = Int(parser: parser)
-
-    XCTAssertNil(value)
+    testMissingValue { try Int(parser: $0) }
   }
 }
+
 
 class FloatArgumentConvertibleTests : XCTestCase {
   func testValue() {
-    let parser = ArgumentParser(arguments: ["5"])
-    let value = Float(parser: parser)
-
-    XCTAssertEqual(value, 5)
+    testValidValue("5", value: 5) { try Float(parser: $0) }
   }
 
-  func testInvalidValue() {
-    let parser = ArgumentParser(arguments: ["five"])
-    let value = Float(parser: parser)
-
-    XCTAssertNil(value)
+  func testInvalidInput() {
+    testInvalidValue("five") { try Float(parser: $0) }
   }
 
   func testNoValue() {
-    let parser = ArgumentParser(arguments: [])
-    let value = Float(parser: parser)
-
-    XCTAssertNil(value)
+    testMissingValue { try Float(parser: $0) }
   }
 }
 
+
 class DoubleArgumentConvertibleTests : XCTestCase {
   func testValue() {
-    let parser = ArgumentParser(arguments: ["5"])
-    let value = Double(parser: parser)
-
-    XCTAssertEqual(value, 5)
+    testValidValue("5", value: 5) { try Double(parser: $0) }
   }
 
-  func testInvalidValue() {
-    let parser = ArgumentParser(arguments: ["five"])
-    let value = Double(parser: parser)
-
-    XCTAssertNil(value)
+  func testInvalidInput() {
+    testInvalidValue("five") { try Double(parser: $0) }
   }
 
   func testNoValue() {
-    let parser = ArgumentParser(arguments: [])
-    let value = Double(parser: parser)
+    testMissingValue { try Double(parser: $0) }
+  }
+}
 
-    XCTAssertNil(value)
+
+func testMissingValue<T>(closure:((ArgumentParser) throws -> (T))) {
+  let parser = ArgumentParser(arguments: [])
+
+  do {
+    try closure(parser)
+    XCTFail("Unexpected success")
+  } catch ArgumentError.MissingValue {
+  } catch {
+    XCTFail("Unexpected error: \(error)")
+  }
+}
+
+func testInvalidValue<T>(value:String, closure:((ArgumentParser) throws -> (T))) {
+  let parser = ArgumentParser(arguments: [value])
+
+  do {
+    try closure(parser)
+    XCTFail("Unexpected success")
+  } catch ArgumentError.InvalidType {
+  } catch {
+    XCTFail("Unexpected error: \(error)")
+  }
+}
+
+func testValidValue<T>(argument:String, value:T, closure:((ArgumentParser) throws -> (T))) {
+  let parser = ArgumentParser(arguments: ["5"])
+
+  do {
+    let value = try Int(parser: parser)
+    XCTAssertEqual(value, 5)
+  } catch {
+    XCTFail("Unexpected error: \(error)")
   }
 }
