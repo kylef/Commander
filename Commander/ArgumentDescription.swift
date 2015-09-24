@@ -240,3 +240,34 @@ public func command<A:ArgumentDescriptor, B:ArgumentDescriptor, C:ArgumentDescri
     closure(try descriptorA.parse(parser), try descriptorB.parse(parser), try descriptorC.parse(parser))
   }
 }
+
+public func command<A:ArgumentDescriptor, B:ArgumentDescriptor, C:ArgumentDescriptor, D:ArgumentDescriptor>(a:A, _ b:B, _ c:C, _ d:D, closure:((A.ValueType, B.ValueType, C.ValueType, D.ValueType) -> ())) -> CommandType {
+  return AnonymousCommand { parser in
+    if parser.hasOption("help") {
+      throw Help([
+        BoxedArgumentDescriptor(value: a),
+        BoxedArgumentDescriptor(value: b),
+        BoxedArgumentDescriptor(value: c),
+        BoxedArgumentDescriptor(value: d),
+      ])
+    }
+
+    closure(try a.parse(parser), try b.parse(parser), try c.parse(parser), try d.parse(parser))
+  }
+}
+
+public func command<A:ArgumentDescriptor, B:ArgumentDescriptor, C:ArgumentDescriptor, D:ArgumentDescriptor, E:ArgumentDescriptor>(a:A, _ b:B, _ c:C, _ d:D, _ e:E, closure:((A.ValueType, B.ValueType, C.ValueType, D.ValueType, E.ValueType) -> ())) -> CommandType {
+  return AnonymousCommand { parser in
+    if parser.hasOption("help") {
+      throw Help([
+        BoxedArgumentDescriptor(value: a),
+        BoxedArgumentDescriptor(value: b),
+        BoxedArgumentDescriptor(value: c),
+        BoxedArgumentDescriptor(value: d),
+        BoxedArgumentDescriptor(value: e),
+      ])
+    }
+
+    closure(try a.parse(parser), try b.parse(parser), try c.parse(parser), try d.parse(parser), try e.parse(parser))
+  }
+}

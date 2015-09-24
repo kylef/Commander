@@ -76,6 +76,8 @@ extension Group {
     addCommand(name, AnonymousCommand { parser in closure() })
   }
 
+  // MARK: Argument Commands
+
   /// Add a command which takes one argument using a closure
   public func command<A:ArgumentConvertible>(name:String, closure:A -> ()) {
     addCommand(name, Commander.command(closure))
@@ -89,5 +91,42 @@ extension Group {
   /// Add a command which takes three argument using a closure
   public func command<A:ArgumentConvertible, B:ArgumentConvertible, C:ArgumentConvertible>(name:String, closure:(A,B,C) -> ()) {
     addCommand(name, Commander.command(closure))
+  }
+
+  /// Add a command which takes four argument using a closure
+  public func command<A:ArgumentConvertible, B:ArgumentConvertible, C:ArgumentConvertible, D:ArgumentConvertible>(name:String, closure:(A,B,C,D) -> ()) {
+    addCommand(name, Commander.command(closure))
+  }
+
+  /// Add a command which takes five argument using a closure
+  public func command<A:ArgumentConvertible, B:ArgumentConvertible, C:ArgumentConvertible, D:ArgumentConvertible, E:ArgumentConvertible>(name:String, closure:(A,B,C,D,E) -> ()) {
+    addCommand(name, Commander.command(closure))
+  }
+
+  // MARK: Argument Description Commands
+
+  /// Add a command which takes one argument using a closure
+  public func command<A:ArgumentDescriptor>(name:String, a:A, closure:(A.ValueType) -> ()) {
+    addCommand(name, Commander.command(a, closure: closure))
+  }
+
+  /// Add a command which takes two argument using a closure
+  public func command<A:ArgumentDescriptor, B:ArgumentDescriptor>(name:String, a:A, b:B, closure:(A.ValueType,B.ValueType) -> ()) {
+    addCommand(name, Commander.command(a, b, closure: closure))
+  }
+
+  /// Add a command which takes three argument using a closure
+  public func command<A:ArgumentDescriptor, B:ArgumentDescriptor, C:ArgumentDescriptor>(name:String, a:A, b:B, c:C, closure:(A.ValueType,B.ValueType,C.ValueType) -> ()) {
+    addCommand(name, Commander.command(a, b, c, closure: closure))
+  }
+
+  /// Add a command which takes four argument using a closure
+  public func command<A:ArgumentDescriptor, B:ArgumentDescriptor, C:ArgumentDescriptor, D:ArgumentDescriptor>(name:String, a:A, b:B, c:C, d:D, closure:(A.ValueType,B.ValueType,C.ValueType,D.ValueType) -> ()) {
+    addCommand(name, Commander.command(a, b, c, d, closure: closure))
+  }
+
+  /// Add a command which takes five argument using a closure
+  public func command<A:ArgumentDescriptor, B:ArgumentDescriptor, C:ArgumentDescriptor, D:ArgumentDescriptor, E:ArgumentDescriptor>(name:String, a:A, b:B, c:C, d:D, e:E, closure:(A.ValueType,B.ValueType,C.ValueType,D.ValueType,E.ValueType) -> ()) {
+    addCommand(name, Commander.command(a, b, c, d, e, closure: closure))
   }
 }
