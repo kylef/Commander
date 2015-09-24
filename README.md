@@ -64,10 +64,10 @@ count is 1.
 
 ```swift
 command(
-  Option("name", `default`: "world")
-  Option("count", `default`: 1, description: "The number of times to print.")
-) { name:String, count:Int
-  for _ in count {
+  Option("name", "world"),
+  Option("count", 1, description: "The number of times to print.")
+) { name, count
+  for _ in (0..<count) {
     print("Hello \(name)")
   }
 }
