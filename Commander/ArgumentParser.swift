@@ -1,4 +1,4 @@
-private enum Arg {
+private enum Arg : CustomStringConvertible {
   /// A positional argument
   case Argument(String)
 
@@ -7,6 +7,37 @@ private enum Arg {
 
   /// A flag
   case Flag(Set<Character>)
+
+  var description:String {
+    switch self {
+    case .Argument(let value):
+      return value
+    case .Option(let key):
+      return "--\(key)"
+    case .Flag(let flags):
+      return "-\(String(flags))"
+    }
+  }
+
+  var type:String {
+    switch self {
+    case .Argument:
+      return "argument"
+    case .Option:
+      return "option"
+    case .Flag:
+      return "flag"
+    }
+  }
+}
+
+
+public struct ArgumentParserError : ErrorType, CustomStringConvertible {
+  public let description:String
+
+  init(description:String) {
+    self.description = description
+  }
 }
 
 
@@ -45,6 +76,53 @@ public final class ArgumentParser : ArgumentConvertible {
         return value
       default:
         continue
+      }
+    }
+
+    return nil
+  }
+
+  /// Returns the value for an option (--name Kyle, --name=Kyle)
+  public func shiftValueForOption(name:String) throws -> String? {
+    return try shiftValuesForOption(name)?.first
+  }
+
+  /// Returns the value for an option (--name Kyle, --name=Kyle)
+  public func shiftValuesForOption(name:String, count:Int = 1) throws -> [String]? {
+    var index = 0
+    var hasOption = false
+
+    for argument in arguments {
+      switch argument {
+      case .Option(let option):
+        if option == name {
+          hasOption = true
+          break
+        }
+        fallthrough
+      default:
+        ++index
+      }
+
+      if hasOption {
+        break
+      }
+    }
+
+    if hasOption {
+      arguments.removeAtIndex(index)  // Pop option
+      return try (0..<count).map { i in
+        if arguments.count > index {
+          let argument = arguments.removeAtIndex(index)
+          switch argument {
+          case .Argument(let value):
+            return value
+          default:
+            throw ArgumentParserError(description: "Unexpected \(argument.type) `\(argument)` as a value for `--\(name)`")
+          }
+        }
+
+        throw ArgumentParserError(description: "Missing value for `--\(name)`")
       }
     }
 
