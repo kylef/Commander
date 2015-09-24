@@ -1,0 +1,5 @@
+platform :osx, '10.10'
+plugin 'cocoapods-rome'
+
+pod 'Commander', :path => '..'
+
