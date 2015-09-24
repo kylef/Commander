@@ -24,4 +24,41 @@ class CommandTests : XCTestCase {
 
     XCTAssertEqual(ranName, "Kyle")
   }
+
+  // MARK: Described Arguments
+
+  func testCommandWithDescribedArgument() {
+    var givenName = ""
+
+    let c = command(
+      Argument("name")
+    ) { name in
+      givenName = name
+    }
+
+    try! c.run(["Kyle"])
+    XCTAssertEqual(givenName, "Kyle")
+  }
+//
+//  func testCommandWithDescribedArgumentShowsUsage() {
+//    let c = command(
+//      Argument("name")
+//    ) { name in
+//    }
+//
+//    try! c.run(["Kyle"])
+//  }
+//
+//  func testCommandWithDescribedArgumentHelp() {
+//    var givenName = ""
+//
+//    let c = command(
+//      Argument("name", `default`: "World")
+//      ) { name in
+//        givenName = name
+//    }
+//
+//    try! c.run(["--help"])
+//    XCTAssertEqual(givenName, "Kyle")
+//  }
 }

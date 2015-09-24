@@ -66,30 +66,30 @@ count is 1.
 command(
   Option("name", "world"),
   Option("count", 1, description: "The number of times to print.")
-) { name, count
-  for _ in (0..<count) {
+) { name, count in
+  for _ in 0..<count {
     print("Hello \(name)")
   }
 }
 ```
 
 ```shell
-./command --help
+./hello --help
 Usage:
 
-    $ ./command
+    $ ./hello
 
 Options:
     --name
     --count - The number of times to print.
 
-./command
+./hello
 Hello world
 
-./command --name Kyle
+./hello --name Kyle
 Hello Kyle
 
-./command --name Kyle --count 4
+./hello --name Kyle --count 4
 Hello Kyle
 Hello Kyle
 Hello Kyle
