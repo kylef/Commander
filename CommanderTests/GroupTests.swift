@@ -153,11 +153,11 @@ class GroupErrorTests : XCTestCase {
 
   func testNoCommandDescription() {
     let error = GroupError.NoCommand("pod lib", group)
-    XCTAssertEqual(error.description, "Usage: pod lib COMMAND\n\nCommands: lint, create")
+    XCTAssertEqual(error.description, "Usage: pod lib COMMAND\n\nCommands: create, lint")
   }
 
   func testNoCommandWithoutPathDescription() {
     let error = GroupError.NoCommand(nil, group)
-    XCTAssertEqual(error.description, "Commands: lint, create")
+    XCTAssertEqual(error.description, "Commands: create, lint")
   }
 }
