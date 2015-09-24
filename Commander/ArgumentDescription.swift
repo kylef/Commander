@@ -57,13 +57,15 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias Validator = ValueType throws -> ValueType
 
   public let name:String
+  public let flag:Character?
   public let description:String?
   public let `default`:ValueType
   public var type:ArgumentType { return .Option }
   public let validator:Validator?
 
-  public init(_ name:String, _ `default`:ValueType, description:String? = nil, validator: Validator? = nil) {
+  public init(_ name:String, _ `default`:ValueType, flag:Character? = nil, description:String? = nil, validator: Validator? = nil) {
     self.name = name
+    self.flag = flag
     self.description = description
     self.`default` = `default`
     self.validator = validator
@@ -78,6 +80,18 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
       }
 
       return value
+    }
+
+    if let flag = flag {
+      if let value = try parser.shiftValueForFlag(flag) {
+        let value = try T(string: value)
+
+        if let validator = validator {
+          return try validator(value)
+        }
+
+        return value
+      }
     }
 
     return `default`

@@ -164,4 +164,52 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
     return false
   }
+
+  /// Returns the value for a flag (-n Kyle)
+  public func shiftValueForFlag(flag:Character) throws -> String? {
+    return try shiftValuesForFlag(flag)?.first
+  }
+
+  /// Returns the value for a flag (-n Kyle)
+  public func shiftValuesForFlag(flag:Character, count:Int = 1) throws -> [String]? {
+    var index = 0
+    var hasFlag = false
+
+    for argument in arguments {
+      switch argument {
+      case .Flag(let flags):
+        if flags.contains(flag) {
+          hasFlag = true
+          break
+        }
+        fallthrough
+      default:
+        ++index
+      }
+
+      if hasFlag {
+        break
+      }
+    }
+
+    if hasFlag {
+      ++index // Jump flags
+
+      return try (0..<count).map { i in
+        if arguments.count > index {
+          let argument = arguments.removeAtIndex(index)
+          switch argument {
+          case .Argument(let value):
+            return value
+          default:
+            throw ArgumentParserError(description: "Unexpected \(argument.type) `\(argument)` as a value for `-\(flag)`")
+          }
+        }
+
+        throw ArgumentParserError(description: "Missing value for `-\(flag)`")
+      }
+    }
+    
+    return nil
+  }
 }
