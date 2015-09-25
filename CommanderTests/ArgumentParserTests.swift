@@ -17,6 +17,7 @@ class ArgumentParserTests : XCTestCase {
 
   func testHasOption() {
     XCTAssertTrue(parser.hasOption("verbose"))
+    XCTAssertFalse(parser.hasOption("verbose"))
   }
 
   func testDoesNotHaveOption() {
@@ -25,6 +26,7 @@ class ArgumentParserTests : XCTestCase {
 
   func testHasFlag() {
     XCTAssertTrue(parser.hasFlag("f"))
+    XCTAssertFalse(parser.hasFlag("f"))
   }
 
   func testDoesNotHaveFlag() {

@@ -4,6 +4,9 @@ public enum ArgumentError : ErrorType, CustomStringConvertible {
   /// Value is not convertible to type
   case InvalidType(value:String, type:String, argument:String?)
 
+  /// Unused Argument
+  case UnusedArgument(String)
+
   public var description:String {
     switch self {
     case .MissingValue(let key):
@@ -16,6 +19,8 @@ public enum ArgumentError : ErrorType, CustomStringConvertible {
         return "`\(value)` is not a valid `\(type)` for `\(argument)`"
       }
       return "`\(value)` is not a `\(type)`"
+    case .UnusedArgument(let argument):
+      return "Unexpected argument `\(argument)`"
     }
   }
 }

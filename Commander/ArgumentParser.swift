@@ -70,6 +70,14 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     return ""
   }
 
+  public var isEmpty:Bool {
+    return arguments.isEmpty
+  }
+
+  public var remainder:[String] {
+    return arguments.map { $0.description }
+  }
+
   /// Returns the first positional argument in the remaining arguments.
   /// This will remove the argument from the remaining arguments.
   public func shift() -> String? {
@@ -135,15 +143,19 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
   /// Returns whether an option was specified in the arguments
   public func hasOption(name:String) -> Bool {
+    var index = 0
     for argument in arguments {
       switch argument {
       case .Option(let option):
         if option == name {
+          arguments.removeAtIndex(index)
           return true
         }
       default:
-        continue
+        break
       }
+
+      ++index
     }
 
     return false
@@ -151,15 +163,24 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
   /// Returns whether a flag was specified in the arguments
   public func hasFlag(flag:Character) -> Bool {
+    var index = 0
     for argument in arguments {
       switch argument {
-      case .Flag(let option):
+      case .Flag(var option):
         if option.contains(flag) {
+          option.remove(flag)
+          arguments.removeAtIndex(index)
+
+          if !option.isEmpty {
+            arguments.insert(.Flag(option), atIndex: index)
+          }
           return true
         }
       default:
-        continue
+        break
       }
+
+      ++index
     }
 
     return false
