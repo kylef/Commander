@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2714C5591BB5403400E0EB6A /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714C5581BB5403300E0EB6A /* Commands.swift */; settings = {ASSET_TAGS = (); }; };
 		2720BDED1BB348BC00C09984 /* ArgumentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2720BDEC1BB348BC00C09984 /* ArgumentDescription.swift */; settings = {ASSET_TAGS = (); }; };
 		2768A2241BACC38C00F994EE /* Commander.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768A2231BACC38C00F994EE /* Commander.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2768A22B1BACC38C00F994EE /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2768A2201BACC38C00F994EE /* Commander.framework */; settings = {ASSET_TAGS = (); }; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2714C5581BB5403300E0EB6A /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		2720BDEC1BB348BC00C09984 /* ArgumentDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentDescription.swift; sourceTree = "<group>"; };
 		27593EE51BB335590018278E /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		27593EE61BB335590018278E /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2720BDEC1BB348BC00C09984 /* ArgumentDescription.swift */,
 				279256A91BB3226E00E66B9E /* CommandType.swift */,
 				279256AB1BB322FA00E66B9E /* Command.swift */,
+				2714C5581BB5403300E0EB6A /* Commands.swift */,
 				279256B31BB3260D00E66B9E /* Group.swift */,
 				2768A2251BACC38C00F994EE /* Info.plist */,
 			);
@@ -245,6 +248,7 @@
 			files = (
 				2768A23B1BACC3B600F994EE /* ArgumentParser.swift in Sources */,
 				2720BDED1BB348BC00C09984 /* ArgumentDescription.swift in Sources */,
+				2714C5591BB5403400E0EB6A /* Commands.swift in Sources */,
 				279256AA1BB3226E00E66B9E /* CommandType.swift in Sources */,
 				279256AC1BB322FA00E66B9E /* Command.swift in Sources */,
 				279256B61BB32A8E00E66B9E /* ArgumentConvertible.swift in Sources */,

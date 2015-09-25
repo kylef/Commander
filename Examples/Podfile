@@ -2,4 +2,5 @@ platform :osx, '10.10'
 plugin 'cocoapods-rome'
 
 pod 'Commander', :path => '..'
+pod 'Stencil', :git => 'https://github.com/kylef/Stencil'
 

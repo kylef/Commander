@@ -1,0 +1,27 @@
+PODS:
+  - Commander (0.2.0)
+  - PathKit (0.4.0-beta.1)
+  - Stencil (0.2.0):
+    - PathKit (~> 0.4.0-beta.1)
+
+DEPENDENCIES:
+  - Commander (from `..`)
+  - Stencil (from `https://github.com/kylef/Stencil`)
+
+EXTERNAL SOURCES:
+  Commander:
+    :path: ..
+  Stencil:
+    :git: https://github.com/kylef/Stencil
+
+CHECKOUT OPTIONS:
+  Stencil:
+    :commit: 554d2ee07f08d536ea766565cca322905b716cbf
+    :git: https://github.com/kylef/Stencil
+
+SPEC CHECKSUMS:
+  Commander: 14e6fc16af3e443d273310aecb0a41e1692ef5a8
+  PathKit: dd424f40892d4f60f279c8f2cd82503fc86e4dad
+  Stencil: 4214b68cf5a5f24c74c8c6fbbb573e225c490f88
+
+COCOAPODS: 0.38.2
