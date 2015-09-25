@@ -8,6 +8,6 @@ script:
 - pod lib lint
 deploy:
   provider: script
-  script: ./scripts/push.sh
+  script: rvm use default && pod trunk push
   on:
     tags: true
