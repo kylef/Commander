@@ -6,3 +6,8 @@ script:
 - set -o pipefail && xcodebuild -project Commander.xcodeproj -scheme Commander -sdk macosx test | xcpretty -c
 - set -o pipefail && xcodebuild -project Commander.xcodeproj -scheme Commander -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test | xcpretty -c
 - pod lib lint
+deploy:
+  provider: script
+  script: pod trunk push
+  on:
+    tags: true
