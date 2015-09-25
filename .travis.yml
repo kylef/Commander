@@ -10,5 +10,6 @@ script:
 deploy:
   provider: script
   script: ./pod trunk push
+  skip_cleanup: true
   on:
     tags: true
