@@ -126,7 +126,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
           }
         }
 
-        throw ArgumentParserError(description: "Missing value for `--\(name)`")
+        throw ArgumentError.MissingValue(argument: "--\(name)")
       }
     }
 
@@ -206,7 +206,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
           }
         }
 
-        throw ArgumentParserError(description: "Missing value for `-\(flag)`")
+        throw ArgumentError.MissingValue(argument: "-\(flag)")
       }
     }
     

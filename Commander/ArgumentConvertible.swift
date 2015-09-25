@@ -6,7 +6,10 @@ public enum ArgumentError : ErrorType, CustomStringConvertible {
 
   public var description:String {
     switch self {
-    case .MissingValue:
+    case .MissingValue(let key):
+      if let key = key {
+        return "Missing value for `\(key)`"
+      }
       return "Missing argument"
     case .InvalidType(let value, let type, let argument):
       if let argument = argument {
