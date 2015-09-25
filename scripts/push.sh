@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-gem install --no-document cocoapods
+rvm use default
 pod trunk push
 
