@@ -48,10 +48,10 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   public init(arguments: [String]) {
     self.arguments = arguments.map { argument in
       if argument.hasPrefix("-") {
-        let flags = String(argument.substringFromIndex(argument.startIndex.successor()))
+        let flags = argument[argument.startIndex.successor()..<argument.endIndex]
 
         if flags.hasPrefix("-") {
-          let option = String(flags.substringFromIndex(argument.startIndex.successor()))
+          let option = flags[flags.startIndex.successor()..<flags.endIndex]
           return .Option(option)
         }
 
