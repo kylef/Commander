@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'Commander'
-  spec.version = '0.2.1'
+  spec.version = '0.2.2'
   spec.summary = 'Compose beautiful command line interfaces'
   spec.homepage = 'https://github.com/kylef/Commander'
   spec.license = { :type => 'BSD', :file => 'LICENSE' }
