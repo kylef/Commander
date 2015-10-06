@@ -67,7 +67,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   }
 
   public var description:String {
-    return ""
+    return arguments.map { $0.description }.joinWithSeparator(" ")
   }
 
   public var isEmpty:Bool {
