@@ -150,8 +150,12 @@ Hello Kyle
 
 ## Installation
 
-You can install Commander in many ways, such as with CocoaPods, Carthage or as
-a sub-project.
+You can install Commander in many ways, such as with Conche, CocoaPods,
+Carthage or as a sub-project.
+
+### Conche (recommended)
+
+The recommended way to use Commander would be via [Conche](https://github.com/kylef/Conche).
 
 It's important to note that the `.framework` file for Commander (and any
 other dependency) must be available at run-time for your command line tool.
