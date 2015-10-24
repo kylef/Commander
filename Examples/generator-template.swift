@@ -48,7 +48,7 @@ extension Group {
 
 {% for command in commands %}
   /// Add a command which takes {{ command.count }} arguments using a closure
-  public func command<A:ArgumentDescriptor{% for a in command.arguments %}, A{{ a }}:ArgumentDescriptor{% endfor %}>(name:String, descriptor:A{% for a in command.arguments %}, descriptor{{ a }}:A{{ a }}{% endfor %}, closure:(A.ValueType{% for a in command.arguments %}, A{{ a }}.ValueType{% endfor %}) throws -> ()) {
+  public func command<A:ArgumentDescriptor{% for a in command.arguments %}, A{{ a }}:ArgumentDescriptor{% endfor %}>(name: String, _ descriptor: A{% for a in command.arguments %}, _ descriptor{{ a }}: A{{ a }}{% endfor %}, closure: (A.ValueType{% for a in command.arguments %}, A{{ a }}.ValueType{% endfor %}) throws -> ()) {
     addCommand(name, Commander.command(descriptor,{% for a in command.arguments %} descriptor{{ a }}, {% endfor %} closure: closure))
   }
 {% endfor %}
