@@ -16,12 +16,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Stencil:
-    :commit: 1136ca8fca8951e9552fc099123905c9c0f5577f
+    :commit: d5acc7298ce73c990d108b363a1f1fc1a003f05d
     :git: https://github.com/kylef/Stencil
 
 SPEC CHECKSUMS:
-  Commander: 3634740c4e1ed3a76ff55426424950e4c8a822e0
+  Commander: d511e5bfe3c0576945c6c4d2d0734fad24f382a2
   PathKit: 64e70cb924d6faed9251049f5f28662855524baf
-  Stencil: 90ce766d6dba53380832692541403e27297337db
+  Stencil: a3def3541e6a76eff3bb1f85af622b07b230c575
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

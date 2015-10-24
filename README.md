@@ -122,6 +122,7 @@ Hello Kyle
 - Argument - A positional argument.
 - Option - An optional option with a value.
 - Flag - A boolean, on/off flag.
+- VaradicArgument - A varadic argument
 
 #### Using the argument parser
 
@@ -244,4 +245,3 @@ flags and positional arguments.
 
 Commander is available under the BSD license. See the [LICENSE file](LICENSE)
 for more info.
-

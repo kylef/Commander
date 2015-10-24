@@ -24,6 +24,24 @@ extension ArgumentConvertible {
   }
 }
 
+public class VaradicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
+  public typealias ValueType = [T]
+
+  public let name: String
+  public let description: String?
+
+  public var type: ArgumentType { return .Argument }
+
+  public init(_ name: String, description: String? = nil) {
+    self.name = name
+    self.description = description
+  }
+
+  public func parse(parser: ArgumentParser) throws -> ValueType {
+    return try Array<T>(parser: parser)
+  }
+}
+
 public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
   public typealias Validator = ValueType throws -> ValueType

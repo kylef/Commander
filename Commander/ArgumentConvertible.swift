@@ -102,3 +102,22 @@ extension Double : ArgumentConvertible {
     }
   }
 }
+
+
+extension Array where Element : ArgumentConvertible {
+  public init(parser: ArgumentParser) throws {
+    var temp = [Element]()
+
+    while true {
+      do {
+        temp.append(try Element(parser: parser))
+      } catch ArgumentError.MissingValue {
+        break
+      } catch {
+        throw error
+      }
+    }
+
+    self.init(temp)
+  }
+}

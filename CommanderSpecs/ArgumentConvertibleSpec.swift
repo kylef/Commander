@@ -93,3 +93,14 @@ describe("Double ArgumentConvertible") {
     try expect(try Double(parser: parser)).toThrow(ArgumentError.MissingValue(argument: nil))
   }
 }
+
+/*
+describe("Array ArgumentConvertible") {
+  $0.it("consumes all available arguments") {
+    let parser = ArgumentParser(arguments: ["1", "2", "3"])
+    let value = try Array<String>(parser: parser)
+
+    try expect(value) == ["1", "2", "3"]
+  }
+}
+*/
