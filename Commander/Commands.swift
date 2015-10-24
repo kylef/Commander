@@ -108,101 +108,163 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 /// Create a command which takes 1 argument using a closure with arguments
 public func command<A:ArgumentDescriptor>(descriptor:A, closure:(A.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser))
+    let value0 = try descriptor.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0)
   }
 }
 
 /// Create a command which takes 2 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, closure:(A.ValueType, A1.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1)
   }
 }
 
 /// Create a command which takes 3 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, closure:(A.ValueType, A1.ValueType, A2.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2)
   }
 }
 
 /// Create a command which takes 4 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
         BoxedArgumentDescriptor(value: descriptor3),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3)
   }
 }
 
 /// Create a command which takes 5 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
         BoxedArgumentDescriptor(value: descriptor3),
         BoxedArgumentDescriptor(value: descriptor4),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4)
   }
 }
 
 /// Create a command which takes 6 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
         BoxedArgumentDescriptor(value: descriptor3),
         BoxedArgumentDescriptor(value: descriptor4),
         BoxedArgumentDescriptor(value: descriptor5),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5)
   }
 }
 
 /// Create a command which takes 7 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -210,18 +272,32 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor4),
         BoxedArgumentDescriptor(value: descriptor5),
         BoxedArgumentDescriptor(value: descriptor6),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6)
   }
 }
 
 /// Create a command which takes 8 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -230,18 +306,33 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor5),
         BoxedArgumentDescriptor(value: descriptor6),
         BoxedArgumentDescriptor(value: descriptor7),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7)
   }
 }
 
 /// Create a command which takes 9 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -251,18 +342,34 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor6),
         BoxedArgumentDescriptor(value: descriptor7),
         BoxedArgumentDescriptor(value: descriptor8),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser), try descriptor8.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+    let value8 = try descriptor8.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7, value8)
   }
 }
 
 /// Create a command which takes 10 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -273,18 +380,35 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor7),
         BoxedArgumentDescriptor(value: descriptor8),
         BoxedArgumentDescriptor(value: descriptor9),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser), try descriptor8.parse(parser), try descriptor9.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+    let value8 = try descriptor8.parse(parser)
+    let value9 = try descriptor9.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9)
   }
 }
 
 /// Create a command which takes 11 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -296,18 +420,36 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor8),
         BoxedArgumentDescriptor(value: descriptor9),
         BoxedArgumentDescriptor(value: descriptor10),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser), try descriptor8.parse(parser), try descriptor9.parse(parser), try descriptor10.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+    let value8 = try descriptor8.parse(parser)
+    let value9 = try descriptor9.parse(parser)
+    let value10 = try descriptor10.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10)
   }
 }
 
 /// Create a command which takes 12 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -320,18 +462,37 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor9),
         BoxedArgumentDescriptor(value: descriptor10),
         BoxedArgumentDescriptor(value: descriptor11),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser), try descriptor8.parse(parser), try descriptor9.parse(parser), try descriptor10.parse(parser), try descriptor11.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+    let value8 = try descriptor8.parse(parser)
+    let value9 = try descriptor9.parse(parser)
+    let value10 = try descriptor10.parse(parser)
+    let value11 = try descriptor11.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11)
   }
 }
 
 /// Create a command which takes 13 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -345,18 +506,38 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor10),
         BoxedArgumentDescriptor(value: descriptor11),
         BoxedArgumentDescriptor(value: descriptor12),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser), try descriptor8.parse(parser), try descriptor9.parse(parser), try descriptor10.parse(parser), try descriptor11.parse(parser), try descriptor12.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+    let value8 = try descriptor8.parse(parser)
+    let value9 = try descriptor9.parse(parser)
+    let value10 = try descriptor10.parse(parser)
+    let value11 = try descriptor11.parse(parser)
+    let value12 = try descriptor12.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12)
   }
 }
 
 /// Create a command which takes 14 argument using a closure with arguments
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor>(descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, closure:(A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
@@ -371,10 +552,32 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor11),
         BoxedArgumentDescriptor(value: descriptor12),
         BoxedArgumentDescriptor(value: descriptor13),
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser), try descriptor1.parse(parser), try descriptor2.parse(parser), try descriptor3.parse(parser), try descriptor4.parse(parser), try descriptor5.parse(parser), try descriptor6.parse(parser), try descriptor7.parse(parser), try descriptor8.parse(parser), try descriptor9.parse(parser), try descriptor10.parse(parser), try descriptor11.parse(parser), try descriptor12.parse(parser), try descriptor13.parse(parser))
+    let value0 = try descriptor.parse(parser)
+    let value1 = try descriptor1.parse(parser)
+    let value2 = try descriptor2.parse(parser)
+    let value3 = try descriptor3.parse(parser)
+    let value4 = try descriptor4.parse(parser)
+    let value5 = try descriptor5.parse(parser)
+    let value6 = try descriptor6.parse(parser)
+    let value7 = try descriptor7.parse(parser)
+    let value8 = try descriptor8.parse(parser)
+    let value9 = try descriptor9.parse(parser)
+    let value10 = try descriptor10.parse(parser)
+    let value11 = try descriptor11.parse(parser)
+    let value12 = try descriptor12.parse(parser)
+    let value13 = try descriptor13.parse(parser)
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13)
   }
 }
 

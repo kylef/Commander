@@ -17,14 +17,23 @@ public func command<A:ArgumentConvertible{% for a in command.arguments %}, A{{ a
 /// Create a command which takes {{ command.count }} argument using a closure with arguments
 public func command<A:ArgumentDescriptor{% for a in command.arguments %}, A{{ a }}:ArgumentDescriptor{% endfor %}>(descriptor:A{% for a in command.arguments %}, _ descriptor{{ a }}:A{{ a }}{% endfor %}, closure:(A.ValueType{% for a in command.arguments %}, A{{ a }}.ValueType{% endfor %}) throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
-    if parser.hasOption("help") {
-      throw Help([
+    let help = Help([
         BoxedArgumentDescriptor(value: descriptor),{% for a in command.arguments %}
         BoxedArgumentDescriptor(value: descriptor{{ a }}),{% endfor %}
-      ])
+    ])
+
+    if parser.hasOption("help") {
+      throw help
     }
 
-    try closure(try descriptor.parse(parser){% for a in command.arguments %}, try descriptor{{ a }}.parse(parser){% endfor %})
+    let value0 = try descriptor.parse(parser){% for a in command.arguments %}
+    let value{{ a }} = try descriptor{{ a }}.parse(parser){% endfor %}
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
+    try closure(value0{% for a in command.arguments %}, value{{ a }}{% endfor %})
   }
 }
 {% endfor %}

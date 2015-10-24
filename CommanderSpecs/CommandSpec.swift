@@ -1,6 +1,17 @@
 import Spectre
 import Commander
 
+extension ExpectationType where ValueType == CommandType {
+  func run(arguments: [String]? = nil) throws -> Expectation<Void> {
+    if let command = try expression() {
+      return expect {
+        try command.run(arguments ?? [])
+      }
+    }
+
+    throw failure("command was nil")
+  }
+}
 
 describe("Command") {
   $0.it("allows you to create a command with no arguments") {
@@ -28,6 +39,11 @@ describe("Command") {
       try c.run(["Kyle"])
 
       try expect(givenName) == "Kyle"
+    }
+
+    $0.it("errors when invalid arguments are passed") {
+      let verboseCommand = command(Flag("verbose")) { verbose in }
+      try expect(verboseCommand).run(["--unknown"]).toThrow()
     }
   }
 }

@@ -193,6 +193,20 @@ class BoxedArgumentDescriptor {
   }
 }
 
+class UsageError : ErrorType, CustomStringConvertible {
+  let message: String
+  let help: Help
+
+  init(_ message: String, _ help: Help) {
+    self.message = message
+    self.help = help
+  }
+
+  var description: String {
+    return [message, help.description].filter { !$0.isEmpty }.joinWithSeparator("\n\n")
+  }
+}
+
 class Help : ErrorType, CustomStringConvertible {
   let command:String?
   let group:Group?
