@@ -1,4 +1,4 @@
-#!/usr/bin/swift -FRome
+#!/usr/bin/swift -I ../.conche/modules -L ../.conche/libs -lCommander -lStencil -lPathKit
 
 import Commander
 
