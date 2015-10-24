@@ -1,4 +1,4 @@
-public enum GroupError : ErrorType, CustomStringConvertible {
+public enum GroupError : ErrorType, Equatable, CustomStringConvertible {
   /// No-subcommand was found with the given name
   case UnknownCommand(String)
 
@@ -19,6 +19,17 @@ public enum GroupError : ErrorType, CustomStringConvertible {
         return "Commands: \(available)"
       }
     }
+  }
+}
+
+public func == (lhs: GroupError, rhs: GroupError) -> Bool {
+  switch (lhs, rhs) {
+  case let (.UnknownCommand(lhsCommand), .UnknownCommand(rhsCommand)):
+    return lhsCommand == rhsCommand
+  case let (.NoCommand(lhsPath, lhsGroup), .NoCommand(rhsPath, rhsGroup)):
+    return lhsPath == rhsPath && lhsGroup === rhsGroup
+  default:
+    return false
   }
 }
 
