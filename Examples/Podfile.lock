@@ -20,7 +20,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/kylef/Stencil
 
 SPEC CHECKSUMS:
-  Commander: d511e5bfe3c0576945c6c4d2d0734fad24f382a2
+  Commander: 704edbe645c2454f27e241bad5d775997793b9f6
   PathKit: 64e70cb924d6faed9251049f5f28662855524baf
   Stencil: a3def3541e6a76eff3bb1f85af622b07b230c575
 

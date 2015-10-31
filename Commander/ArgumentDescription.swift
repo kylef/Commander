@@ -252,8 +252,12 @@ class Help : ErrorType, CustomStringConvertible {
     if let group = group {
       output.append("Commands:")
       output.append("")
-      for (name, _) in group.commands {
-        output.append("    + \(name)")
+      for command in group.commands {
+        if let description = command.description {
+          output.append("    + \(command.name) - \(description)")
+        } else {
+          output.append("    + \(command.name)")
+        }
       }
       output.append("")
     }
