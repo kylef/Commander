@@ -49,6 +49,9 @@ public class Group : CommandType {
 
   var commands = [SubCommand]()
 
+  // When set, allows you to override the default unknown command behaviour
+  public var unknownCommand: ((name: String, parser: ArgumentParser) throws -> ())?
+
   /// Create a new group
   public init() {}
 
@@ -80,6 +83,8 @@ public class Group : CommandType {
         } catch let error as Help {
           throw error.reraise(name)
         }
+      } else if let unknownCommand = unknownCommand {
+        try unknownCommand(name: name, parser: parser)
       } else {
         throw GroupError.UnknownCommand(name)
       }
