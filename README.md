@@ -151,18 +151,11 @@ Hello Kyle
 
 ## Installation
 
-You can install Commander in many ways, such as with Conche, CocoaPods,
-Carthage or as a sub-project.
+You can install Commander in many ways, such as with Conche or CocoaPods.
 
 ### Conche (recommended)
 
 The recommended way to use Commander would be via [Conche](https://github.com/Conche/Conche).
-
-It's important to note that the `.framework` file for Commander (and any
-other dependency) must be available at run-time for your command line tool.
-
-Applications will look in their `rpath` which contains paths of where it expects
-the `.framework`s to be found at.
 
 ### CocoaPods
 
@@ -184,6 +177,12 @@ pod 'Commander'
 ```
 
 ### Frameworks and `rpath`
+
+It's important to note that the `.framework` file for Commander (and any
+other dependency) must be available at run-time for your command line tool.
+
+Applications will look in their `rpath` which contains paths of where it expects
+the `.framework`s to be found at.
 
 Using a Swift script, you can use the `-F` flag for setting framework search
 paths, as follows:
