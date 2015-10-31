@@ -59,7 +59,15 @@ public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   }
 
   public func parse(parser:ArgumentParser) throws -> ValueType {
-    let value = try T(parser: parser)
+    let value: T
+
+    do {
+      value = try T(parser: parser)
+    } catch ArgumentError.MissingValue {
+      throw ArgumentError.MissingValue(argument: name)
+    } catch {
+      throw error
+    }
 
     if let validator = validator {
       return try validator(value)

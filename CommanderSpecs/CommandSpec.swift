@@ -41,9 +41,19 @@ describe("Command") {
       try expect(givenName) == "Kyle"
     }
 
+    $0.it("errors when required arguments are missing") {
+      let c = command(Argument<String>("name")) { _ in }
+      try expect(c).run([]).toThrow(ArgumentError.MissingValue(argument: "name"))
+    }
+
     $0.it("errors when invalid arguments are passed") {
       let verboseCommand = command(Flag("verbose")) { verbose in }
       try expect(verboseCommand).run(["--unknown"]).toThrow()
+    }
+
+    $0.it("doesn't error for known arguments") {
+      let verboseCommand = command(Flag("verbose")) { verbose in }
+      try verboseCommand.run(["--verbose"])
     }
   }
 }
