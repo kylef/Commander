@@ -122,52 +122,44 @@ public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
 
 public class Flag : ArgumentDescriptor {
   public typealias ValueType = Bool
-  
+
   public let name:String
-  public let falseName:String?
   public let flag:Character?
-  public let falseFlag:Character?
+  public let disabledName:String
+  public let disabledFlag:Character?
   public let description:String?
   public let `default`:ValueType
   public var type:ArgumentType { return .Option }
-  
-  public init(_ name:String, falseName:String? = nil, flag:Character? = nil, falseFlag:Character? = nil, description:String? = nil, `default`:Bool = false) {
+
+  public init(_ name:String, flag:Character? = nil, disabledName:String? = nil, disabledFlag:Character? = nil, description:String? = nil, `default`:Bool = false) {
     self.name = name
-    self.falseName = falseName
+    self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
-    self.falseFlag = falseFlag
+    self.disabledFlag = disabledFlag
     self.description = description
     self.`default` = `default`
   }
-  
+
   public func parse(parser:ArgumentParser) throws -> ValueType {
-    if parser.hasOption("no-\(name)") {
+    if parser.hasOption(disabledName) {
       return false
-    } else if let falseName = falseName {
-      if parser.hasOption("no-\(falseName)") {
-        return true
-      }
     }
-    
+
     if parser.hasOption(name) {
       return true
-    } else if let falseName = falseName {
-      if parser.hasOption(falseName) {
-        return false
-      }
     }
-    
+
     if let flag = flag {
       if parser.hasFlag(flag) {
         return true
       }
     }
-    if let falseFlag = falseFlag {
-      if parser.hasFlag(falseFlag) {
+    if let disabledFlag = disabledFlag {
+      if parser.hasFlag(disabledFlag) {
         return false
       }
     }
-    
+
     return `default`
   }
 }
