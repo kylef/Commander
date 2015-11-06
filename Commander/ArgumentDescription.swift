@@ -151,19 +151,23 @@ public class Flag : ArgumentDescriptor {
 
   public let name:String
   public let flag:Character?
+  public let disabledName:String
+  public let disabledFlag:Character?
   public let description:String?
   public let `default`:ValueType
   public var type:ArgumentType { return .Option }
 
-  public init(_ name:String, flag:Character? = nil, description:String? = nil, `default`:Bool = false) {
+  public init(_ name:String, flag:Character? = nil, disabledName:String? = nil, disabledFlag:Character? = nil, description:String? = nil, `default`:Bool = false) {
     self.name = name
+    self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
+    self.disabledFlag = disabledFlag
     self.description = description
     self.`default` = `default`
   }
 
   public func parse(parser:ArgumentParser) throws -> ValueType {
-    if parser.hasOption("no-\(name)") {
+    if parser.hasOption(disabledName) {
       return false
     }
 
@@ -174,6 +178,11 @@ public class Flag : ArgumentDescriptor {
     if let flag = flag {
       if parser.hasFlag(flag) {
         return true
+      }
+    }
+    if let disabledFlag = disabledFlag {
+      if parser.hasFlag(disabledFlag) {
+        return false
       }
     }
 
