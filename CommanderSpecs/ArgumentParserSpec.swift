@@ -42,6 +42,22 @@ describe("ArgumentParser") {
     }
   }
 
+  $0.describe("when shifting a flag") {
+    $0.it("returns the flag value when found") {
+      parser = ArgumentParser(arguments: ["-o", "value"])
+      let value = try parser.shiftValueForFlag("o")
+
+      try expect(value) == "value"
+    }
+
+    $0.it("removes the flag and it's value") {
+      parser = ArgumentParser(arguments: ["-o", "value"])
+      try parser.shiftValueForFlag("o")
+
+      try expect(parser.description) == ""
+    }
+  }
+
   $0.describe("when shifting an option") {
     $0.it("should return the options value") {
       let value = try parser.shiftValueForOption("verbose")
