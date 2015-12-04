@@ -171,13 +171,14 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     var index = 0
     for argument in arguments {
       switch argument {
-      case .Flag(var option):
-        if option.contains(flag) {
-          option.remove(flag)
+      case .Flag(let option):
+        var options = option
+        if options.contains(flag) {
+          options.remove(flag)
           arguments.removeAtIndex(index)
 
-          if !option.isEmpty {
-            arguments.insert(.Flag(option), atIndex: index)
+          if !options.isEmpty {
+            arguments.insert(.Flag(options), atIndex: index)
           }
           return true
         }
