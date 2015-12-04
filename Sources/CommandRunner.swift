@@ -1,4 +1,9 @@
-import Darwin.libc
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin.libc
+#endif
+
 
 /// Extensions to CommandType to provide convinience running methods for CLI tools
 extension CommandType {
