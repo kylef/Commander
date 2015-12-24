@@ -118,7 +118,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         }
         fallthrough
       default:
-        ++index
+        index += 1
       }
 
       if hasOption {
@@ -160,7 +160,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         break
       }
 
-      ++index
+      index += 1
     }
 
     return false
@@ -186,7 +186,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         break
       }
 
-      ++index
+      index += 1
     }
 
     return false
@@ -211,7 +211,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         }
         fallthrough
       default:
-        ++index
+        index += 1
       }
 
       if hasFlag {
