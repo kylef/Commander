@@ -34,6 +34,9 @@ extension CommandType {
       let help = Help([], command: usage, group: group)
       fputs("\(help)\n", stderr)
       exit(1)
+    } catch let error as UsageError {
+      fputs("\(error)\n", stderr)
+      exit(1)
     } catch {
       fputs("\(error)\n", stderr)
       exit(1)
