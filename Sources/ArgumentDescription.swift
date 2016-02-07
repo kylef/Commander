@@ -4,7 +4,7 @@ public enum ArgumentType {
 }
 
 public protocol ArgumentDescriptor {
-  typealias ValueType
+  associatedtype ValueType
 
   /// The arguments name
   var name:String { get }
