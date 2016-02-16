@@ -1,0 +1,5 @@
+testArgumentParser()
+testArgumentConvertible()
+testCommandType()
+testCommand()
+testGroup()
