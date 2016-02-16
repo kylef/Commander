@@ -249,7 +249,7 @@ class Help : ErrorType, CustomStringConvertible {
     let options = descriptors.filter   { $0.type == ArgumentType.Option }
 
     if let command = command {
-      let args = arguments.map { $0.name }
+      let args = arguments.map { "<\($0.name)>" }
       let usage = ([command] + args).joinWithSeparator(" ")
 
       output.append("Usage:")
