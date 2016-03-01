@@ -24,7 +24,7 @@ extension CommandType {
       try run(parser)
     } catch let error as Help {
       let help = error.reraise("$ \(executableName)")
-      fputs("\(help)\n", stderr)
+      help.print()
       exit(1)
     } catch GroupError.NoCommand(let path, let group) {
       var usage = "$ \(executableName)"
@@ -32,13 +32,16 @@ extension CommandType {
         usage += " \(path)"
       }
       let help = Help([], command: usage, group: group)
-      fputs("\(help)\n", stderr)
+      help.print()
       exit(1)
-    } catch let error as UsageError {
-      fputs("\(error)\n", stderr)
+    } catch let error as ANSIConvertible {
+      error.print()
+      exit(1)
+    } catch let error as CustomStringConvertible {
+      fputs("\(ANSI.Red)\(error.description)\(ANSI.Reset)\n", stderr)
       exit(1)
     } catch {
-      fputs("\(error)\n", stderr)
+      fputs("\(ANSI.Red)Unknown error occurred.\(ANSI.Reset)\n", stderr)
       exit(1)
     }
 
