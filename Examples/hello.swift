@@ -1,5 +1,3 @@
-#!/usr/bin/swift -I ../.conche/modules -L ../.conche/lib -lCommander
-
 import Commander
 
 command(
