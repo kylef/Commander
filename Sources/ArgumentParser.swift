@@ -32,7 +32,7 @@ private enum Arg : CustomStringConvertible {
 }
 
 
-public struct ArgumentParserError : ErrorType, Equatable, CustomStringConvertible {
+public struct ArgumentParserError : ErrorProtocol, Equatable, CustomStringConvertible {
   public let description: String
 
   public init(_ description: String) {
@@ -72,7 +72,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   }
 
   public var description:String {
-    return arguments.map { $0.description }.joinWithSeparator(" ")
+    return arguments.map { $0.description }.joined(separator: " ")
   }
 
   public var isEmpty:Bool {
@@ -86,10 +86,10 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   /// Returns the first positional argument in the remaining arguments.
   /// This will remove the argument from the remaining arguments.
   public func shift() -> String? {
-    for (index, argument) in arguments.enumerate() {
+    for (index, argument) in arguments.enumerated() {
       switch argument {
       case .Argument(let value):
-        arguments.removeAtIndex(index)
+        arguments.remove(at: index)
         return value
       default:
         continue
@@ -127,10 +127,10 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     }
 
     if hasOption {
-      arguments.removeAtIndex(index)  // Pop option
+      arguments.remove(at: index)  // Pop option
       return try (0..<count).map { i in
         if arguments.count > index {
-          let argument = arguments.removeAtIndex(index)
+          let argument = arguments.remove(at: index)
           switch argument {
           case .Argument(let value):
             return value
@@ -153,7 +153,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
       switch argument {
       case .Option(let option):
         if option == name {
-          arguments.removeAtIndex(index)
+            arguments.remove(at: index)
           return true
         }
       default:
@@ -175,10 +175,10 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         var options = option
         if options.contains(flag) {
           options.remove(flag)
-          arguments.removeAtIndex(index)
+            arguments.remove(at: index)
 
           if !options.isEmpty {
-            arguments.insert(.Flag(options), atIndex: index)
+            arguments.insert(.Flag(options), at: index)
           }
           return true
         }
@@ -220,11 +220,11 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     }
 
     if hasFlag {
-      arguments.removeAtIndex(index)
+        arguments.remove(at: index)
 
       return try (0..<count).map { i in
         if arguments.count > index {
-          let argument = arguments.removeAtIndex(index)
+          let argument = arguments.remove(at: index)
           switch argument {
           case .Argument(let value):
             return value

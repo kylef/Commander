@@ -1,4 +1,4 @@
-public enum GroupError : ErrorType, Equatable, CustomStringConvertible {
+public enum GroupError : ErrorProtocol, Equatable, CustomStringConvertible {
   /// No-subcommand was found with the given name
   case UnknownCommand(String)
 
@@ -12,7 +12,7 @@ public enum GroupError : ErrorType, Equatable, CustomStringConvertible {
     case .UnknownCommand(let name):
       return "Unknown command: `\(name)`"
     case .NoCommand(let path, let group):
-      let available = group.commands.map { $0.name }.sort().joinWithSeparator(", ")
+      let available = group.commands.map { $0.name }.sorted().joined(separator: ", ")
       if let path = path {
         return "Usage: \(path) COMMAND\n\nCommands: \(available)"
       } else {
