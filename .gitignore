@@ -2,3 +2,6 @@
 /.build/
 Examples/hello
 Examples/pod
+.DS_Store
+*.xcuserdatad
+Carthage/Build
