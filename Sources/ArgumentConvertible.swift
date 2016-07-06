@@ -1,4 +1,4 @@
-public enum ArgumentError : ErrorType, Equatable, CustomStringConvertible {
+public enum ArgumentError : ErrorProtocol, Equatable, CustomStringConvertible {
   case MissingValue(argument: String?)
 
   /// Value is not convertible to type
