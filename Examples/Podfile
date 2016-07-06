@@ -1,6 +1,6 @@
 platform :osx, '10.10'
 plugin 'cocoapods-rome'
 
-pod 'Commander', :path => '..'
+pod 'Commander', :git => 'https://github.com/kylef/Commander'
 pod 'Stencil', :git => 'https://github.com/kylef/Stencil'
 

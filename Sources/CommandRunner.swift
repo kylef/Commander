@@ -21,9 +21,9 @@ extension CommandType {
     let executableName = parser.shift()!  // Executable Name
 
     do {
-      try run(parser)
+      try run(parser: parser)
     } catch let error as Help {
-      let help = error.reraise("$ \(executableName)")
+      let help = error.reraise(command: "$ \(executableName)")
       help.print()
       exit(1)
     } catch GroupError.NoCommand(let path, let group) {

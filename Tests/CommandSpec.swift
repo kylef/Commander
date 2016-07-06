@@ -10,7 +10,7 @@ extension ExpectationType where ValueType == CommandType {
       }
     }
 
-    throw failure("command was nil")
+    throw failure(reason: "command was nil")
   }
 }
 
@@ -20,7 +20,7 @@ func testCommand() {
     $0.it("allows you to create a command with no arguments") {
       let parser = ArgumentParser(arguments: [])
       var didRun = false
-      try command { didRun = true }.run(parser)
+      try command { didRun = true }.run(parser: parser)
 
       try expect(didRun).to.beTrue()
     }
@@ -28,7 +28,7 @@ func testCommand() {
     $0.it("allows you to create a command with a single positional argument") {
       let parser = ArgumentParser(arguments: ["Kyle", "Fuller"])
       var ranName: String? = nil
-      try command { (name:String) in ranName = name }.run(parser)
+      try command { (name:String) in ranName = name }.run(parser: parser)
 
       try expect(ranName) == "Kyle"
     }

@@ -8,7 +8,7 @@ public protocol CommandType {
 extension CommandType {
   /// Run the command with an array of arguments
   public func run(arguments:[String]) throws {
-    try run(ArgumentParser(arguments: arguments))
+    try run(parser: ArgumentParser(arguments: arguments))
   }
 }
 

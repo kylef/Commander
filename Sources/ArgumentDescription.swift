@@ -48,7 +48,7 @@ public class VaradicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
 
 public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
-  public typealias Validator = ValueType throws -> ValueType
+  public typealias Validator = (ValueType) throws -> ValueType
 
   public let name:String
   public let description:String?
@@ -84,7 +84,7 @@ public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
 
 public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
-  public typealias Validator = ValueType throws -> ValueType
+  public typealias Validator = (ValueType) throws -> ValueType
 
   public let name:String
   public let flag:Character?
@@ -218,7 +218,7 @@ class BoxedArgumentDescriptor {
 }
 
 
-class UsageError : ErrorType, ANSIConvertible, CustomStringConvertible {
+class UsageError : ErrorProtocol, ANSIConvertible, CustomStringConvertible {
   let message: String
   let help: Help
 
@@ -228,16 +228,16 @@ class UsageError : ErrorType, ANSIConvertible, CustomStringConvertible {
   }
 
   var description: String {
-    return [message, help.description].filter { !$0.isEmpty }.joinWithSeparator("\n\n")
+    return [message, help.description].filter { !$0.isEmpty }.joined(separator: "\n\n")
   }
 
   var ansiDescription: String {
-    return [message, help.ansiDescription].filter { !$0.isEmpty }.joinWithSeparator("\n\n")
+    return [message, help.ansiDescription].filter { !$0.isEmpty }.joined(separator: "\n\n")
   }
 }
 
 
-class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
+class Help : ErrorProtocol, ANSIConvertible, CustomStringConvertible {
   let command:String?
   let group:Group?
   let descriptors:[BoxedArgumentDescriptor]
@@ -263,7 +263,7 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
 
     if let command = command {
       let args = arguments.map { "<\($0.name)>" }
-      let usage = ([command] + args).joinWithSeparator(" ")
+      let usage = ([command] + args).joined(separator: " ")
 
       output.append("Usage:")
       output.append("")
@@ -297,7 +297,7 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
       }
     }
 
-    return output.joinWithSeparator("\n")
+    return output.joined(separator: "\n")
   }
 
   var ansiDescription: String {
@@ -308,7 +308,7 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
 
     if let command = command {
       let args = arguments.map { "<\($0.name)>" }
-      let usage = ([command] + args).joinWithSeparator(" ")
+      let usage = ([command] + args).joined(separator: " ")
 
       output.append("Usage:")
       output.append("")
@@ -342,6 +342,6 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
       }
     }
 
-    return output.joinWithSeparator("\n")
+    return output.joined(separator: "\n")
   }
 }
