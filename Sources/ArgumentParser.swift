@@ -1,38 +1,38 @@
 private enum Arg : CustomStringConvertible {
   /// A positional argument
-  case Argument(String)
+  case argument(String)
 
   /// A boolean like option, `--version`, `--help`, `--no-clean`.
-  case Option(String)
+  case option(String)
 
   /// A flag
-  case Flag(Set<Character>)
+  case flag(Set<Character>)
 
   var description:String {
     switch self {
-    case .Argument(let value):
+    case .argument(let value):
       return value
-    case .Option(let key):
+    case .option(let key):
       return "--\(key)"
-    case .Flag(let flags):
+    case .flag(let flags):
       return "-\(String(flags))"
     }
   }
 
   var type:String {
     switch self {
-    case .Argument:
+    case .argument:
       return "argument"
-    case .Option:
+    case .option:
       return "option"
-    case .Flag:
+    case .flag:
       return "flag"
     }
   }
 }
 
 
-public struct ArgumentParserError : ErrorProtocol, Equatable, CustomStringConvertible {
+public struct ArgumentParserError : Error, Equatable, CustomStringConvertible {
   public let description: String
 
   public init(_ description: String) {
@@ -59,13 +59,13 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         if flags.characters.first == "-" {
           let start = flags.index(after: flags.startIndex)
           let option = flags[start ..< flags.endIndex]
-          return .Option(option)
+          return .option(option)
         }
 
-        return .Flag(Set(flags.characters))
+        return .flag(Set(flags.characters))
       }
 
-      return .Argument(argument)
+      return .argument(argument)
     }
   }
 
@@ -90,7 +90,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   public func shift() -> String? {
     for (index, argument) in arguments.enumerated() {
       switch argument {
-      case .Argument(let value):
+      case .argument(let value):
         arguments.remove(at: index)
         return value
       default:
@@ -113,7 +113,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
     for argument in arguments {
       switch argument {
-      case .Option(let option):
+      case .option(let option):
         if option == name {
           hasOption = true
           break
@@ -134,14 +134,14 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         if arguments.count > index {
           let argument = arguments.remove(at: index)
           switch argument {
-          case .Argument(let value):
+          case .argument(let value):
             return value
           default:
             throw ArgumentParserError("Unexpected \(argument.type) `\(argument)` as a value for `--\(name)`")
           }
         }
 
-        throw ArgumentError.MissingValue(argument: "--\(name)")
+        throw ArgumentError.missingValue(argument: "--\(name)")
       }
     }
 
@@ -153,7 +153,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     var index = 0
     for argument in arguments {
       switch argument {
-      case .Option(let option):
+      case .option(let option):
         if option == name {
           arguments.remove(at: index)
           return true
@@ -173,14 +173,14 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     var index = 0
     for argument in arguments {
       switch argument {
-      case .Flag(let option):
+      case .flag(let option):
         var options = option
         if options.contains(flag) {
           options.remove(flag)
           arguments.remove(at: index)
 
           if !options.isEmpty {
-            arguments.insert(.Flag(options), at: index)
+            arguments.insert(.flag(options), at: index)
           }
           return true
         }
@@ -206,7 +206,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
     for argument in arguments {
       switch argument {
-      case .Flag(let flags):
+      case .flag(let flags):
         if flags.contains(flag) {
           hasFlag = true
           break
@@ -228,14 +228,14 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
         if arguments.count > index {
           let argument = arguments.remove(at: index)
           switch argument {
-          case .Argument(let value):
+          case .argument(let value):
             return value
           default:
             throw ArgumentParserError("Unexpected \(argument.type) `\(argument)` as a value for `-\(flag)`")
           }
         }
 
-        throw ArgumentError.MissingValue(argument: "-\(flag)")
+        throw ArgumentError.missingValue(argument: "-\(flag)")
       }
     }
 

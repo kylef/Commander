@@ -5,7 +5,7 @@
 #endif
 
 
-protocol ANSIConvertible : ErrorProtocol, CustomStringConvertible {
+protocol ANSIConvertible : Error, CustomStringConvertible {
   var ansiDescription: String { get }
 }
 
@@ -22,17 +22,17 @@ extension ANSIConvertible {
 
 
 enum ANSI: UInt8, CustomStringConvertible {
-  case Reset = 0
+  case reset = 0
 
-  case Black = 30
-  case Red
-  case Green
-  case Yellow
-  case Blue
-  case Magenta
-  case Cyan
-  case White
-  case Default
+  case black = 30
+  case red
+  case green
+  case yellow
+  case blue
+  case magenta
+  case cyan
+  case white
+  case `default`
 
   var description: String {
     return "\u{001B}[\(self.rawValue)m"
