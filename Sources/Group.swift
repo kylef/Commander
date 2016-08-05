@@ -1,17 +1,17 @@
-public enum GroupError : ErrorProtocol, Equatable, CustomStringConvertible {
+public enum GroupError : Error, Equatable, CustomStringConvertible {
   /// No-subcommand was found with the given name
-  case UnknownCommand(String)
+  case unknownCommand(String)
 
   /// No command was given
   /// :param: The current path to the command (i.e, all the group names)
   /// :param: The group raising the error
-  case NoCommand(String?, Group)
+  case noCommand(String?, Group)
 
   public var description:String {
     switch self {
-    case .UnknownCommand(let name):
+    case .unknownCommand(let name):
       return "Unknown command: `\(name)`"
-    case .NoCommand(let path, let group):
+    case .noCommand(let path, let group):
       let available = group.commands
         .map { $0.name }
         .sorted()
@@ -28,9 +28,9 @@ public enum GroupError : ErrorProtocol, Equatable, CustomStringConvertible {
 
 public func == (lhs: GroupError, rhs: GroupError) -> Bool {
   switch (lhs, rhs) {
-  case let (.UnknownCommand(lhsCommand), .UnknownCommand(rhsCommand)):
+  case let (.unknownCommand(lhsCommand), .unknownCommand(rhsCommand)):
     return lhsCommand == rhsCommand
-  case let (.NoCommand(lhsPath, lhsGroup), .NoCommand(rhsPath, rhsGroup)):
+  case let (.noCommand(lhsPath, lhsGroup), .noCommand(rhsPath, rhsGroup)):
     return lhsPath == rhsPath && lhsGroup === rhsGroup
   default:
     return false
@@ -60,52 +60,52 @@ public class Group : CommandType {
   public init() {}
 
   /// Add a named sub-command to the group
-  public func addCommand(name: String, _ command: CommandType) {
+  public func addCommand(_ name: String, _ command: CommandType) {
     commands.append(SubCommand(name: name, description: nil, command: command))
   }
 
   /// Add a named sub-command to the group with a description
-  public func addCommand(name: String, _ description: String?, _ command: CommandType) {
+  public func addCommand(_ name: String, _ description: String?, _ command: CommandType) {
     commands.append(SubCommand(name: name, description: description, command: command))
   }
 
   /// Run the group command
-  public func run(parser: ArgumentParser) throws {
+  public func run(_ parser: ArgumentParser) throws {
     if let name = parser.shift() {
       let command = commands.filter { $0.name == name }.first
       if let command = command {
         do {
-          try command.command.run(parser: parser)
-        } catch GroupError.UnknownCommand(let childName) {
-          throw GroupError.UnknownCommand("\(name) \(childName)")
-        } catch GroupError.NoCommand(let path, let group) {
+          try command.command.run(parser)
+        } catch GroupError.unknownCommand(let childName) {
+          throw GroupError.unknownCommand("\(name) \(childName)")
+        } catch GroupError.noCommand(let path, let group) {
           if let path = path {
-            throw GroupError.NoCommand("\(name) \(path)", group)
+            throw GroupError.noCommand("\(name) \(path)", group)
           }
 
-          throw GroupError.NoCommand(name, group)
+          throw GroupError.noCommand(name, group)
         } catch let error as Help {
-          throw error.reraise(command: name)
+          throw error.reraise(name)
         }
       } else if let unknownCommand = unknownCommand {
         try unknownCommand(name: name, parser: parser)
       } else {
-        throw GroupError.UnknownCommand(name)
+        throw GroupError.unknownCommand(name)
       }
     } else {
-      throw GroupError.NoCommand(nil, self)
+      throw GroupError.noCommand(nil, self)
     }
   }
 }
 
 extension Group {
-  public convenience init(@noescape closure: (Group) -> ()) {
+  public convenience init(closure: @noescape (Group) -> ()) {
     self.init()
     closure(self)
   }
 
   /// Add a sub-group using a closure
-  public func group(_ name: String, _ description: String? = nil, @noescape closure: (Group) -> ()) {
-    addCommand(name: name, description, Group(closure: closure))
+  public func group(_ name: String, _ description: String? = nil, closure: @noescape (Group) -> ()) {
+    addCommand(name, description, Group(closure: closure))
   }
 }
