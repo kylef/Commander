@@ -8,8 +8,8 @@
 /// Extensions to CommandType to provide convinience running methods for CLI tools
 extension CommandType {
   /// Run the command using the `Process.argument`, removing the executable name
-  @noreturn public func run(version:String? = nil) {
-    let parser = ArgumentParser(arguments: Process.arguments)
+  public func run(_ version:String? = nil) -> Never  {
+    let parser = ArgumentParser(arguments: CommandLine.arguments)
 
     if parser.hasOption("version") && !parser.hasOption("help") {
       if let version = version {
@@ -26,7 +26,7 @@ extension CommandType {
       let help = error.reraise("$ \(executableName)")
       help.print()
       exit(1)
-    } catch GroupError.NoCommand(let path, let group) {
+    } catch GroupError.noCommand(let path, let group) {
       var usage = "$ \(executableName)"
       if let path = path {
         usage += " \(path)"
@@ -38,10 +38,10 @@ extension CommandType {
       error.print()
       exit(1)
     } catch let error as CustomStringConvertible {
-      fputs("\(ANSI.Red)\(error.description)\(ANSI.Reset)\n", stderr)
+      fputs("\(ANSI.red)\(error.description)\(ANSI.reset)\n", stderr)
       exit(1)
     } catch {
-      fputs("\(ANSI.Red)Unknown error occurred.\(ANSI.Reset)\n", stderr)
+      fputs("\(ANSI.red)Unknown error occurred.\(ANSI.reset)\n", stderr)
       exit(1)
     }
 

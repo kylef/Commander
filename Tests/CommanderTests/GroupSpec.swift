@@ -3,7 +3,7 @@ import Commander
 
 
 extension ExpectationType where ValueType == CommandType {
-  func run(arguments: [String]) throws -> Expectation<Void> {
+  func run(_ arguments: [String]) throws -> Expectation<Void> {
     if let command = try expression() {
       return expect {
         try command.run(arguments)
@@ -15,7 +15,7 @@ extension ExpectationType where ValueType == CommandType {
 }
 
 
-func testGroup() {
+public func testGroup() {
   describe("Group") {
     $0.it("dispatches subcommands when ran") {
       var didRunHelpCommand = false
@@ -40,7 +40,7 @@ func testGroup() {
         }
       }
 
-      try expect(group).run(["subgroup", "yo"]).toThrow(GroupError.UnknownCommand("subgroup yo"))
+      try expect(group).run(["subgroup", "yo"]).toThrow(GroupError.unknownCommand("subgroup yo"))
     }
 
     $0.it("throws an error when the command name is missing") {
@@ -49,7 +49,7 @@ func testGroup() {
       do {
         try group.run([])
         throw failure("Didn't raise an error")
-      } catch GroupError.NoCommand(let path, let raisedGroup) {
+      } catch GroupError.noCommand(let path, let raisedGroup) {
         try expect(path).to.beNil()
         if raisedGroup !== group {
           throw failure("\(raisedGroup) is not \(group)")
@@ -63,7 +63,7 @@ func testGroup() {
       let subgroup = Group()
       let group = Group { $0.addCommand("group", subgroup) }
 
-      try expect(group).run(["group"]).toThrow(GroupError.NoCommand("group", subgroup))
+      try expect(group).run(["group"]).toThrow(GroupError.noCommand("group", subgroup))
     }
 
     $0.it("reraises missing sub-sub-group command name including group and command name") {
@@ -71,7 +71,7 @@ func testGroup() {
       let subgroup = Group { $0.addCommand("g2", subsubgroup) }
       let group = Group { $0.addCommand("g1", subgroup) }
 
-      try expect(group).run(["g1", "g2"]).toThrow(GroupError.NoCommand("g1 g2", subsubgroup))
+      try expect(group).run(["g1", "g2"]).toThrow(GroupError.noCommand("g1 g2", subsubgroup))
     }
 
     $0.describe("extensions") {
@@ -139,17 +139,17 @@ func testGroup() {
 
     $0.describe("error description") {
       $0.it("unknown command") {
-        let error = GroupError.UnknownCommand("pod spec create")
+        let error = GroupError.unknownCommand("pod spec create")
         try expect(error.description) == "Unknown command: `pod spec create`"
       }
 
       $0.it("no command") {
-        let error = GroupError.NoCommand("pod lib", group)
+        let error = GroupError.noCommand("pod lib", group)
         try expect(error.description) == "Usage: pod lib COMMAND\n\nCommands: create, lint"
       }
 
       $0.it("no command without path") {
-        let error = GroupError.NoCommand(nil, group)
+        let error = GroupError.noCommand(nil, group)
         try expect(error.description) == "Commands: create, lint"
       }
     }

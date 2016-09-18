@@ -1,3 +1,5 @@
+import CommanderTests
+
 testArgumentParser()
 testArgumentConvertible()
 testCommandType()

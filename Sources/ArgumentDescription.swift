@@ -1,6 +1,6 @@
 public enum ArgumentType {
-  case Argument
-  case Option
+  case argument
+  case option
 }
 
 
@@ -16,7 +16,7 @@ public protocol ArgumentDescriptor {
   var type:ArgumentType { get }
 
   /// Parse the argument
-  func parse(parser:ArgumentParser) throws -> ValueType
+  func parse(_ parser:ArgumentParser) throws -> ValueType
 }
 
 
@@ -27,34 +27,34 @@ extension ArgumentConvertible {
 }
 
 
-public class VaradicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
+open class VaradicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
 
-  public let name: String
-  public let description: String?
+  open let name: String
+  open let description: String?
 
-  public var type: ArgumentType { return .Argument }
+  open var type: ArgumentType { return .argument }
 
   public init(_ name: String, description: String? = nil) {
     self.name = name
     self.description = description
   }
 
-  public func parse(parser: ArgumentParser) throws -> ValueType {
+  open func parse(_ parser: ArgumentParser) throws -> ValueType {
     return try Array<T>(parser: parser)
   }
 }
 
 
-public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
+open class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
-  public typealias Validator = ValueType throws -> ValueType
+  public typealias Validator = (ValueType) throws -> ValueType
 
-  public let name:String
-  public let description:String?
-  public let validator:Validator?
+  open let name:String
+  open let description:String?
+  open let validator:Validator?
 
-  public var type:ArgumentType { return .Argument }
+  open var type:ArgumentType { return .argument }
 
   public init(_ name:String, description:String? = nil, validator: Validator? = nil) {
     self.name = name
@@ -62,13 +62,13 @@ public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
     self.validator = validator
   }
 
-  public func parse(parser:ArgumentParser) throws -> ValueType {
+  open func parse(_ parser:ArgumentParser) throws -> ValueType {
     let value: T
 
     do {
       value = try T(parser: parser)
-    } catch ArgumentError.MissingValue {
-      throw ArgumentError.MissingValue(argument: name)
+    } catch ArgumentError.missingValue {
+      throw ArgumentError.missingValue(argument: name)
     } catch {
       throw error
     }
@@ -82,18 +82,18 @@ public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
-public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
+open class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
-  public typealias Validator = ValueType throws -> ValueType
+  public typealias Validator = (ValueType) throws -> ValueType
 
-  public let name:String
-  public let flag:Character?
-  public let description:String?
-  public let `default`:ValueType
-  public var type:ArgumentType { return .Option }
-  public let validator:Validator?
+  open let name:String
+  open let flag:Character?
+  open let description:String?
+  open let `default`:ValueType
+  open var type:ArgumentType { return .option }
+  open let validator:Validator?
 
-  public init(_ name:String, _ `default`:ValueType, flag:Character? = nil, description:String? = nil, validator: Validator? = nil) {
+  public init(_ name:String, _ default:ValueType, flag:Character? = nil, description:String? = nil, validator: Validator? = nil) {
     self.name = name
     self.flag = flag
     self.description = description
@@ -101,7 +101,7 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
     self.validator = validator
   }
 
-  public func parse(parser:ArgumentParser) throws -> ValueType {
+  open func parse(_ parser:ArgumentParser) throws -> ValueType {
     if let value = try parser.shiftValueForOption(name) {
       let value = try T(string: value)
 
@@ -129,41 +129,41 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
-public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
+open class Options<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
 
-  public let name:String
-  public let description:String?
-  public let count:Int
-  public let `default`:ValueType
-  public var type:ArgumentType { return .Option }
+  open let name:String
+  open let description:String?
+  open let count:Int
+  open let `default`:ValueType
+  open var type:ArgumentType { return .option }
 
-  public init(_ name:String, _ `default`:ValueType, count: Int, description:String? = nil) {
+  public init(_ name:String, _ default:ValueType, count: Int, description:String? = nil) {
     self.name = name
     self.`default` = `default`
     self.count = count
     self.description = description
   }
 
-  public func parse(parser:ArgumentParser) throws -> ValueType {
+  open func parse(_ parser:ArgumentParser) throws -> ValueType {
     let values = try parser.shiftValuesForOption(name, count: count)
     return try values?.map { try T(string: $0) } ?? `default`
   }
 }
 
 
-public class Flag : ArgumentDescriptor {
+open class Flag : ArgumentDescriptor {
   public typealias ValueType = Bool
 
-  public let name:String
-  public let flag:Character?
-  public let disabledName:String
-  public let disabledFlag:Character?
-  public let description:String?
-  public let `default`:ValueType
-  public var type:ArgumentType { return .Option }
+  open let name:String
+  open let flag:Character?
+  open let disabledName:String
+  open let disabledFlag:Character?
+  open let description:String?
+  open let `default`:ValueType
+  open var type:ArgumentType { return .option }
 
-  public init(_ name:String, flag:Character? = nil, disabledName:String? = nil, disabledFlag:Character? = nil, description:String? = nil, `default`:Bool = false) {
+  public init(_ name:String, flag:Character? = nil, disabledName:String? = nil, disabledFlag:Character? = nil, description:String? = nil, default:Bool = false) {
     self.name = name
     self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
@@ -172,7 +172,7 @@ public class Flag : ArgumentDescriptor {
     self.`default` = `default`
   }
 
-  public func parse(parser:ArgumentParser) throws -> ValueType {
+  open func parse(_ parser:ArgumentParser) throws -> ValueType {
     if parser.hasOption(disabledName) {
       return false
     }
@@ -218,7 +218,7 @@ class BoxedArgumentDescriptor {
 }
 
 
-class UsageError : ErrorType, ANSIConvertible, CustomStringConvertible {
+class UsageError : Error, ANSIConvertible, CustomStringConvertible {
   let message: String
   let help: Help
 
@@ -228,16 +228,16 @@ class UsageError : ErrorType, ANSIConvertible, CustomStringConvertible {
   }
 
   var description: String {
-    return [message, help.description].filter { !$0.isEmpty }.joinWithSeparator("\n\n")
+    return [message, help.description].filter { !$0.isEmpty }.joined(separator: "\n\n")
   }
 
   var ansiDescription: String {
-    return [message, help.ansiDescription].filter { !$0.isEmpty }.joinWithSeparator("\n\n")
+    return [message, help.ansiDescription].filter { !$0.isEmpty }.joined(separator: "\n\n")
   }
 }
 
 
-class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
+class Help : Error, ANSIConvertible, CustomStringConvertible {
   let command:String?
   let group:Group?
   let descriptors:[BoxedArgumentDescriptor]
@@ -248,8 +248,8 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
     self.descriptors = descriptors
   }
 
-  func reraise(command:String? = nil) -> Help {
-    if let oldCommand = self.command, newCommand = command {
+  func reraise(_ command:String? = nil) -> Help {
+    if let oldCommand = self.command, let newCommand = command {
       return Help(descriptors, command: "\(newCommand) \(oldCommand)")
     }
     return Help(descriptors, command: command ?? self.command)
@@ -258,12 +258,12 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
   var description: String {
     var output = [String]()
 
-    let arguments = descriptors.filter { $0.type == ArgumentType.Argument }
-    let options = descriptors.filter   { $0.type == ArgumentType.Option }
+    let arguments = descriptors.filter { $0.type == ArgumentType.argument }
+    let options = descriptors.filter   { $0.type == ArgumentType.option }
 
     if let command = command {
       let args = arguments.map { "<\($0.name)>" }
-      let usage = ([command] + args).joinWithSeparator(" ")
+      let usage = ([command] + args).joined(separator: " ")
 
       output.append("Usage:")
       output.append("")
@@ -297,18 +297,18 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
       }
     }
 
-    return output.joinWithSeparator("\n")
+    return output.joined(separator: "\n")
   }
 
   var ansiDescription: String {
     var output = [String]()
 
-    let arguments = descriptors.filter { $0.type == ArgumentType.Argument }
-    let options = descriptors.filter   { $0.type == ArgumentType.Option }
+    let arguments = descriptors.filter { $0.type == ArgumentType.argument }
+    let options = descriptors.filter   { $0.type == ArgumentType.option }
 
     if let command = command {
       let args = arguments.map { "<\($0.name)>" }
-      let usage = ([command] + args).joinWithSeparator(" ")
+      let usage = ([command] + args).joined(separator: " ")
 
       output.append("Usage:")
       output.append("")
@@ -321,9 +321,9 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
       output.append("")
       for command in group.commands {
         if let description = command.description {
-          output.append("    + \(ANSI.Green)\(command.name)\(ANSI.Reset) - \(description)")
+          output.append("    + \(ANSI.green)\(command.name)\(ANSI.reset) - \(description)")
         } else {
-          output.append("    + \(ANSI.Green)\(command.name)\(ANSI.Reset)")
+          output.append("    + \(ANSI.green)\(command.name)\(ANSI.reset)")
         }
       }
       output.append("")
@@ -335,13 +335,13 @@ class Help : ErrorType, ANSIConvertible, CustomStringConvertible {
         // TODO: default, [default: `\(`default`)`]
 
         if let description = option.description {
-          output.append("    \(ANSI.Blue)--\(option.name)\(ANSI.Reset) - \(description)")
+          output.append("    \(ANSI.blue)--\(option.name)\(ANSI.reset) - \(description)")
         } else {
-          output.append("    \(ANSI.Blue)--\(option.name)\(ANSI.Reset)")
+          output.append("    \(ANSI.blue)--\(option.name)\(ANSI.reset)")
         }
       }
     }
 
-    return output.joinWithSeparator("\n")
+    return output.joined(separator: "\n")
   }
 }
