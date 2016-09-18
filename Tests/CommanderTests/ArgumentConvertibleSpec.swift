@@ -2,15 +2,15 @@ import Spectre
 import Commander
 
 
-func testArgumentConvertible() {
+public func testArgumentConvertible() {
   describe("ArgumentError") {
     $0.it("has a human readable description for missing value") {
-      let error = ArgumentError.MissingValue(argument: nil)
+      let error = ArgumentError.missingValue(argument: nil)
       try expect(error.description) == "Missing argument"
     }
 
     $0.it("has a human readable description for no value") {
-      let error = ArgumentError.InvalidType(value: "five", type: "number", argument: nil)
+      let error = ArgumentError.invalidType(value: "five", type: "number", argument: nil)
       try expect(error.description) == "`five` is not a `number`"
     }
   }
@@ -25,7 +25,7 @@ func testArgumentConvertible() {
 
     $0.it("handles when the argument parser doesn't have any values") {
       let parser = ArgumentParser(arguments: [])
-      try expect(try String(parser: parser)).toThrow(ArgumentError.MissingValue(argument: nil))
+      try expect(try String(parser: parser)).toThrow(ArgumentError.missingValue(argument: nil))
     }
   }
 
@@ -42,12 +42,12 @@ func testArgumentConvertible() {
 
       try expect {
         try Int(parser: parser)
-      }.toThrow(ArgumentError.InvalidType(value: "five", type: "number", argument: nil))
+      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
     }
 
     $0.it("handles when the argument parser doesn't have any values") {
       let parser = ArgumentParser(arguments: [])
-      try expect(try Int(parser: parser)).toThrow(ArgumentError.MissingValue(argument: nil))
+      try expect(try Int(parser: parser)).toThrow(ArgumentError.missingValue(argument: nil))
     }
   }
 
@@ -64,12 +64,12 @@ func testArgumentConvertible() {
 
       try expect {
         try Float(parser: parser)
-      }.toThrow(ArgumentError.InvalidType(value: "five", type: "number", argument: nil))
+      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
     }
 
     $0.it("handles when the argument parser doesn't have any values") {
       let parser = ArgumentParser(arguments: [])
-      try expect(try Float(parser: parser)).toThrow(ArgumentError.MissingValue(argument: nil))
+      try expect(try Float(parser: parser)).toThrow(ArgumentError.missingValue(argument: nil))
     }
   }
 
@@ -86,12 +86,12 @@ func testArgumentConvertible() {
 
       try expect {
         try Double(parser: parser)
-      }.toThrow(ArgumentError.InvalidType(value: "five", type: "number", argument: nil))
+      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
     }
 
     $0.it("handles when the argument parser doesn't have any values") {
       let parser = ArgumentParser(arguments: [])
-      try expect(try Double(parser: parser)).toThrow(ArgumentError.MissingValue(argument: nil))
+      try expect(try Double(parser: parser)).toThrow(ArgumentError.missingValue(argument: nil))
     }
   }
 

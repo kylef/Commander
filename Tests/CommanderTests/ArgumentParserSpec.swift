@@ -2,7 +2,7 @@ import Spectre
 import Commander
 
 
-func testArgumentParser() {
+public func testArgumentParser() {
     describe("ArgumentParser") {
     var parser: ArgumentParser!
 
@@ -16,7 +16,7 @@ func testArgumentParser() {
       }
 
       $0.it("removes the shifted positional argument") {
-        parser.shift()
+        _ = parser.shift()
         try expect(parser.shift()) == "middle"
       }
     }
@@ -53,7 +53,7 @@ func testArgumentParser() {
 
       $0.it("removes the flag and it's value") {
         parser = ArgumentParser(arguments: ["-o", "value"])
-        try parser.shiftValueForFlag("o")
+        _ = try parser.shiftValueForFlag("o")
 
         try expect(parser.description) == ""
       }
@@ -77,7 +77,7 @@ func testArgumentParser() {
 
       $0.it("should throw when value is missing") {
         let parser = ArgumentParser(arguments: ["--verbose"])
-        try expect(try parser.shiftValueForOption("verbose")).toThrow(ArgumentError.MissingValue(argument: "--verbose"))
+        try expect(try parser.shiftValueForOption("verbose")).toThrow(ArgumentError.missingValue(argument: "--verbose"))
       }
 
       $0.it("should return arguments for option") {
