@@ -45,10 +45,8 @@ open class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   }
 }
 
-#if swift(>=3.0)
 @available(*, deprecated, message: "use VariadicArgument instead")
 typealias VaradicArgument<T : ArgumentConvertible> = VariadicArgument<T>
-#endif
 
 
 open class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
