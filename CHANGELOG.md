@@ -1,5 +1,12 @@
 # Commander Changelog
 
+## unreleased
+
+### Enhancements
+
+- Adds support for variadic options, allowing the user to repeat options to
+  provide additional values.
+
 ## 0.5.0
 
 ### Enhancements
