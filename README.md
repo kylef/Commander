@@ -124,7 +124,7 @@ Hello Kyle
 - VariadicOption - Same as options, but instead of a fixed `count` of values, the user can just repeat the option with additional values. Example: `--myOption value1 --myOption value2`  
 - Flag - A boolean, on/off flag.
 - Argument - A positional argument.
-- VaradicArgument - A varadic argument
+- VariadicArgument - A variadic argument
 
 **NOTE**: *It's important to describe your arguments after options and flags so the parser can differentiate between `--option value` and `--flag argument`.*
 

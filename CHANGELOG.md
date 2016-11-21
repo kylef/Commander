@@ -4,8 +4,9 @@
 
 ### Enhancements
 
+- Renamed VaradicArgument to VariadicArgument.
 - Adds support for variadic options, allowing the user to repeat options to
-  provide additional values.
+provide additional values.
 
 ## 0.5.0
 
