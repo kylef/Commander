@@ -167,16 +167,16 @@ open class VaradicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   }
 
   open func parse(_ parser:ArgumentParser) throws -> ValueType {
-	var values: ValueType? = nil
+    var values: ValueType? = nil
 
-	while let shifted = try parser.shiftValuesForOption(name) {
-		let arguments = try shifted.map { try T(string: $0) }
+    while let shifted = try parser.shiftValueForOption(name) {
+      let argument = try T(string: shifted)
 
-		if values == nil {
-			values = ValueType()
-		}
-		values? += arguments
-	}
+      if values == nil {
+        values = ValueType()
+      }
+      values?.append(argument)
+    }
 
     return values ?? `default`
   }
