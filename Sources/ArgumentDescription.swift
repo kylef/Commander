@@ -29,19 +29,28 @@ extension ArgumentConvertible {
 
 open class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
+  public typealias Validator = (T) throws -> T
 
   open let name: String
   open let description: String?
+  open let validator:Validator?
 
   open var type: ArgumentType { return .argument }
 
-  public init(_ name: String, description: String? = nil) {
+  public init(_ name: String, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.description = description
+    self.validator = validator
   }
 
   open func parse(_ parser: ArgumentParser) throws -> ValueType {
-    return try Array<T>(parser: parser)
+    let value = try Array<T>(parser: parser)
+
+    if let validator = validator {
+      return try value.map { return try validator($0) }
+    }
+
+    return value
   }
 }
 
