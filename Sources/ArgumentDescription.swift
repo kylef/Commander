@@ -160,7 +160,7 @@ open class VaradicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   open let `default`:ValueType
   open var type:ArgumentType { return .option }
 
-  public init(_ name:String, _ default:ValueType, description:String? = nil) {
+  public init(_ name:String, _ default:ValueType = [], description:String? = nil) {
     self.name = name
     self.`default` = `default`
     self.description = description
