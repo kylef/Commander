@@ -152,6 +152,37 @@ open class Options<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
+open class VaradicOption<T : ArgumentConvertible> : ArgumentDescriptor {
+  public typealias ValueType = [T]
+
+  open let name:String
+  open let description:String?
+  open let `default`:ValueType
+  open var type:ArgumentType { return .option }
+
+  public init(_ name:String, _ default:ValueType, description:String? = nil) {
+    self.name = name
+    self.`default` = `default`
+    self.description = description
+  }
+
+  open func parse(_ parser:ArgumentParser) throws -> ValueType {
+	var values: ValueType? = nil
+
+	while let shifted = try parser.shiftValuesForOption(name) {
+		let arguments = try shifted.map { try T(string: $0) }
+
+		if values == nil {
+			values = ValueType()
+		}
+		values? += arguments
+	}
+
+    return values ?? `default`
+  }
+}
+
+
 open class Flag : ArgumentDescriptor {
   public typealias ValueType = Bool
 
