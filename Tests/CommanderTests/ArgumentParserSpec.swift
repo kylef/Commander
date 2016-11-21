@@ -7,7 +7,7 @@ public func testArgumentParser() {
     var parser: ArgumentParser!
 
     $0.before {
-      parser = ArgumentParser(arguments: ["first", "-f", "--verbose", "middle", "end"])
+      parser = ArgumentParser(arguments: ["first", "-f", "--verbose", "middle", "end", "--varOption", "varValue1", "--varOption", "varValue2"])
     }
 
     $0.describe("shifting") {
@@ -85,6 +85,22 @@ public func testArgumentParser() {
         try expect(value?.count) == 2
         try expect(value?.first) == "middle"
         try expect(value?.last) == "end"
+      }
+    }
+
+    $0.describe("variadic options") {
+      $0.it("should return arguments for option") {
+        let option = VaradicOption<String>("varOption")
+        let values = try option.parse(parser)
+        try expect(values.count) == 2
+        try expect(values.first) == "varValue1"
+        try expect(values.last) == "varValue2"
+      }
+
+      $0.it("should return empty array when option is unknown") {
+        let option = VaradicOption<String>("unknown")
+        let values = try option.parse(parser)
+        try expect(values.count) == 0
       }
     }
   }
