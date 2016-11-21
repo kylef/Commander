@@ -1,5 +1,7 @@
 # Commander Changelog
 
+- Renamed VaradicArgument to VariadicArgument.
+
 ## 0.5.0
 
 ### Enhancements

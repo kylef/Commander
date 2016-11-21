@@ -27,7 +27,7 @@ extension ArgumentConvertible {
 }
 
 
-open class VaradicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
+open class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
 
   open let name: String
@@ -44,6 +44,9 @@ open class VaradicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
     return try Array<T>(parser: parser)
   }
 }
+
+@available(*, deprecated, message: "use VariadicArgument instead")
+typealias VaradicArgument<T : ArgumentConvertible> = VariadicArgument<T>
 
 
 open class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
