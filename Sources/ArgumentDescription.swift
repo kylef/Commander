@@ -155,7 +155,7 @@ open class Options<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
-open class VaradicOption<T : ArgumentConvertible> : ArgumentDescriptor {
+open class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
 
   open let name:String
