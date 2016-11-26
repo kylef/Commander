@@ -90,7 +90,7 @@ public func testArgumentParser() {
 
     $0.describe("variadic options") {
       $0.it("should return arguments for option") {
-        let option = VaradicOption<String>("varOption")
+        let option = VariadicOption<String>("varOption")
         let values = try option.parse(parser)
         try expect(values.count) == 2
         try expect(values.first) == "varValue1"
@@ -98,7 +98,7 @@ public func testArgumentParser() {
       }
 
       $0.it("should return empty array when option is unknown") {
-        let option = VaradicOption<String>("unknown")
+        let option = VariadicOption<String>("unknown")
         let values = try option.parse(parser)
         try expect(values.count) == 0
       }
