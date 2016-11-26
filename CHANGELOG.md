@@ -5,6 +5,7 @@
 ### Enhancements
 
 - Renamed VaradicArgument to VariadicArgument.
+- VariadicArgument now supports an optional validator.
 - Adds support for variadic options, allowing the user to repeat options to
   provide additional values.
 
