@@ -1,13 +1,17 @@
 # Commander Changelog
 
-## unreleased
+## Master
 
 ### Enhancements
 
-- Renamed VaradicArgument to VariadicArgument.
-- VariadicArgument now supports an optional validator.
+- `VariadicArgument` now supports an optional validator.
 - Adds support for variadic options, allowing the user to repeat options to
   provide additional values.
+  [#37](https://github.com/kylef/Commander/issues/37)
+
+### Bug Fixes
+
+- `VaradicArgument` has been renamed to `VariadicArgument`.
 
 ## 0.5.0
 
