@@ -8,15 +8,15 @@ public protocol ArgumentDescriptor {
   associatedtype ValueType
 
   /// The arguments name
-  var name:String { get }
+  var name: String { get }
 
   /// The arguments description
-  var description:String? { get }
+  var description: String? { get }
 
-  var type:ArgumentType { get }
+  var type: ArgumentType { get }
 
   /// Parse the argument
-  func parse(_ parser:ArgumentParser) throws -> ValueType
+  func parse(_ parser: ArgumentParser) throws -> ValueType
 }
 
 
@@ -27,15 +27,15 @@ extension ArgumentConvertible {
 }
 
 
-open class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
+public class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
   public typealias Validator = (ValueType) throws -> ValueType
 
-  open let name: String
-  open let description: String?
-  open let validator: Validator?
+  public let name: String
+  public let description: String?
+  public let validator: Validator?
 
-  open var type: ArgumentType { return .argument }
+  public var type: ArgumentType { return .argument }
 
   public init(_ name: String, description: String? = nil, validator: Validator? = nil) {
     self.name = name
@@ -43,7 +43,7 @@ open class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
     self.validator = validator
   }
 
-  open func parse(_ parser: ArgumentParser) throws -> ValueType {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     let value = try Array<T>(parser: parser)
 
     if let validator = validator {
@@ -58,23 +58,23 @@ open class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
 typealias VaradicArgument<T : ArgumentConvertible> = VariadicArgument<T>
 
 
-open class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
+public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
   public typealias Validator = (ValueType) throws -> ValueType
 
-  open let name:String
-  open let description:String?
-  open let validator:Validator?
+  public let name: String
+  public let description: String?
+  public let validator: Validator?
 
-  open var type:ArgumentType { return .argument }
+  public var type: ArgumentType { return .argument }
 
-  public init(_ name:String, description:String? = nil, validator: Validator? = nil) {
+  public init(_ name: String, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.description = description
     self.validator = validator
   }
 
-  open func parse(_ parser:ArgumentParser) throws -> ValueType {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     let value: T
 
     do {
@@ -94,18 +94,18 @@ open class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
-open class Option<T : ArgumentConvertible> : ArgumentDescriptor {
+public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = T
   public typealias Validator = (ValueType) throws -> ValueType
 
-  open let name:String
-  open let flag:Character?
-  open let description:String?
-  open let `default`:ValueType
-  open var type:ArgumentType { return .option }
-  open let validator:Validator?
+  public let name: String
+  public let flag: Character?
+  public let description: String?
+  public let `default`: ValueType
+  public var type: ArgumentType { return .option }
+  public let validator: Validator?
 
-  public init(_ name:String, _ default:ValueType, flag:Character? = nil, description:String? = nil, validator: Validator? = nil) {
+  public init(_ name: String, _ default: ValueType, flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.flag = flag
     self.description = description
@@ -113,7 +113,7 @@ open class Option<T : ArgumentConvertible> : ArgumentDescriptor {
     self.validator = validator
   }
 
-  open func parse(_ parser:ArgumentParser) throws -> ValueType {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     if let value = try parser.shiftValueForOption(name) {
       let value = try T(string: value)
 
@@ -141,44 +141,44 @@ open class Option<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
-open class Options<T : ArgumentConvertible> : ArgumentDescriptor {
+public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
 
-  open let name:String
-  open let description:String?
-  open let count:Int
-  open let `default`:ValueType
-  open var type:ArgumentType { return .option }
+  public let name: String
+  public let description: String?
+  public let count: Int
+  public let `default`: ValueType
+  public var type: ArgumentType { return .option }
 
-  public init(_ name:String, _ default:ValueType, count: Int, description:String? = nil) {
+  public init(_ name: String, _ default: ValueType, count: Int, description: String? = nil) {
     self.name = name
     self.`default` = `default`
     self.count = count
     self.description = description
   }
 
-  open func parse(_ parser:ArgumentParser) throws -> ValueType {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     let values = try parser.shiftValuesForOption(name, count: count)
     return try values?.map { try T(string: $0) } ?? `default`
   }
 }
 
 
-open class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
+public class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
 
-  open let name:String
-  open let description:String?
-  open let `default`:ValueType
-  open var type:ArgumentType { return .option }
+  public let name: String
+  public let description: String?
+  public let `default`: ValueType
+  public var type: ArgumentType { return .option }
 
-  public init(_ name:String, _ default:ValueType = [], description:String? = nil) {
+  public init(_ name: String, _ default: ValueType = [], description: String? = nil) {
     self.name = name
     self.`default` = `default`
     self.description = description
   }
 
-  open func parse(_ parser:ArgumentParser) throws -> ValueType {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     var values: ValueType? = nil
 
     while let shifted = try parser.shiftValueForOption(name) {
@@ -195,18 +195,18 @@ open class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
 }
 
 
-open class Flag : ArgumentDescriptor {
+public class Flag : ArgumentDescriptor {
   public typealias ValueType = Bool
 
-  open let name:String
-  open let flag:Character?
-  open let disabledName:String
-  open let disabledFlag:Character?
-  open let description:String?
-  open let `default`:ValueType
-  open var type:ArgumentType { return .option }
+  public let name: String
+  public let flag: Character?
+  public let disabledName: String
+  public let disabledFlag: Character?
+  public let description: String?
+  public let `default`: ValueType
+  public var type: ArgumentType { return .option }
 
-  public init(_ name:String, flag:Character? = nil, disabledName:String? = nil, disabledFlag:Character? = nil, description:String? = nil, default:Bool = false) {
+  public init(_ name: String, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil, description: String? = nil, default: Bool = false) {
     self.name = name
     self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
@@ -215,7 +215,7 @@ open class Flag : ArgumentDescriptor {
     self.`default` = `default`
   }
 
-  open func parse(_ parser:ArgumentParser) throws -> ValueType {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     if parser.hasOption(disabledName) {
       return false
     }
@@ -241,12 +241,12 @@ open class Flag : ArgumentDescriptor {
 
 
 class BoxedArgumentDescriptor {
-  let name:String
-  let description:String?
-  let `default`:String?
-  let type:ArgumentType
+  let name: String
+  let description: String?
+  let `default`: String?
+  let type: ArgumentType
 
-  init<T : ArgumentDescriptor>(value:T) {
+  init<T : ArgumentDescriptor>(value: T) {
     name = value.name
     description = value.description
     type = value.type
@@ -281,17 +281,17 @@ class UsageError : Error, ANSIConvertible, CustomStringConvertible {
 
 
 class Help : Error, ANSIConvertible, CustomStringConvertible {
-  let command:String?
-  let group:Group?
-  let descriptors:[BoxedArgumentDescriptor]
+  let command: String?
+  let group: Group?
+  let descriptors: [BoxedArgumentDescriptor]
 
-  init(_ descriptors:[BoxedArgumentDescriptor], command:String? = nil, group:Group? = nil) {
+  init(_ descriptors: [BoxedArgumentDescriptor], command: String? = nil, group: Group? = nil) {
     self.command = command
     self.group = group
     self.descriptors = descriptors
   }
 
-  func reraise(_ command:String? = nil) -> Help {
+  func reraise(_ command: String? = nil) -> Help {
     if let oldCommand = self.command, let newCommand = command {
       return Help(descriptors, command: "\(newCommand) \(oldCommand)")
     }
