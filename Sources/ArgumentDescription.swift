@@ -325,6 +325,19 @@ class Help : Error, ANSIConvertible, CustomStringConvertible {
         }
       }
       output.append("")
+    } else if !arguments.isEmpty {
+      output.append("Arguments:")
+      output.append("")
+
+      output += arguments.map { argument in
+        if let description = argument.description {
+          return "    \(argument.name) - \(description)"
+        } else {
+          return "    \(argument.name)"
+        }
+      }
+
+      output.append("")
     }
 
     if !options.isEmpty {
@@ -369,6 +382,19 @@ class Help : Error, ANSIConvertible, CustomStringConvertible {
           output.append("    + \(ANSI.green)\(command.name)\(ANSI.reset)")
         }
       }
+      output.append("")
+    } else if !arguments.isEmpty {
+      output.append("Arguments:")
+      output.append("")
+
+      output += arguments.map { argument in
+        if let description = argument.description {
+          return "    \(ANSI.blue)\(argument.name)\(ANSI.reset) - \(description)"
+        } else {
+          return "    \(ANSI.blue)\(argument.name)\(ANSI.reset)"
+        }
+      }
+
       output.append("")
     }
 

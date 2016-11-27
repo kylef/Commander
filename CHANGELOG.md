@@ -8,10 +8,13 @@
 - Adds support for variadic options, allowing the user to repeat options to
   provide additional values.
   [#37](https://github.com/kylef/Commander/issues/37)
+- Argument descriptions are now printed in command help.
+  [#33](https://github.com/kylef/Commander/issues/33)
 
 ### Bug Fixes
 
 - `VaradicArgument` has been renamed to `VariadicArgument`.
+
 
 ## 0.5.0
 
