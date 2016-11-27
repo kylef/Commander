@@ -253,8 +253,12 @@ class BoxedArgumentDescriptor {
 
     if let value = value as? Flag {
       `default` = value.`default`.description
+    } else if let value = value as? Option<String> {
+      `default` = value.`default`.description
+    } else if let value = value as? Option<Int> {
+      `default` = value.`default`.description
     } else {
-      // TODO, default for Option and Options
+      // TODO, default for Option of generic type
       `default` = nil
     }
   }
@@ -343,13 +347,17 @@ class Help : Error, ANSIConvertible, CustomStringConvertible {
     if !options.isEmpty {
       output.append("Options:")
       for option in options {
-        // TODO: default, [default: `\(`default`)`]
+        var line = "    --\(option.name)"
+
+        if let `default` = option.default {
+          line += " [default: \(`default`)]"
+        }
 
         if let description = option.description {
-          output.append("    --\(option.name) - \(description)")
-        } else {
-          output.append("    --\(option.name)")
+          line += " - \(description)"
         }
+
+        output.append(line)
       }
     }
 
@@ -401,13 +409,17 @@ class Help : Error, ANSIConvertible, CustomStringConvertible {
     if !options.isEmpty {
       output.append("Options:")
       for option in options {
-        // TODO: default, [default: `\(`default`)`]
+        var line = "    \(ANSI.blue)--\(option.name)\(ANSI.reset)"
+
+        if let `default` = option.default {
+          line += " [default: \(`default`)]"
+        }
 
         if let description = option.description {
-          output.append("    \(ANSI.blue)--\(option.name)\(ANSI.reset) - \(description)")
-        } else {
-          output.append("    \(ANSI.blue)--\(option.name)\(ANSI.reset)")
+          line += " - \(description)"
         }
+
+        output.append(line)
       }
     }
 
