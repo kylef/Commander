@@ -239,4 +239,26 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
     return nil
   }
+  
+  /// Returns the value for an option (--name Kyle, --name=Kyle) or flag (-n Kyle)
+  public func shiftValueForOption(_ name: String, orFlag flag: Character?) throws -> String? {
+    if let value = try shiftValueForOption(name) {
+      return value
+    } else if let flag = flag, let value = try shiftValueForFlag(flag) {
+      return value
+    }
+    
+    return nil
+  }
+  
+  /// Returns the values for an option (--name Kyle, --name=Kyle) or flag (-n Kyle)
+  public func shiftValuesForOption(_ name: String, orFlag flag: Character?, count: Int = 1) throws -> [String]? {
+    if let value = try shiftValuesForOption(name, count: count) {
+      return value
+    } else if let flag = flag, let value = try shiftValuesForFlag(flag, count: count) {
+      return value
+    }
+    
+    return nil
+  }
 }

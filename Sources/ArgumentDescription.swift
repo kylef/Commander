@@ -34,7 +34,6 @@ public class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   public let name: String
   public let description: String?
   public let validator: Validator?
-
   public var type: ArgumentType { return .argument }
 
   public init(_ name: String, description: String? = nil, validator: Validator? = nil) {
@@ -65,7 +64,6 @@ public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
   public let name: String
   public let description: String?
   public let validator: Validator?
-
   public var type: ArgumentType { return .argument }
 
   public init(_ name: String, description: String? = nil, validator: Validator? = nil) {
@@ -99,89 +97,90 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias Validator = (ValueType) throws -> ValueType
 
   public let name: String
+  public let `default`: ValueType
   public let flag: Character?
   public let description: String?
-  public let `default`: ValueType
-  public var type: ArgumentType { return .option }
   public let validator: Validator?
+  public var type: ArgumentType { return .option }
 
   public init(_ name: String, _ default: ValueType, flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
     self.name = name
+    self.`default` = `default`
     self.flag = flag
     self.description = description
-    self.`default` = `default`
     self.validator = validator
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
-    if let value = try parser.shiftValueForOption(name) {
-      let value = try T(string: value)
-
-      if let validator = validator {
-        return try validator(value)
-      }
-
-      return value
+    guard let shifted = try parser.shiftValueForOption(name, orFlag: flag) else { return `default` }
+    let value = try T(string: shifted)
+        
+    if let validator = validator {
+      return try validator(value)
     }
-
-    if let flag = flag {
-      if let value = try parser.shiftValueForFlag(flag) {
-        let value = try T(string: value)
-
-        if let validator = validator {
-          return try validator(value)
-        }
-
-        return value
-      }
-    }
-
-    return `default`
+    
+    return value
   }
 }
 
 
 public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
+  public typealias Validator = (ValueType) throws -> ValueType
 
   public let name: String
-  public let description: String?
-  public let count: Int
   public let `default`: ValueType
+  public let flag: Character?
+  public let count: Int
+  public let description: String?
+  public let validator: Validator?
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, _ default: ValueType, count: Int, description: String? = nil) {
+  public init(_ name: String, _ default: ValueType, flag: Character? = nil, count: Int, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.`default` = `default`
+    self.flag = flag
     self.count = count
     self.description = description
+    self.validator = validator
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
-    let values = try parser.shiftValuesForOption(name, count: count)
-    return try values?.map { try T(string: $0) } ?? `default`
+    guard let shifted = try parser.shiftValuesForOption(name, orFlag: flag, count: count) else { return `default` }
+    let values = try shifted.map { try T(string: $0) }
+    
+    if let validator = validator {
+      return try validator(values)
+    }
+    
+    return values
   }
 }
 
 
 public class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
+  public typealias Validator = (ValueType) throws -> ValueType
 
   public let name: String
-  public let description: String?
   public let `default`: ValueType
+  public let flag: Character?
+  public let description: String?
+  public let validator: Validator?
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, _ default: ValueType = [], description: String? = nil) {
+  public init(_ name: String, _ default: ValueType = [], flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.`default` = `default`
+    self.flag = flag
     self.description = description
+    self.validator = validator
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
     var values: ValueType? = nil
 
-    while let shifted = try parser.shiftValueForOption(name) {
+    while let shifted = try parser.shiftValueForOption(name, orFlag: flag) {
       let argument = try T(string: shifted)
 
       if values == nil {
@@ -190,6 +189,10 @@ public class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
       values?.append(argument)
     }
 
+    if let validator = validator, let values = values {
+      return try validator(values)
+    }
+    
     return values ?? `default`
   }
 }
@@ -199,20 +202,20 @@ public class Flag : ArgumentDescriptor {
   public typealias ValueType = Bool
 
   public let name: String
+  public let `default`: ValueType
   public let flag: Character?
   public let disabledName: String
   public let disabledFlag: Character?
   public let description: String?
-  public let `default`: ValueType
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil, description: String? = nil, default: Bool = false) {
+  public init(_ name: String, _ default: Bool = false, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil, description: String? = nil) {
     self.name = name
+    self.`default` = `default`
     self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
     self.disabledFlag = disabledFlag
     self.description = description
-    self.`default` = `default`
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
