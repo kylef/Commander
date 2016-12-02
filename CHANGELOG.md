@@ -1,5 +1,10 @@
 # Commander Changelog
 
+### Bug Fixes
+
+- Better detection of ANSI support in output tty.
+  [#43](https://github.com/kylef/Commander/issues/43)
+
 ## 0.6.0
 
 ### Enhancements
