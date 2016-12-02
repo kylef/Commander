@@ -16,9 +16,9 @@ public func testArgumentDescription() {
 
     $0.it("shows options") {
       let help = Help([
-        BoxedArgumentDescriptor(value: Option<String>("opt1", "example")),
+        BoxedArgumentDescriptor(value: Option<String>("opt1", default: "example")),
         BoxedArgumentDescriptor(value: Flag("flag1", description: "an example")),
-        BoxedArgumentDescriptor(value: Flag("flag2", true)),
+        BoxedArgumentDescriptor(value: Flag("flag2", default: true)),
       ])
 
       try expect(help.description) == "Options:\n    --opt1 [default: example]\n    --flag1 [default: false] - an example\n    --flag2 [default: true]"

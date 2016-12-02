@@ -103,12 +103,17 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   public let validator: Validator?
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, _ default: ValueType, flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
+  public init(_ name: String, default: ValueType, flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.`default` = `default`
     self.flag = flag
     self.description = description
     self.validator = validator
+  }
+  
+  @available(*, deprecated, message: "use init(_:default:flag:description:validator:) instead")
+  public convenience init(_ name: String, _ default: ValueType, flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
+    self.init(name, default: `default`, flag: flag, description: description, validator: validator)
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
@@ -136,13 +141,18 @@ public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
   public let validator: Validator?
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, _ default: ValueType, flag: Character? = nil, count: Int, description: String? = nil, validator: Validator? = nil) {
+  public init(_ name: String, default: ValueType, flag: Character? = nil, count: Int, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.`default` = `default`
     self.flag = flag
     self.count = count
     self.description = description
     self.validator = validator
+  }
+  
+  @available(*, deprecated, message: "use init(_:default:flag:count:description:validator:) instead")
+  public convenience init(_ name: String, _ default: ValueType, flag: Character? = nil, count: Int, description: String? = nil, validator: Validator? = nil) {
+    self.init(name, default: `default`, flag: flag, count: count, description: description, validator: validator)
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
@@ -169,12 +179,17 @@ public class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   public let validator: Validator?
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, _ default: ValueType = [], flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
+  public init(_ name: String, default: ValueType = [], flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
     self.name = name
     self.`default` = `default`
     self.flag = flag
     self.description = description
     self.validator = validator
+  }
+  
+  @available(*, deprecated, message: "use init(_:default:flag:description:validator:) instead")
+  public convenience init(_ name: String, _ default: ValueType, flag: Character? = nil, description: String? = nil, validator: Validator? = nil) {
+    self.init(name, default: `default`, flag: flag, description: description, validator: validator)
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
@@ -209,13 +224,18 @@ public class Flag : ArgumentDescriptor {
   public let description: String?
   public var type: ArgumentType { return .option }
 
-  public init(_ name: String, _ default: Bool = false, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil, description: String? = nil) {
+  public init(_ name: String, default: Bool = false, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil, description: String? = nil) {
     self.name = name
     self.`default` = `default`
     self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
     self.disabledFlag = disabledFlag
     self.description = description
+  }
+  
+  @available(*, deprecated, message: "use init(_:default:flag:disabledName:disabledFlag:description:) instead")
+  public convenience init(_ name: String, _ default: ValueType, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil, description: String? = nil) {
+    self.init(name, default: `default`, flag: flag, disabledName: disabledName, disabledFlag: disabledFlag, description: description)
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
