@@ -11,7 +11,7 @@ extension CommandType {
   public func run(_ version:String? = nil) -> Never  {
     let parser = ArgumentParser(arguments: CommandLine.arguments)
 
-    if parser.hasOption("version") && !parser.hasOption("help") {
+    if parser.has(option: "version") && !parser.has(option: "help") {
       if let version = version {
         print(version)
         exit(0)

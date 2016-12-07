@@ -117,7 +117,7 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
-    guard let shifted = try parser.shiftValueForOption(name, orFlag: flag) else { return `default` }
+    guard let shifted = try parser.shiftValue(for: name, or: flag) else { return `default` }
     let value = try T(string: shifted)
         
     if let validator = validator {
@@ -156,7 +156,7 @@ public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
-    guard let shifted = try parser.shiftValuesForOption(name, orFlag: flag, count: count) else { return `default` }
+    guard let shifted = try parser.shiftValues(for: name, or: flag, count: count) else { return `default` }
     let values = try shifted.map { try T(string: $0) }
     
     if let validator = validator {
@@ -195,7 +195,7 @@ public class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
     var values: ValueType? = nil
 
-    while let shifted = try parser.shiftValueForOption(name, orFlag: flag) {
+    while let shifted = try parser.shiftValue(for: name, or: flag) {
       let argument = try T(string: shifted)
 
       if values == nil {
@@ -239,21 +239,21 @@ public class Flag : ArgumentDescriptor {
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
-    if parser.hasOption(disabledName) {
+    if parser.has(option: disabledName) {
       return false
     }
 
-    if parser.hasOption(name) {
+    if parser.has(option: name) {
       return true
     }
 
     if let flag = flag {
-      if parser.hasFlag(flag) {
+      if parser.has(flag: flag) {
         return true
       }
     }
     if let disabledFlag = disabledFlag {
-      if parser.hasFlag(disabledFlag) {
+      if parser.has(flag: disabledFlag) {
         return false
       }
     }
