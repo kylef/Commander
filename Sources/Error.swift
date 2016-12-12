@@ -12,12 +12,6 @@ protocol ANSIConvertible : Error, CustomStringConvertible {
 
 extension ANSIConvertible {
   func print() {
-    // Check if Xcode Colors is installed and enabled.
-    let xcodeColorsEnabled = (getEnvValue("XcodeColors") == "YES")
-    if xcodeColorsEnabled {
-      fputs("\(ansiDescription)\n", stderr)
-    }
-    
     // Check if we are in any term env and the output is a tty.
     let termType = getEnvValue("TERM")
     if let t = termType, t.lowercased() != "dumb" && isatty(fileno(stdout)) != 0 {
