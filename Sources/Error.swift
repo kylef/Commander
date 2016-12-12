@@ -13,19 +13,12 @@ protocol ANSIConvertible : Error, CustomStringConvertible {
 extension ANSIConvertible {
   func print() {
     // Check if we are in any term env and the output is a tty.
-    let termType = getEnvValue("TERM")
-    if let t = termType, t.lowercased() != "dumb" && isatty(fileno(stdout)) != 0 {
+    if let termType = getenv("TERM"), String(cString: termType).lowercased() != "dumb" &&
+      isatty(fileno(stdout)) != 0 {
       fputs("\(ansiDescription)\n", stderr)
     } else {
       fputs("\(description)\n", stderr)
     }
-  }
-
-  private func getEnvValue(_ key: String) -> String? {
-    guard let value = getenv(key) else {
-      return nil
-    }
-    return String(cString: value)
   }
 }
 
