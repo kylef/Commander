@@ -112,7 +112,7 @@ public func command<A:ArgumentDescriptor>(_ descriptor:A, _ closure:@escaping (A
         BoxedArgumentDescriptor(value: descriptor),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -134,7 +134,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(_ descriptor: A
         BoxedArgumentDescriptor(value: descriptor1),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -158,7 +158,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor2),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -184,7 +184,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor3),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -212,7 +212,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor4),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -242,7 +242,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor5),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -274,7 +274,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor6),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -308,7 +308,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor7),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -344,7 +344,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor8),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -382,7 +382,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor9),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -422,7 +422,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor10),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -464,7 +464,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor11),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -508,7 +508,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor12),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 
@@ -554,7 +554,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor13),
     ])
 
-    if parser.has(option: "help") {
+    if parser.hasOption("help") {
       throw help
     }
 

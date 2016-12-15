@@ -239,21 +239,21 @@ public class Flag : ArgumentDescriptor {
   }
 
   public func parse(_ parser: ArgumentParser) throws -> ValueType {
-    if parser.has(option: disabledName) {
+    if parser.hasOption(disabledName) {
       return false
     }
 
-    if parser.has(option: name) {
+    if parser.hasOption(name) {
       return true
     }
 
     if let flag = flag {
-      if parser.has(flag: flag) {
+      if parser.hasFlag(flag) {
         return true
       }
     }
     if let disabledFlag = disabledFlag {
-      if parser.has(flag: disabledFlag) {
+      if parser.hasFlag(disabledFlag) {
         return false
       }
     }

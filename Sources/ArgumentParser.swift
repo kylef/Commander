@@ -149,7 +149,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   }
 
   /// Returns whether an option was specified in the arguments
-  public func has(option name: Option) -> Bool {
+  public func hasOption(_ name: Option) -> Bool {
     var index = 0
     for argument in arguments {
       switch argument {
@@ -169,7 +169,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   }
 
   /// Returns whether a flag was specified in the arguments
-  public func has(flag: Flag) -> Bool {
+  public func hasFlag(_ flag: Flag) -> Bool {
     var index = 0
     for argument in arguments {
       switch argument {
