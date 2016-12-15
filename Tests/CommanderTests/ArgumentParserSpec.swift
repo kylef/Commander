@@ -23,23 +23,23 @@ public func testArgumentParser() {
 
     $0.describe("options") {
       $0.it("returns when an option is found") {
-        try expect(parser.has(option: "verbose")).to.beTrue()
-        try expect(parser.has(option: "verbose")).to.beFalse()
+        try expect(parser.hasOption("verbose")).to.beTrue()
+        try expect(parser.hasOption("verbose")).to.beFalse()
       }
 
       $0.it("returns when an option is not found") {
-        try expect(parser.has(option: "f")).to.beFalse()
+        try expect(parser.hasOption("f")).to.beFalse()
       }
     }
 
     $0.describe("flags") {
       $0.it("returns when a flag is found") {
-        try expect(parser.has(flag: "f")).to.beTrue()
-        try expect(parser.has(flag: "f")).to.beFalse()
+        try expect(parser.hasFlag("f")).to.beTrue()
+        try expect(parser.hasFlag("f")).to.beFalse()
       }
 
       $0.it("returns when a flag is not found") {
-        try expect(parser.has(flag: "v")).to.beFalse()
+        try expect(parser.hasFlag("v")).to.beFalse()
       }
     }
 
