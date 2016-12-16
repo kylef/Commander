@@ -83,8 +83,8 @@ For example, for fixed positional arguments with descriptions, you can use:
 
 ```swift
 command(
-    Argument<Int>("name", description: "Your name"),
-    Argument<Int>("surname", description: "Your surname"),
+    Argument<String>("name", description: "Your name"),
+    Argument<String>("surname", description: "Your surname"),
     Argument<Int>("count", description: "Number of times to print")
 ) { name, surname, count in
     for _ in 0..<count {
