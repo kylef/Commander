@@ -1,3 +1,5 @@
+#!/usr/bin/env xcrun swift -F Rome
+
 import Commander
 
 Group {
