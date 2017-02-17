@@ -1,0 +1,6 @@
+disabled_rules:
+    - todo
+    - large_tuple
+    - function_parameter_count
+    - line_length
+    - file_length

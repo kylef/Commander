@@ -1,4 +1,4 @@
-public enum ArgumentError : Error, Equatable, CustomStringConvertible {
+public enum ArgumentError: Error, Equatable, CustomStringConvertible {
   case missingValue(argument: String?)
 
   /// Value is not convertible to type
@@ -7,7 +7,7 @@ public enum ArgumentError : Error, Equatable, CustomStringConvertible {
   /// Unused Argument
   case unusedArgument(String)
 
-  public var description:String {
+  public var description: String {
     switch self {
     case .missingValue(let key):
       if let key = key {
@@ -25,7 +25,6 @@ public enum ArgumentError : Error, Equatable, CustomStringConvertible {
   }
 }
 
-
 public func == (lhs: ArgumentError, rhs: ArgumentError) -> Bool {
   switch (lhs, rhs) {
   case let (.missingValue(lhsKey), .missingValue(rhsKey)):
@@ -39,8 +38,7 @@ public func == (lhs: ArgumentError, rhs: ArgumentError) -> Bool {
   }
 }
 
-
-public protocol ArgumentConvertible : CustomStringConvertible {
+public protocol ArgumentConvertible: CustomStringConvertible {
   /// Initialise the type with an ArgumentParser
   init(parser: ArgumentParser) throws
 }
@@ -69,8 +67,7 @@ extension Int : ArgumentConvertible {
   }
 }
 
-
-extension Float : ArgumentConvertible {
+extension Float: ArgumentConvertible {
   public init(parser: ArgumentParser) throws {
     if let value = parser.shift() {
       if let value = Float(value) {
@@ -84,8 +81,7 @@ extension Float : ArgumentConvertible {
   }
 }
 
-
-extension Double : ArgumentConvertible {
+extension Double: ArgumentConvertible {
   public init(parser: ArgumentParser) throws {
     if let value = parser.shift() {
       if let value = Double(value) {
@@ -99,8 +95,7 @@ extension Double : ArgumentConvertible {
   }
 }
 
-
-extension Array where Element : ArgumentConvertible {
+extension Array where Element: ArgumentConvertible {
   public init(parser: ArgumentParser) throws {
     var temp = [Element]()
 

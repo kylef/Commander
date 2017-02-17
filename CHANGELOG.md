@@ -1,5 +1,18 @@
 # Commander Changelog
 
+## 0.8.0
+
+### Bug fixes
+
+- Project passes swift linting now
+
+### Enhancements
+
+- Allow for optional values with Options, Arguments, Flags, etc...
+- Reorganized code a little so that the ArgumentDescription.swift file wasn't so large
+
+## 0.7.0
+
 ### Bug Fixes
 
 - Better detection of ANSI support in output tty.

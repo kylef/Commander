@@ -2,114 +2,111 @@
 
 // MARK: Commands
 
-
 /// Create a command which takes 1 argument using a closure
-public func command<A:ArgumentConvertible>(_ closure:@escaping (A) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible>(_ closure:@escaping (A) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser))
   }
 }
 
 /// Create a command which takes 2 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible>(_ closure:@escaping (A, A1) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible>(_ closure:@escaping (A, A1) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser))
   }
 }
 
 /// Create a command which takes 3 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible>(_ closure:@escaping (A, A1, A2) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible>(_ closure:@escaping (A, A1, A2) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser))
   }
 }
 
 /// Create a command which takes 4 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible>(_ closure:@escaping (A, A1, A2, A3) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible>(_ closure:@escaping (A, A1, A2, A3) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser))
   }
 }
 
 /// Create a command which takes 5 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible>(_ closure:@escaping (A, A1, A2, A3, A4) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible>(_ closure:@escaping (A, A1, A2, A3, A4) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser))
   }
 }
 
 /// Create a command which takes 6 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser))
   }
 }
 
 /// Create a command which takes 7 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser))
   }
 }
 
 /// Create a command which takes 8 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser))
   }
 }
 
 /// Create a command which takes 9 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser))
   }
 }
 
 /// Create a command which takes 10 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser))
   }
 }
 
 /// Create a command which takes 11 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser))
   }
 }
 
 /// Create a command which takes 12 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible, A11: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser))
   }
 }
 
 /// Create a command which takes 13 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible, A11: ArgumentConvertible, A12: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser))
   }
 }
 
 /// Create a command which takes 14 argument using a closure
-public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) throws-> ()) -> CommandType {
+public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible, A11: ArgumentConvertible, A12: ArgumentConvertible, A13: ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) throws-> Void) -> CommandType {
   return AnonymousCommand { parser in
     try closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser))
   }
 }
 
-
 // MARK: Argument Descriptor Commands
 
-
 /// Create a command which takes 1 argument using a closure with arguments
-public func command<A:ArgumentDescriptor>(_ descriptor:A, _ closure:@escaping (A.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor>(_ descriptor: A, _ closure:@escaping (A.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
-        BoxedArgumentDescriptor(value: descriptor),
+        BoxedArgumentDescriptor(value: descriptor)
     ])
 
     if parser.hasOption("help") {
@@ -127,11 +124,11 @@ public func command<A:ArgumentDescriptor>(_ descriptor:A, _ closure:@escaping (A
 }
 
 /// Create a command which takes 2 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ closure:@escaping (A.ValueType, A1.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ closure:@escaping (A.ValueType?, A1.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
-        BoxedArgumentDescriptor(value: descriptor1),
+        BoxedArgumentDescriptor(value: descriptor1)
     ])
 
     if parser.hasOption("help") {
@@ -150,12 +147,12 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(_ descriptor: A
 }
 
 /// Create a command which takes 3 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
-        BoxedArgumentDescriptor(value: descriptor2),
+        BoxedArgumentDescriptor(value: descriptor2)
     ])
 
     if parser.hasOption("help") {
@@ -175,13 +172,13 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 4 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
-        BoxedArgumentDescriptor(value: descriptor3),
+        BoxedArgumentDescriptor(value: descriptor3)
     ])
 
     if parser.hasOption("help") {
@@ -202,14 +199,14 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 5 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
         BoxedArgumentDescriptor(value: descriptor1),
         BoxedArgumentDescriptor(value: descriptor2),
         BoxedArgumentDescriptor(value: descriptor3),
-        BoxedArgumentDescriptor(value: descriptor4),
+        BoxedArgumentDescriptor(value: descriptor4)
     ])
 
     if parser.hasOption("help") {
@@ -231,7 +228,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 6 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -239,7 +236,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor2),
         BoxedArgumentDescriptor(value: descriptor3),
         BoxedArgumentDescriptor(value: descriptor4),
-        BoxedArgumentDescriptor(value: descriptor5),
+        BoxedArgumentDescriptor(value: descriptor5)
     ])
 
     if parser.hasOption("help") {
@@ -262,7 +259,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 7 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -271,7 +268,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor3),
         BoxedArgumentDescriptor(value: descriptor4),
         BoxedArgumentDescriptor(value: descriptor5),
-        BoxedArgumentDescriptor(value: descriptor6),
+        BoxedArgumentDescriptor(value: descriptor6)
     ])
 
     if parser.hasOption("help") {
@@ -295,7 +292,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 8 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -305,7 +302,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor4),
         BoxedArgumentDescriptor(value: descriptor5),
         BoxedArgumentDescriptor(value: descriptor6),
-        BoxedArgumentDescriptor(value: descriptor7),
+        BoxedArgumentDescriptor(value: descriptor7)
     ])
 
     if parser.hasOption("help") {
@@ -330,7 +327,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 9 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -341,7 +338,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor5),
         BoxedArgumentDescriptor(value: descriptor6),
         BoxedArgumentDescriptor(value: descriptor7),
-        BoxedArgumentDescriptor(value: descriptor8),
+        BoxedArgumentDescriptor(value: descriptor8)
     ])
 
     if parser.hasOption("help") {
@@ -367,7 +364,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 10 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -379,7 +376,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor6),
         BoxedArgumentDescriptor(value: descriptor7),
         BoxedArgumentDescriptor(value: descriptor8),
-        BoxedArgumentDescriptor(value: descriptor9),
+        BoxedArgumentDescriptor(value: descriptor9)
     ])
 
     if parser.hasOption("help") {
@@ -406,7 +403,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 11 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -419,7 +416,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor7),
         BoxedArgumentDescriptor(value: descriptor8),
         BoxedArgumentDescriptor(value: descriptor9),
-        BoxedArgumentDescriptor(value: descriptor10),
+        BoxedArgumentDescriptor(value: descriptor10)
     ])
 
     if parser.hasOption("help") {
@@ -447,7 +444,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 12 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor, A11: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?, A11.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -461,7 +458,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor8),
         BoxedArgumentDescriptor(value: descriptor9),
         BoxedArgumentDescriptor(value: descriptor10),
-        BoxedArgumentDescriptor(value: descriptor11),
+        BoxedArgumentDescriptor(value: descriptor11)
     ])
 
     if parser.hasOption("help") {
@@ -490,7 +487,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 13 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor, A11: ArgumentDescriptor, A12: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ descriptor12: A12, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?, A11.ValueType?, A12.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -505,7 +502,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor9),
         BoxedArgumentDescriptor(value: descriptor10),
         BoxedArgumentDescriptor(value: descriptor11),
-        BoxedArgumentDescriptor(value: descriptor12),
+        BoxedArgumentDescriptor(value: descriptor12)
     ])
 
     if parser.hasOption("help") {
@@ -535,7 +532,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create a command which takes 14 argument using a closure with arguments
-public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor>(_ descriptor: A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ closure:@escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType) throws -> ()) -> CommandType {
+public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor, A11: ArgumentDescriptor, A12: ArgumentDescriptor, A13: ArgumentDescriptor>(_ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ descriptor12: A12, _ descriptor13: A13, _ closure:@escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?, A11.ValueType?, A12.ValueType?, A13.ValueType?) throws -> Void) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([
         BoxedArgumentDescriptor(value: descriptor),
@@ -551,7 +548,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
         BoxedArgumentDescriptor(value: descriptor10),
         BoxedArgumentDescriptor(value: descriptor11),
         BoxedArgumentDescriptor(value: descriptor12),
-        BoxedArgumentDescriptor(value: descriptor13),
+        BoxedArgumentDescriptor(value: descriptor13)
     ])
 
     if parser.hasOption("help") {
@@ -581,158 +578,156 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
   }
 }
 
-
 // MARK: Group commands
 
 extension Group {
   // MARK: Argument Description Commands
 
   /// Add a command which takes no argument using a closure
-  public func command(_ name: String, description:String? = nil, _ closure:@escaping () throws -> ()) {
+  public func command(_ name: String, description: String? = nil, _ closure:@escaping () throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 1 arguments using a closure
-  public func command<A:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A) throws -> ()) {
+  public func command<A: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 2 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 3 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 4 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 5 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 6 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 7 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 8 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 9 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 10 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 11 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 12 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible, A11: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 13 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible, A11: ArgumentConvertible, A12: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   /// Add a command which takes 14 arguments using a closure
-  public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) throws -> ()) {
+  public func command<A: ArgumentConvertible, A1: ArgumentConvertible, A2: ArgumentConvertible, A3: ArgumentConvertible, A4: ArgumentConvertible, A5: ArgumentConvertible, A6: ArgumentConvertible, A7: ArgumentConvertible, A8: ArgumentConvertible, A9: ArgumentConvertible, A10: ArgumentConvertible, A11: ArgumentConvertible, A12: ArgumentConvertible, A13: ArgumentConvertible>(_ name: String, description: String? = nil, _ closure:@escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) throws -> Void) {
     addCommand(name, description, Commander.command(closure))
   }
 
   // MARK: Argument Descriptor Commands
 
-
   /// Add a command which takes 1 arguments using a closure
-  public func command<A:ArgumentDescriptor>(_ name: String, _ descriptor: A, description: String? = nil, _ closure: @escaping (A.ValueType) throws -> ()) {
+  public func command<A: ArgumentDescriptor>(_ name: String, _ descriptor: A, description: String? = nil, _ closure: @escaping (A.ValueType?) throws -> Void) {
     addCommand(name, description, Commander.command(descriptor, closure))
   }
 
   /// Add a command which takes 2 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, closure))
   }
 
   /// Add a command which takes 3 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, closure))
   }
 
   /// Add a command which takes 4 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, closure))
   }
 
   /// Add a command which takes 5 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, closure))
   }
 
   /// Add a command which takes 6 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, closure))
   }
 
   /// Add a command which takes 7 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, closure))
   }
 
   /// Add a command which takes 8 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, closure))
   }
 
   /// Add a command which takes 9 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  descriptor8,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, descriptor8, closure))
   }
 
   /// Add a command which takes 10 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  descriptor8,  descriptor9,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, descriptor8, descriptor9, closure))
   }
 
   /// Add a command which takes 11 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  descriptor8,  descriptor9,  descriptor10,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, descriptor8, descriptor9, descriptor10, closure))
   }
 
   /// Add a command which takes 12 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  descriptor8,  descriptor9,  descriptor10,  descriptor11,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor, A11: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?, A11.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, descriptor8, descriptor9, descriptor10, descriptor11, closure))
   }
 
   /// Add a command which takes 13 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ descriptor12: A12, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  descriptor8,  descriptor9,  descriptor10,  descriptor11,  descriptor12,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor, A11: ArgumentDescriptor, A12: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ descriptor12: A12, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?, A11.ValueType?, A12.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, descriptor8, descriptor9, descriptor10, descriptor11, descriptor12, closure))
   }
 
   /// Add a command which takes 14 arguments using a closure
-  public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ descriptor12: A12, _ descriptor13: A13, description: String? = nil, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType) throws -> ()) {
-    addCommand(name, description, Commander.command(descriptor, descriptor1,  descriptor2,  descriptor3,  descriptor4,  descriptor5,  descriptor6,  descriptor7,  descriptor8,  descriptor9,  descriptor10,  descriptor11,  descriptor12,  descriptor13,  closure))
+  public func command<A: ArgumentDescriptor, A1: ArgumentDescriptor, A2: ArgumentDescriptor, A3: ArgumentDescriptor, A4: ArgumentDescriptor, A5: ArgumentDescriptor, A6: ArgumentDescriptor, A7: ArgumentDescriptor, A8: ArgumentDescriptor, A9: ArgumentDescriptor, A10: ArgumentDescriptor, A11: ArgumentDescriptor, A12: ArgumentDescriptor, A13: ArgumentDescriptor>(_ name: String, _ descriptor: A, _ descriptor1: A1, _ descriptor2: A2, _ descriptor3: A3, _ descriptor4: A4, _ descriptor5: A5, _ descriptor6: A6, _ descriptor7: A7, _ descriptor8: A8, _ descriptor9: A9, _ descriptor10: A10, _ descriptor11: A11, _ descriptor12: A12, _ descriptor13: A13, description: String? = nil, _ closure: @escaping (A.ValueType?, A1.ValueType?, A2.ValueType?, A3.ValueType?, A4.ValueType?, A5.ValueType?, A6.ValueType?, A7.ValueType?, A8.ValueType?, A9.ValueType?, A10.ValueType?, A11.ValueType?, A12.ValueType?, A13.ValueType?) throws -> Void) {
+    addCommand(name, description, Commander.command(descriptor, descriptor1, descriptor2, descriptor3, descriptor4, descriptor5, descriptor6, descriptor7, descriptor8, descriptor9, descriptor10, descriptor11, descriptor12, descriptor13, closure))
   }
 
 }
