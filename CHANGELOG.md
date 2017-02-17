@@ -1,6 +1,6 @@
 # Commander Changelog
 
-## 0.8.0
+## 0.7.0
 
 ### Bug fixes
 
@@ -11,7 +11,7 @@
 - Allow for optional values with Options, Arguments, Flags, etc...
 - Reorganized code a little so that the ArgumentDescription.swift file wasn't so large
 
-## 0.7.0
+## 0.6.1
 
 ### Bug Fixes
 
