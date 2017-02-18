@@ -17,7 +17,7 @@ public class Option<T : ArgumentConvertible> : ArgumentDescriptor {
     self.validator = validator
   }
 
-  public func parse(_ parser: ArgumentParser) throws -> ValueType? {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     if let value = try parser.shiftValueForOption(name) {
       let value = try T(string: value)
 
@@ -60,7 +60,7 @@ public class Options<T : ArgumentConvertible> : ArgumentDescriptor {
     self.description = description
   }
 
-  public func parse(_ parser: ArgumentParser) throws -> ValueType? {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     let values = try parser.shiftValuesForOption(name, count: count)
     return try values?.map { try T(string: $0) } ?? `default`
   }
@@ -80,7 +80,7 @@ public class VariadicOption<T : ArgumentConvertible> : ArgumentDescriptor {
     self.description = description
   }
 
-  public func parse(_ parser: ArgumentParser) throws -> ValueType? {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     var values: ValueType? = nil
 
     while let shifted = try parser.shiftValueForOption(name) {

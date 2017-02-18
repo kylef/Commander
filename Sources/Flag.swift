@@ -19,7 +19,7 @@ public class Flag: ArgumentDescriptor {
     self.`default` = `default`
   }
 
-  public func parse(_ parser: ArgumentParser) throws -> ValueType? {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     if parser.hasOption(disabledName) {
       return false
     }

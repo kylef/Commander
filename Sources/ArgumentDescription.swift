@@ -15,7 +15,7 @@ public protocol ArgumentDescriptor {
   var type: ArgumentType { get }
 
   /// Parse the argument
-  func parse(_ parser: ArgumentParser) throws -> ValueType?
+  func parse(_ parser: ArgumentParser) throws -> ValueType
 }
 
 extension ArgumentConvertible {

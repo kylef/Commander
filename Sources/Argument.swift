@@ -14,7 +14,7 @@ public class VariadicArgument<T: ArgumentConvertible>: ArgumentDescriptor {
     self.validator = validator
   }
 
-  public func parse(_ parser: ArgumentParser) throws -> ValueType? {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     let value = try [T](parser: parser)
 
     if let validator = validator {
@@ -44,7 +44,7 @@ public class Argument<T : ArgumentConvertible> : ArgumentDescriptor {
     self.validator = validator
   }
 
-  public func parse(_ parser: ArgumentParser) throws -> ValueType? {
+  public func parse(_ parser: ArgumentParser) throws -> ValueType {
     let value: T
 
     do {
