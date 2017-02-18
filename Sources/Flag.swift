@@ -10,7 +10,7 @@ public class Flag: ArgumentDescriptor {
   public var type: ArgumentType { return .option }
 
   public init(_ name: String, flag: Character? = nil, disabledName: String? = nil, disabledFlag: Character? = nil,
-              description: String? = nil, default: Bool = false) {
+              description: String? = nil, default: ValueType = false) {
     self.name = name
     self.disabledName = disabledName ?? "no-\(name)"
     self.flag = flag
