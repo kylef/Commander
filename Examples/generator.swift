@@ -5,7 +5,7 @@ import Stencil
 import PathKit
 
 command(
-  Option("amount", 15, description: "The number of arguments to support.")
+  Option("amount", default: 15, description: "The number of arguments to support.")
 ) { amount in
   let template = try Template(path: Path("generator-template.swift"))
 
