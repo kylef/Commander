@@ -39,11 +39,6 @@ open class Group : CommandType {
     let name: String
     let description: String?
     let command: CommandType
-
-    init(name: String, description: String?, command: CommandType) {
-      self.name = name
-      self.description = description
-      self.command = command
     }
   }
 
