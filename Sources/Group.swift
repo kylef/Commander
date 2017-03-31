@@ -35,16 +35,10 @@ public func == (lhs: GroupError, rhs: GroupError) -> Bool {
 
 /// Represents a group of commands
 open class Group : CommandType {
-  struct SubCommand {
-    let name: String
-    let description: String?
-    let command: CommandType
-
-    init(name: String, description: String?, command: CommandType) {
-      self.name = name
-      self.description = description
-      self.command = command
-    }
+  public struct SubCommand {
+    public let name: String
+    public let description: String?
+    public let command: CommandType
   }
 
   var commands = [SubCommand]()
