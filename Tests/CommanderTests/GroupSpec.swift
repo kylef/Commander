@@ -74,6 +74,32 @@ public func testGroup() {
       try expect(group).run(["g1", "g2"]).toThrow(GroupError.noCommand("g1 g2", subsubgroup))
     }
 
+    $0.it("calls unknownCommand property when present") {
+      let group = Group {
+        $0.unknownCommand = { (_, _) in throw GroupError.unknownCommand("gotcha!") }
+      }
+
+      try expect(group).run(["yo"]).toThrow(GroupError.unknownCommand("gotcha!"))
+    }
+
+    $0.it("calls noCommand property when present") {
+      let subgroup = Group()
+      let group = Group {
+        $0.addCommand("g1", subgroup)
+        $0.noCommand = { (_, group, _) in throw GroupError.noCommand("gotcha!", group) }
+      }
+
+      try expect(group).run([]).toThrow(GroupError.noCommand("gotcha!", group))
+      try expect(group).run(["g1"]).toThrow(GroupError.noCommand("gotcha!", subgroup))
+    }
+
+    $0.it("calls noCommand property when present") {
+      let group = Group()
+      group.noCommand = { _, _, _ in throw GroupError.noCommand("gotcha!", group) }
+
+      try expect(group).run([]).toThrow(GroupError.noCommand("gotcha!", group))
+    }
+
     $0.describe("extensions") {
       $0.it("has a convinience initialiser calling a builder closure") {
         var didRunHelpCommand = false
