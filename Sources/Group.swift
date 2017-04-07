@@ -67,29 +67,30 @@ open class Group : CommandType {
 
   /// Run the group command
   open func run(_ parser: ArgumentParser) throws {
-    if let name = parser.shift() {
-      let command = commands.filter { $0.name == name }.first
-      if let command = command {
-        do {
-          try command.command.run(parser)
-        } catch GroupError.unknownCommand(let childName) {
-          throw GroupError.unknownCommand("\(name) \(childName)")
-        } catch GroupError.noCommand(let path, let group) {
-          if let path = path {
-            throw GroupError.noCommand("\(name) \(path)", group)
-          }
+    guard let name = parser.shift() else {
+      throw GroupError.noCommand(nil, self)
+    }
 
-          throw GroupError.noCommand(name, group)
-        } catch let error as Help {
-          throw error.reraise(name)
-        }
-      } else if let unknownCommand = unknownCommand {
-        try unknownCommand(name, parser)
+    guard let command = commands.filter { $0.name == name }.first else {
+      if let unknownCommand = unknownCommand {
+        return try unknownCommand(name, parser)
       } else {
         throw GroupError.unknownCommand(name)
       }
-    } else {
-      throw GroupError.noCommand(nil, self)
+    }
+
+    do {
+      try command.command.run(parser)
+    } catch GroupError.unknownCommand(let childName) {
+      throw GroupError.unknownCommand("\(name) \(childName)")
+    } catch GroupError.noCommand(let path, let group) {
+      if let path = path {
+        throw GroupError.noCommand("\(name) \(path)", group)
+      }
+
+      throw GroupError.noCommand(name, group)
+    } catch let error as Help {
+      throw error.reraise(name)
     }
   }
 }
