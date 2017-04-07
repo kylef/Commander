@@ -71,7 +71,7 @@ open class Group : CommandType {
       throw GroupError.noCommand(nil, self)
     }
 
-    guard let command = commands.filter { $0.name == name }.first else {
+    guard let command = commands.first(where: { $0.name == name }) else {
       if let unknownCommand = unknownCommand {
         return try unknownCommand(name, parser)
       } else {
