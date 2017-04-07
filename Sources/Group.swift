@@ -52,6 +52,9 @@ open class Group : CommandType {
   // When set, allows you to override the default unknown command behaviour
   open var unknownCommand: ((_ name: String, _ parser: ArgumentParser) throws -> ())?
 
+  // When set, allows you to override the default no command behaviour
+  open var noCommand: ((_ path: String?, _ group: Group, _ parser: ArgumentParser) throws -> ())?
+
   /// Create a new group
   public init() {}
 
@@ -68,7 +71,11 @@ open class Group : CommandType {
   /// Run the group command
   open func run(_ parser: ArgumentParser) throws {
     guard let name = parser.shift() else {
-      throw GroupError.noCommand(nil, self)
+      if let noCommand = noCommand {
+        return try noCommand(nil, self, parser)
+      } else {
+        throw GroupError.noCommand(nil, self)
+      }
     }
 
     guard let command = commands.first(where: { $0.name == name }) else {
@@ -84,11 +91,13 @@ open class Group : CommandType {
     } catch GroupError.unknownCommand(let childName) {
       throw GroupError.unknownCommand("\(name) \(childName)")
     } catch GroupError.noCommand(let path, let group) {
-      if let path = path {
-        throw GroupError.noCommand("\(name) \(path)", group)
-      }
+      let path = (path == nil) ? name : "\(name) \(path!)"
 
-      throw GroupError.noCommand(name, group)
+      if let noCommand = noCommand {
+        try noCommand(path, group, parser)
+      } else {
+        throw GroupError.noCommand(path, group)
+      }
     } catch let error as Help {
       throw error.reraise(name)
     }
