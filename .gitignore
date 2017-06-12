@@ -1,4 +1,7 @@
-/.build/
-Packages/
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+
 Examples/hello
 Examples/pod
