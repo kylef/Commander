@@ -46,14 +46,14 @@ public func testArgumentParser() {
     $0.describe("when shifting a flag") {
       $0.it("returns the flag value when found") {
         parser = ArgumentParser(arguments: ["-o", "value"])
-        let value = try parser.shiftValueForFlag("o")
+        let value = try parser.shiftValue(for: "o" as ArgumentParser.Flag)
 
         try expect(value) == "value"
       }
 
       $0.it("removes the flag and it's value") {
         parser = ArgumentParser(arguments: ["-o", "value"])
-        _ = try parser.shiftValueForFlag("o")
+        _ = try parser.shiftValue(for: "o" as ArgumentParser.Flag)
 
         try expect(parser.description) == ""
       }
@@ -61,27 +61,27 @@ public func testArgumentParser() {
 
     $0.describe("when shifting an option") {
       $0.it("should return the options value") {
-        let value = try parser.shiftValueForOption("verbose")
+        let value = try parser.shiftValue(for: "verbose")
         try expect(value) == "middle"
       }
 
       $0.it("should return nil when option is unknown") {
-        let value = try parser.shiftValueForOption("unknown")
+        let value = try parser.shiftValue(for: "unknown")
         try expect(value).to.beNil()
       }
 
       $0.it("should thrown an error when options value is not positional") {
         let parser = ArgumentParser(arguments: ["--verbose", "-t"])
-        try expect(try parser.shiftValueForOption("verbose")).toThrow(ArgumentParserError("Unexpected flag `-t` as a value for `--verbose`"))
+        try expect(try parser.shiftValue(for: "verbose")).toThrow(ArgumentParserError("Unexpected flag `-t` as a value for `--verbose`"))
       }
 
       $0.it("should throw when value is missing") {
         let parser = ArgumentParser(arguments: ["--verbose"])
-        try expect(try parser.shiftValueForOption("verbose")).toThrow(ArgumentError.missingValue(argument: "--verbose"))
+        try expect(try parser.shiftValue(for: "verbose")).toThrow(ArgumentError.missingValue(argument: "--verbose"))
       }
 
       $0.it("should return arguments for option") {
-        let value = try parser.shiftValuesForOption("verbose", count: 2)
+        let value = try parser.shiftValues(for: "verbose", count: 2)
         try expect(value?.count) == 2
         try expect(value?.first) == "middle"
         try expect(value?.last) == "end"
