@@ -15,7 +15,7 @@
     "git": "https://github.com/kylef/Commander.git",
     "tag": "0.6.0"
   },
-  "source_files": "Sources/*.swift",
+  "source_files": "Sources/Commander/*.swift",
   "platforms": {
     "ios": "8.0",
     "osx": "10.9"
