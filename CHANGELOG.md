@@ -1,6 +1,6 @@
 # Commander Changelog
 
-## Master
+## 0.7.0
 
 Switches to Swift 4.0.
 
