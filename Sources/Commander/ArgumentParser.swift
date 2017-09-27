@@ -57,7 +57,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
         if flags.characters.first == "-" {
           let option = flags[flags.characters.index(after: flags.startIndex)..<flags.endIndex]
-          return .option(option)
+          return .option(String(option))
         }
 
         return .flag(Set(flags.characters))

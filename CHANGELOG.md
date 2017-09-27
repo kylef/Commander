@@ -1,5 +1,9 @@
 # Commander Changelog
 
+## Master
+
+Switches to Swift 4.0.
+
 ### Bug Fixes
 
 - Better detection of ANSI support in output tty.
