@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
   name: "Commander",
+  products: [
+    .library(name: "Commander", targets: ["Commander"]),
+  ],
   dependencies: [
     .package(url: "https://github.com/kylef/Spectre.git", from: "0.8.0"),
   ],

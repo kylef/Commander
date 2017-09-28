@@ -1,5 +1,11 @@
 # Commander Changelog
 
+## Master
+
+### Bug Fixes
+
+- The Swift Package now contains the Commander library product.
+
 ## 0.7.0
 
 Switches to Swift 4.0.
