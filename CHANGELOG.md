@@ -1,6 +1,6 @@
 # Commander Changelog
 
-## Master
+## 0.7.1
 
 ### Bug Fixes
 

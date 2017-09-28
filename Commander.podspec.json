@@ -1,6 +1,6 @@
 {
   "name": "Commander",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "summary": "Compose beautiful command line interfaces",
   "homepage": "https://github.com/kylef/Commander",
   "license": {
@@ -13,7 +13,7 @@
   "social_media_url": "http://twitter.com/kylefuller",
   "source": {
     "git": "https://github.com/kylef/Commander.git",
-    "tag": "0.7.0"
+    "tag": "0.7.1"
   },
   "source_files": "Sources/Commander/*.swift",
   "platforms": {
