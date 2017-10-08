@@ -50,26 +50,26 @@ open class Group : CommandType {
   var commands = [SubCommand]()
 
   // When set, allows you to override the default unknown command behaviour
-  open var unknownCommand: ((_ name: String, _ parser: ArgumentParser) throws -> ())?
+  public var unknownCommand: ((_ name: String, _ parser: ArgumentParser) throws -> ())?
 
   // When set, allows you to override the default no command behaviour
-  open var noCommand: ((_ path: String?, _ group: Group, _ parser: ArgumentParser) throws -> ())?
+  public var noCommand: ((_ path: String?, _ group: Group, _ parser: ArgumentParser) throws -> ())?
 
   /// Create a new group
   public init() {}
 
   /// Add a named sub-command to the group
-  open func addCommand(_ name: String, _ command: CommandType) {
+  public func addCommand(_ name: String, _ command: CommandType) {
     commands.append(SubCommand(name: name, description: nil, command: command))
   }
 
   /// Add a named sub-command to the group with a description
-  open func addCommand(_ name: String, _ description: String?, _ command: CommandType) {
+  public func addCommand(_ name: String, _ description: String?, _ command: CommandType) {
     commands.append(SubCommand(name: name, description: description, command: command))
   }
 
   /// Run the group command
-  open func run(_ parser: ArgumentParser) throws {
+  public func run(_ parser: ArgumentParser) throws {
     guard let name = parser.shift() else {
       if let noCommand = noCommand {
         return try noCommand(nil, self, parser)
