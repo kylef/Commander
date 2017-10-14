@@ -9,6 +9,10 @@
   - All Option-related types now have a flag parameter.
   - All constructors have the same constructor arguments order. [#35](https://github.com/kylef/Commander/issues/35)
 
+### Bug Fixes
+
+- Restores compatibility with Linux.
+
 ## 0.7.1
 
 ### Bug Fixes

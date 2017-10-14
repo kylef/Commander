@@ -54,10 +54,10 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
   /// Initialises the ArgumentParser with an array of arguments
   public init(arguments: [String]) {
     self.arguments = arguments.map { argument in
-      if argument.hasPrefix("-") {
+      if argument.first == "-" {
         let flags = argument[argument.index(after: argument.startIndex)..<argument.endIndex]
 
-        if flags.hasPrefix("-") {
+        if flags.first == "-" {
           let option = flags[flags.index(after: flags.startIndex)..<flags.endIndex]
           return .option(String(option))
         }
