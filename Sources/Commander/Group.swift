@@ -48,6 +48,9 @@ open class Group : CommandType {
   }
 
   var commands = [SubCommand]()
+  public var commandNames: [String] {
+    return commands.map { $0.name }
+  }
 
   // When set, allows you to override the default unknown command behaviour
   public var unknownCommand: ((_ name: String, _ parser: ArgumentParser) throws -> ())?
