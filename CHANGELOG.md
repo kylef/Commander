@@ -1,5 +1,12 @@
 # Commander Changelog
 
+## Master
+
+### Bug Fixes
+
+- Only print errors in red if the output terminal supports ANSI color codes.
+  [#58](https://github.com/kylef/Commander/pull/58)
+
 ## 0.8.0
 
 ### Enhancements
