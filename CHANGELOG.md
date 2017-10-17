@@ -1,5 +1,12 @@
 # Commander Changelog
 
+## Master
+
+### Bug Fixes
+
+- Fix compilation errors in Swift 3.
+  [#57](https://github.com/kylef/Commander/pull/57)
+
 ## 0.8.0
 
 ### Enhancements
