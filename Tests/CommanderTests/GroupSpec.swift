@@ -158,6 +158,17 @@ public func testGroup() {
   }
 
   describe("Group") {
+    $0.it("matches alias") {
+      var didRun = false
+      try Group {
+        $0.addCommand("list", alias: "ls", nil, command {
+          didRun = true
+        })
+      }.run(["ls"])
+      try expect(didRun) == true
+    }
+  }
+  describe("Group") {
     let group = Group {
       $0.command("create") {}
       $0.command("lint") {}
