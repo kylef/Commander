@@ -161,7 +161,7 @@ public func testGroup() {
     $0.it("matches alias") {
       var didRun = false
       try Group {
-        $0.addCommand("list", alias: "ls", nil, command {
+        $0.addCommand("list", alias: "ls", command {
           didRun = true
         })
       }.run(["ls"])

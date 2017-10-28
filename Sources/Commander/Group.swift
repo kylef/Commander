@@ -68,8 +68,13 @@ open class Group : CommandType {
     commands.append(SubCommand(name: name, alias: nil, description: nil, command: command))
   }
 
+  /// Add a named sub-command to the group with a description
+  public func addCommand(_ name: String, _ description: String?, _ command: CommandType) {
+    commands.append(SubCommand(name: name, alias: nil, description: description, command: command))
+  }
+
   /// Add a named sub-command to the group with an alias and a description
-  public func addCommand(_ name: String, alias: String? = nil, _ description: String? = nil, _ command: CommandType) {
+  public func addCommand(_ name: String, alias: String?, description: String? = nil, _ command: CommandType) {
     commands.append(SubCommand(name: name, alias: alias, description: description, command: command))
   }
 
