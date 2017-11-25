@@ -4,8 +4,13 @@
 
 ### Bug Fixes
 
+
 - Only print errors in red if the output terminal supports ANSI color codes.
   [#58](https://github.com/kylef/Commander/pull/58)
+
+- Showing default values for custom `ArgumentConvertible` types are now
+  supported in the `--help` output of commands.
+
 
 ## 0.8.0
 

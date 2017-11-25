@@ -281,8 +281,13 @@ class BoxedArgumentDescriptor {
     } else if let value = value as? Option<Int> {
       `default` = value.`default`.description
     } else {
-      // TODO, default for Option of generic type
-      `default` = nil
+      let mirror = Mirror(reflecting: value)
+
+      if let defaultDescendant = mirror.descendant("default"), let defaultConvertible = defaultDescendant as? CustomStringConvertible {
+        `default` = defaultConvertible.description
+      } else {
+        `default` = nil
+      }
     }
   }
 }
