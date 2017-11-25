@@ -1,5 +1,13 @@
 # Commander Changelog
 
+## Master
+
+### Bug Fixes
+
+- Showing default values for custom `ArgumentConvertible` types are now
+  supported in the `--help` output of commands.
+
+
 ## 0.8.0
 
 ### Enhancements

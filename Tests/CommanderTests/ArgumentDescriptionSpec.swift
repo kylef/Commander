@@ -24,5 +24,37 @@ public func testArgumentDescription() {
       try expect(help.description) == "Options:\n    --opt1 [default: example]\n    --flag1 [default: false] - an example\n    --flag2 [default: true]"
       try expect(help.ansiDescription) == "Options:\n    \(ANSI.blue)--opt1\(ANSI.reset) [default: example]\n    \(ANSI.blue)--flag1\(ANSI.reset) [default: false] - an example\n    \(ANSI.blue)--flag2\(ANSI.reset) [default: true]"
     }
+
+    $0.it("shows default for custom types conforming to CustomStringConvertible") {
+      enum Direction: String, CustomStringConvertible, ArgumentConvertible {
+        case north
+        case south
+
+        public init(parser: ArgumentParser) throws {
+          if let value = parser.shift() {
+            switch value {
+              case "north":
+                self = .north
+              case "south":
+                self = .south
+              default:
+                throw ArgumentError.invalidType(value: value, type: "direction", argument: nil)
+            }
+          } else {
+            throw ArgumentError.missingValue(argument: nil)
+          }
+        }
+
+        var description: String {
+          return rawValue
+        }
+      }
+
+      let help = Help([
+        BoxedArgumentDescriptor(value: Option("direction", default: Direction.south)),
+      ])
+
+      try expect(help.description) == "Options:\n    --direction [default: south]"
+    }
   }
 }
