@@ -11,8 +11,8 @@ endif
 build:
 	@$(PARAM) swift build
 
-test: build
-	@.build/debug/spectre-build
+test:
+	@$(PARAM) swift test
 
 Examples/%: build
 	@echo "Building example $*"
