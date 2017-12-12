@@ -1,4 +1,5 @@
 SWIFTC=swiftc
+PARAM = COMMANDER_SWIFTPM_DEVELOPMENT=YES
 
 ifeq ($(shell uname -s), Darwin)
 XCODE=$(shell xcode-select -p)
@@ -8,7 +9,7 @@ SWIFTC=swiftc -target $(TARGET) -sdk $(SDK) -Xlinker -all_load
 endif
 
 build:
-	@swift build
+	@$(PARAM) swift build
 
 test: build
 	@.build/debug/spectre-build
