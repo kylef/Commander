@@ -117,3 +117,8 @@ extension Array where Element : ArgumentConvertible {
     self.init(temp)
   }
 }
+
+
+#if swift(>=4.1)
+extension Array : ArgumentConvertible where Element : ArgumentConvertible {}
+#endif
