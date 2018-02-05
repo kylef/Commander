@@ -95,6 +95,30 @@ public func testArgumentConvertible() {
     }
   }
 
+  describe("Optional ArgumentConvertible") {
+    $0.it("converts a valid value as some") {
+      let parser = ArgumentParser(arguments: ["5"])
+      let value = try Optional<Double>(parser: parser)
+
+      try expect(value) == 5
+    }
+
+    $0.it("converts missing value as none") {
+      let parser = ArgumentParser(arguments: [])
+      let value = try Optional<Double>(parser: parser)
+
+      try expect(value).to.beNil()
+    }
+
+    $0.it("errors on invalid value") {
+      let parser = ArgumentParser(arguments: ["five"])
+
+      try expect {
+        try Optional<Double>(parser: parser)
+      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
+    }
+  }
+
   /*
   describe("Array ArgumentConvertible") {
     $0.it("consumes all available arguments") {

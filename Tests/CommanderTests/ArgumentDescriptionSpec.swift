@@ -21,6 +21,26 @@ public func testArgumentDescription() {
           throw skip("Unsupported Swift")
 #endif
         }
+
+        $0.it("can parse optional argument") {
+#if swift(>=4.1)
+          let parser = ArgumentParser(arguments: ["Kyle"])
+          let value = try Argument<String?>("name").parse(parser)
+          try expect(value) == "Kyle"
+#else
+          throw skip("Unsupported Swift")
+#endif
+        }
+
+        $0.it("can parse missing optional argument") {
+#if swift(>=4.1)
+          let parser = ArgumentParser(arguments: [])
+          let value = try Argument<String?>("name").parse(parser)
+          try expect(value).to.beNil()
+#else
+          throw skip("Unsupported Swift")
+#endif
+        }
       }
     }
 
