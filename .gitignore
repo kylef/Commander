@@ -1,4 +1,4 @@
 /.build/
-Packages/
 Examples/hello
 Examples/pod
+Package.resolved
