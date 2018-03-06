@@ -37,11 +37,13 @@ public func == (lhs: GroupError, rhs: GroupError) -> Bool {
 open class Group : CommandType {
   struct SubCommand {
     let name: String
+    let alias: String?
     let description: String?
     let command: CommandType
 
-    init(name: String, description: String?, command: CommandType) {
+    init(name: String, alias: String?, description: String?, command: CommandType) {
       self.name = name
+      self.alias = alias
       self.description = description
       self.command = command
     }
@@ -63,12 +65,17 @@ open class Group : CommandType {
 
   /// Add a named sub-command to the group
   public func addCommand(_ name: String, _ command: CommandType) {
-    commands.append(SubCommand(name: name, description: nil, command: command))
+    commands.append(SubCommand(name: name, alias: nil, description: nil, command: command))
   }
 
   /// Add a named sub-command to the group with a description
   public func addCommand(_ name: String, _ description: String?, _ command: CommandType) {
-    commands.append(SubCommand(name: name, description: description, command: command))
+    commands.append(SubCommand(name: name, alias: nil, description: description, command: command))
+  }
+
+  /// Add a named sub-command to the group with an alias and a description
+  public func addCommand(_ name: String, alias: String?, description: String? = nil, _ command: CommandType) {
+    commands.append(SubCommand(name: name, alias: alias, description: description, command: command))
   }
 
   /// Run the group command
@@ -81,7 +88,7 @@ open class Group : CommandType {
       }
     }
 
-    guard let command = commands.first(where: { $0.name == name }) else {
+    guard let command = commands.first(where: { $0.name == name || $0.alias == name }) else {
       if let unknownCommand = unknownCommand {
         return try unknownCommand(name, parser)
       } else {
