@@ -1,4 +1,4 @@
-private enum Arg : CustomStringConvertible {
+private enum Arg : CustomStringConvertible, Equatable {
   /// A positional argument
   case argument(String)
 
@@ -29,6 +29,11 @@ private enum Arg : CustomStringConvertible {
       return "flag"
     }
   }
+}
+
+
+private func == (lhs: Arg, rhs: Arg) -> Bool {
+  return lhs.description == rhs.description
 }
 
 
@@ -77,8 +82,8 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     return arguments.map { $0.description }.joined(separator: " ")
   }
 
-  public var isEmpty:Bool {
-    return arguments.isEmpty
+  public var isEmpty: Bool {
+    return arguments.first { $0 != .argument("") } == nil
   }
 
   public var remainder:[String] {

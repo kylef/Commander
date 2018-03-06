@@ -10,6 +10,22 @@ public func testArgumentParser() {
       parser = ArgumentParser(arguments: ["first", "-f", "--verbose", "middle", "end", "--varOption", "varValue1", "--varOption", "varValue2"])
     }
 
+    $0.describe("isEmpty") {
+      $0.it("returns when not empty") {
+        parser = ArgumentParser(arguments: [])
+        try expect(parser.isEmpty).to.beTrue()
+      }
+
+      $0.it("returns when not empty") {
+        try expect(parser.isEmpty).to.beFalse()
+      }
+
+      $0.it("returns empty when containing empty arguments") {
+        parser = ArgumentParser(arguments: [""])
+        try expect(parser.isEmpty).to.beTrue()
+      }
+    }
+
     $0.describe("shifting") {
       $0.it("provides first positional argument") {
         try expect(parser.shift()) == "first"
