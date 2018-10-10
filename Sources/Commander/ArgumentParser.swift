@@ -58,7 +58,19 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
   /// Initialises the ArgumentParser with an array of arguments
   public init(arguments: [String]) {
-    self.arguments = arguments.map { argument in
+    let splitArguments = arguments.split(maxSplits: 1, omittingEmptySubsequences: false) { $0 == "--" }
+
+    let unfixedArguments: [String]
+    let fixedArguments: [String]
+    if splitArguments.count == 2, let prefix = splitArguments.first, let suffix = splitArguments.last {
+      unfixedArguments = Array(prefix)
+      fixedArguments = Array(suffix)
+    } else {
+      unfixedArguments = arguments
+      fixedArguments = []
+    }
+
+    self.arguments = unfixedArguments.map { argument in
       if argument.first == "-" {
         let flags = argument[argument.index(after: argument.startIndex)..<argument.endIndex]
 
@@ -72,6 +84,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
       return .argument(argument)
     }
+    self.arguments.append(contentsOf: fixedArguments.map { .argument($0) })
   }
 
   public init(parser: ArgumentParser) throws {

@@ -22,6 +22,10 @@
     command(Option<String?>("name", default: nil)) { name in }
     ```
 
+- Added support for using `--` to signal that subsequent values should
+  be treated as arguments instead of options.  
+  [Tamas Lustyik](https://github.com/lvsti)
+
 ### Bug Fixes
 
 - Showing default values for custom `ArgumentConvertible` types are now

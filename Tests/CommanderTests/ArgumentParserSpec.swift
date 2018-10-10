@@ -119,5 +119,34 @@ public func testArgumentParser() {
         try expect(values.count) == 0
       }
     }
+
+    $0.describe("positional arguments") {
+      $0.before {
+        parser = ArgumentParser(arguments: ["-a", "value1", "--", "-b", "value2"])
+      }
+
+      $0.it("should not count double dash into the arguments") {
+        try expect(parser.remainder.count) == 4
+        _ = try parser.shiftValue(for: "a" as ArgumentParser.Flag)
+        try expect(parser.remainder.count) == 2
+      }
+
+      $0.it("should not parse parameters as flags after the double dash") {
+        try expect(parser.hasFlag("a" as ArgumentParser.Flag)).to.beTrue()
+        try expect(parser.hasFlag("b" as ArgumentParser.Flag)).to.beFalse()
+
+        _ = try parser.shiftValue(for: "a" as ArgumentParser.Flag)
+        let value = try parser.shiftValue(for: "b" as ArgumentParser.Flag)
+        try expect(value).to.beNil()
+      }
+
+      $0.it("should return parameters after the double dash as arguments") {
+        _ = try parser.shiftValue(for: "a" as ArgumentParser.Flag)
+        let value1 = parser.shift()
+        let value2 = parser.shift()
+        try expect(value1) == "-b"
+        try expect(value2) == "value2"
+      }
+    }
   }
 }
