@@ -26,6 +26,10 @@
   be treated as arguments instead of options.  
   [Tamas Lustyik](https://github.com/lvsti)
 
+- Output of `--help` for group commands will now sort the commands in
+  alphabetical order.  
+  [Cameron Mc Gorian](https://github.com/sbarow)
+
 ### Bug Fixes
 
 - Showing default values for custom `ArgumentConvertible` types are now
