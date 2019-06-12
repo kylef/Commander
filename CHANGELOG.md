@@ -6,6 +6,22 @@
 
 - Support for Swift < 4.2 has been removed.
 
+### Enhancements
+
+- Added syntax for using array as a type with `Argument` instead of using
+  `VariadicArgument`:
+
+    ```swift
+    command(Argument<[String]>("names")) { names in }
+    ```
+
+- Added support for optional arguments and options, for example:
+
+    ```swift
+    command(Argument<String?>("name")) { name in }
+    command(Option<String?>("name", default: nil)) { name in }
+    ```
+
 ### Bug Fixes
 
 - Showing default values for custom `ArgumentConvertible` types are now
