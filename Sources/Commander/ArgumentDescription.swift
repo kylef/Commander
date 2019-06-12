@@ -27,7 +27,7 @@ extension ArgumentConvertible {
 }
 
 
-@available(*, deprecated, message: "use array as an ArgumentConvertible in Swift 4.1")
+@available(*, deprecated, message: "use array as an ArgumentConvertible")
 public class VariadicArgument<T : ArgumentConvertible> : ArgumentDescriptor {
   public typealias ValueType = [T]
   public typealias Validator = (ValueType) throws -> ValueType

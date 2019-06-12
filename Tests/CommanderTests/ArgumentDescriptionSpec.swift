@@ -13,33 +13,43 @@ public func testArgumentDescription() {
         }
 
         $0.it("can parse varadic argument") {
-#if swift(>=4.1)
           let parser = ArgumentParser(arguments: ["Kyle", "K2"])
           let value = try Argument<[String]>("name").parse(parser)
           try expect(value) == ["Kyle", "K2"]
-#else
-          throw skip("Unsupported Swift")
-#endif
         }
 
         $0.it("can parse optional argument") {
-#if swift(>=4.1)
           let parser = ArgumentParser(arguments: ["Kyle"])
           let value = try Argument<String?>("name").parse(parser)
           try expect(value) == "Kyle"
-#else
-          throw skip("Unsupported Swift")
-#endif
         }
 
         $0.it("can parse missing optional argument") {
-#if swift(>=4.1)
           let parser = ArgumentParser(arguments: [])
           let value = try Argument<String?>("name").parse(parser)
           try expect(value).to.beNil()
-#else
-          throw skip("Unsupported Swift")
-#endif
+        }
+      }
+    }
+
+    $0.describe("Option") {
+      $0.describe("parsing") {
+        $0.it("can parse option") {
+          let parser = ArgumentParser(arguments: ["--port", "6697"])
+          let value = try Option("port", default: 6667).parse(parser)
+          try expect(value) == 6697
+        }
+
+        $0.it("can parse missing option as default") {
+          let parser = ArgumentParser(arguments: [])
+          let value = try Option("port", default: 6667).parse(parser)
+          try expect(value) == 6667
+        }
+
+        $0.it("can parse optional option") {
+          let parser = ArgumentParser(arguments: [])
+          let value = try Option<Int?>("port", default: nil).parse(parser)
+          try expect(value).to.beNil()
         }
       }
     }
