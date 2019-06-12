@@ -5,7 +5,7 @@ import PathKit
 let sourcePath = Path(#file) + ".."
 
 command(
-  Option("amount", default: 15, description: "The number of arguments to support.")
+  Option("amount", default: 32, description: "The number of arguments to support.")
 ) { amount in
   let template = try Template(path: sourcePath + "template.swift")
 
