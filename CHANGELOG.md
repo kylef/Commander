@@ -2,6 +2,10 @@
 
 ## Master
 
+### Breaking
+
+- Support for Swift < 4.2 has been removed.
+
 ### Bug Fixes
 
 - Showing default values for custom `ArgumentConvertible` types are now
