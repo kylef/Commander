@@ -6,7 +6,7 @@ private enum Arg : CustomStringConvertible, Equatable {
   case option(String)
 
   /// A flag
-  case flag(Set<Character>)
+  case flag([Character])
 
   var description:String {
     switch self {
@@ -78,8 +78,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
           let option = flags[flags.index(after: flags.startIndex)..<flags.endIndex]
           return .option(String(option))
         }
-
-        return .flag(Set(flags))
+        return .flag(Array(String(flags)))
       }
 
       return .argument(argument)
@@ -194,7 +193,7 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
       case .flag(let option):
         var options = option
         if options.contains(flag) {
-          options.remove(flag)
+          options.removeAll(where: { $0 == flag })
           arguments.remove(at: index)
 
           if !options.isEmpty {

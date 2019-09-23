@@ -151,4 +151,12 @@ let testArgumentParser: ((ContextType) -> Void) = {
       try expect(value2) == "value2"
     }
   }
+
+  $0.describe("#description") {
+    $0.it("should maintain flag ordering") {
+      let parser = ArgumentParser(arguments: ["-user", "-one"])
+
+      try expect(parser.description) == "-user -one"
+    }
+  }
 }

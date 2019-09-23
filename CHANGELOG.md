@@ -1,5 +1,15 @@
 # Commander Changelog
 
+## Master
+
+### Bug Fixes
+
+- Fixed ordering of flags in the "Unknown Arguments" help output of a command.
+  Flags have previously been stored in an un orderered set and thus upon
+  printing them back out their order was not persisted and a flag part such as
+  `-user` can be printed as `-usre`.
+  [#78](https://github.com/kylef/Commander/issues/78)
+
 ## 0.9.0 (2019-06-12)
 
 ### Breaking
