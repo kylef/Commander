@@ -2,6 +2,12 @@
 
 ## Master
 
+### Enhancements
+
+- Usage/help output for commands which contain flags will now contain the short
+  flag, for example, `-v, --verbose`.
+  [#71](https://github.com/kylef/Commander/issues/71)
+
 ### Bug Fixes
 
 - Fixed ordering of flags in the "Unknown Arguments" help output of a command.

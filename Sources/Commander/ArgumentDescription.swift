@@ -269,6 +269,31 @@ class BoxedArgumentDescriptor {
   let description: String?
   let `default`: String?
   let type: ArgumentType
+  let flag: Character?
+
+  var summary: String {
+    var line = ""
+
+    switch type {
+    case .argument:
+      line += "\(name)"
+    case .option:
+      if let flag = flag {
+        line += "-\(flag), "
+      }
+      line += "--\(name)"
+    }
+
+    if let `default` = `default` {
+      line += " [default: \(`default`)]"
+    }
+
+    if let description = description {
+      line += " - \(description)"
+    }
+
+    return line
+  }
 
   init<T : ArgumentDescriptor>(value: T) {
     name = value.name
@@ -277,10 +302,13 @@ class BoxedArgumentDescriptor {
 
     if let value = value as? Flag {
       `default` = value.`default`.description
+      flag = value.flag
     } else if let value = value as? Option<String> {
       `default` = value.`default`.description
+      flag = nil
     } else if let value = value as? Option<Int> {
       `default` = value.`default`.description
+      flag = nil
     } else {
       let mirror = Mirror(reflecting: value)
 
@@ -289,6 +317,8 @@ class BoxedArgumentDescriptor {
       } else {
         `default` = nil
       }
+
+      flag = nil
     }
   }
 }
@@ -362,32 +392,14 @@ class Help : Error, ANSIConvertible, CustomStringConvertible {
     } else if !arguments.isEmpty {
       output.append("Arguments:")
       output.append("")
-
-      output += arguments.map { argument in
-        if let description = argument.description {
-          return "    \(argument.name) - \(description)"
-        } else {
-          return "    \(argument.name)"
-        }
-      }
-
+      output += arguments.map { "    \($0.summary)" }
       output.append("")
     }
 
     if !options.isEmpty {
       output.append("Options:")
       for option in options {
-        var line = "    --\(option.name)"
-
-        if let `default` = option.default {
-          line += " [default: \(`default`)]"
-        }
-
-        if let description = option.description {
-          line += " - \(description)"
-        }
-
-        output.append(line)
+        output.append("    \(option.summary)")
       }
     }
 
