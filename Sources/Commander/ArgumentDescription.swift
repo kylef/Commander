@@ -452,7 +452,13 @@ class Help : Error, ANSIConvertible, CustomStringConvertible {
     if !options.isEmpty {
       output.append("Options:")
       for option in options {
-        var line = "    \(ANSI.blue)--\(option.name)\(ANSI.reset)"
+        var line = "    "
+
+        if let flag = option.flag {
+          line += "\(ANSI.blue)-\(flag)\(ANSI.reset), "
+        }
+
+        line += "\(ANSI.blue)--\(option.name)\(ANSI.reset)"
 
         if let `default` = option.default {
           line += " [default: \(`default`)]"

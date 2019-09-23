@@ -83,6 +83,14 @@ let testArgumentDescription: ((ContextType) -> Void) = {
       try expect(help.description) == "Options:\n    -v, --verbose [default: false] - enable verbose mode"
     }
 
+    $0.it("shows option flag with ansi") {
+      let help = Help([
+        BoxedArgumentDescriptor(value: Flag("verbose", flag: "v", description: "enable verbose mode")),
+      ])
+
+      try expect(help.ansiDescription) == "Options:\n    \(ANSI.blue)-v\(ANSI.reset), \(ANSI.blue)--verbose\(ANSI.reset) [default: false] - enable verbose mode"
+    }
+
     $0.it("shows default for custom types conforming to CustomStringConvertible") {
       enum Direction: String, CustomStringConvertible, ArgumentConvertible {
         case north
