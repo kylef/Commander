@@ -2,16 +2,14 @@ import Spectre
 import Commander
 
 
-public func testCommandType() {
-  describe("CommandType extension") {
-    $0.it("provides a run with arguments array function") {
-      var firstArgument:String? = nil
+let testCommandType: ((ContextType) -> Void) = {
+  $0.it("provides a run with arguments array function") {
+    var firstArgument:String? = nil
 
-      try command { (parser:ArgumentParser) in
-        firstArgument = parser.shift()
-      }.run(["test"])
+    try command { (parser:ArgumentParser) in
+      firstArgument = parser.shift()
+    }.run(["test"])
 
-      try expect(firstArgument) == "test"
-    }
+    try expect(firstArgument) == "test"
   }
 }

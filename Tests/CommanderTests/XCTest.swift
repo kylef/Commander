@@ -1,13 +1,14 @@
 import XCTest
+import Spectre
 
 
 class CommanderTests: XCTestCase {
   func testRunCommander() {
-    testArgumentParser()
-    testArgumentConvertible()
-    testArgumentDescription()
-    testCommandType()
-    testCommand()
-    testGroup()
+    describe("ArgumentParser", testArgumentParser)
+    describe("ArgumentConvertible", testArgumentConvertible)
+    describe("ArgumentDescription", testArgumentDescription)
+    describe("CommandType extension", testCommandType)
+    describe("Command", testCommand)
+    describe("Group", testGroup)
   }
 }
