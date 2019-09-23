@@ -1,8 +1,8 @@
 import CommanderTests
 
-testArgumentParser()
-testArgumentConvertible()
-testArgumentDescription()
-testCommandType()
-testCommand()
-testGroup()
+describe("ArgumentParser", testArgumentParser)
+describe("ArgumentConvertible", testArgumentConvertible)
+describe("ArgumentDescription", testArgumentDescription)
+describe("CommandType", testCommandType)
+describe("Command", testCommand)
+describe("Group", testGroup)
