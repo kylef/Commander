@@ -1,6 +1,6 @@
 # Commander Changelog
 
-## Master
+## 0.9.1 (2019-09-23)
 
 ### Enhancements
 
