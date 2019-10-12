@@ -159,4 +159,12 @@ let testArgumentParser: ((ContextType) -> Void) = {
       try expect(parser.description) == "-user -one"
     }
   }
+
+  $0.describe("clear") {
+    $0.it("clears arguments") {
+      try expect(parser.isEmpty).to.beFalse()
+      parser.clear()
+      try expect(parser.isEmpty).to.beTrue()
+    }
+  }
 }

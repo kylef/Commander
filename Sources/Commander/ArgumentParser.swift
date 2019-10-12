@@ -280,4 +280,9 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
     
     return nil
   }
+
+  /// Clears all arguments
+  public func clear() {
+    arguments = []
+  }
 }
