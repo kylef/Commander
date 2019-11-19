@@ -313,7 +313,13 @@ class BoxedArgumentDescriptor {
       let mirror = Mirror(reflecting: value)
 
       if let defaultDescendant = mirror.descendant("default"), let defaultConvertible = defaultDescendant as? CustomStringConvertible {
-        `default` = defaultConvertible.description
+        let descendatMirror = Mirror(reflecting: defaultConvertible)
+
+        if descendatMirror.displayStyle == .optional && descendatMirror.children.count == 0 {
+            `default` = nil
+        } else {
+            `default` = defaultConvertible.description
+        }
       } else {
         `default` = nil
       }
