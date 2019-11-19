@@ -67,12 +67,28 @@ let testArgumentDescription: ((ContextType) -> Void) = {
     $0.it("shows options") {
       let help = Help([
         BoxedArgumentDescriptor(value: Option("opt1", default: "example")),
+        BoxedArgumentDescriptor(value: Option<String?>("opt2", default: nil)),
+        BoxedArgumentDescriptor(value: Option<Int?>("opt3", default: nil, description: "the example")),
         BoxedArgumentDescriptor(value: Flag("flag1", description: "an example")),
         BoxedArgumentDescriptor(value: Flag("flag2", default: true)),
       ])
 
-      try expect(help.description) == "Options:\n    --opt1 [default: example]\n    --flag1 [default: false] - an example\n    --flag2 [default: true]"
-      try expect(help.ansiDescription) == "Options:\n    \(ANSI.blue)--opt1\(ANSI.reset) [default: example]\n    \(ANSI.blue)--flag1\(ANSI.reset) [default: false] - an example\n    \(ANSI.blue)--flag2\(ANSI.reset) [default: true]"
+      try expect(help.description) == """
+        Options:
+            --opt1 [default: example]
+            --opt2
+            --opt3 - the example
+            --flag1 [default: false] - an example
+            --flag2 [default: true]
+        """
+      try expect(help.ansiDescription) == """
+        Options:
+            \(ANSI.blue)--opt1\(ANSI.reset) [default: example]
+            \(ANSI.blue)--opt2\(ANSI.reset)
+            \(ANSI.blue)--opt3\(ANSI.reset) - the example
+            \(ANSI.blue)--flag1\(ANSI.reset) [default: false] - an example
+            \(ANSI.blue)--flag2\(ANSI.reset) [default: true]
+        """
     }
 
     $0.it("shows option flag") {
