@@ -37,11 +37,8 @@ extension CommandType {
     } catch let error as ANSIConvertible {
       error.print()
       exit(1)
-    } catch let error as CustomStringConvertible {
-      ANSI.red.print(error.description, to: stderr)
-      exit(1)
     } catch {
-      ANSI.red.print("Unknown error occurred.", to: stderr)
+      ANSI.red.print("An error occurred: \(error)", to: stderr)
       exit(1)
     }
 
