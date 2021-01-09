@@ -39,9 +39,7 @@ let testArgumentConvertible: ((ContextType) -> Void) = {
     $0.it("errors on invalid input") {
       let parser = ArgumentParser(arguments: ["five"])
 
-      try expect {
-        try Int(parser: parser)
-      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
+      try expect(try Int(parser: parser)).toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
     }
 
     $0.it("handles when the argument parser doesn't have any values") {
@@ -61,9 +59,7 @@ let testArgumentConvertible: ((ContextType) -> Void) = {
     $0.it("errors on invalid input") {
       let parser = ArgumentParser(arguments: ["five"])
 
-      try expect {
-        try Float(parser: parser)
-      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
+      try expect(try Float(parser: parser)).toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
     }
 
     $0.it("handles when the argument parser doesn't have any values") {
@@ -83,9 +79,7 @@ let testArgumentConvertible: ((ContextType) -> Void) = {
     $0.it("errors on invalid input") {
       let parser = ArgumentParser(arguments: ["five"])
 
-      try expect {
-        try Double(parser: parser)
-      }.toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
+      try expect(try Double(parser: parser)).toThrow(ArgumentError.invalidType(value: "five", type: "number", argument: nil))
     }
 
     $0.it("handles when the argument parser doesn't have any values") {

@@ -8,7 +8,7 @@ let package = Package(
     .library(name: "Commander", targets: ["Commander"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/kylef/Spectre.git", from: "0.9.0"),
+    .package(url: "https://github.com/kylef/Spectre.git", from: "0.9.2"),
   ],
   targets: [
     .target(name: "Commander", dependencies: []),

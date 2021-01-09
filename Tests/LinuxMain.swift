@@ -1,4 +1,5 @@
-import CommanderTests
+import Spectre
+@testable import CommanderTests
 
 describe("ArgumentParser", testArgumentParser)
 describe("ArgumentConvertible", testArgumentConvertible)
