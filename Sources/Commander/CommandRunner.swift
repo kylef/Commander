@@ -1,5 +1,7 @@
 #if os(Linux)
   import Glibc
+#elseif os(Windows)
+  import CRT
 #else
   import Darwin
 #endif
