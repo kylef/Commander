@@ -1,9 +1,11 @@
 #if os(Linux)
   import Glibc
+#elseif os(Windows)
+  import CRT
 #else
   import Darwin
 #endif
-
+import Foundation
 
 protocol ANSIConvertible : Error, CustomStringConvertible {
   var ansiDescription: String { get }
@@ -40,8 +42,11 @@ enum ANSI: UInt8, CustomStringConvertible {
   }
 
   static var isTerminalSupported: Bool {
-    if let termType = getenv("TERM"), String(cString: termType).lowercased() != "dumb" &&
-      isatty(fileno(stdout)) != 0 {
+    #if os(Windows)
+    let isatty = _isatty
+    #endif
+    if let termType = ProcessInfo.processInfo.environment["TERM"], termType.lowercased() != "dumb" &&
+      isatty(STDOUT_FILENO) != 0 {
       return true
     } else {
       return false
