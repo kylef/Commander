@@ -1,5 +1,10 @@
 # Commander Changelog
 
+### Bug Fixes
+
+- Commander will now throw an error when a command which takes no arguments or
+  options is invoked with `--help` or unknown arguments.
+
 ## 0.9.1 (2019-09-23)
 
 ### Enhancements

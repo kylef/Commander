@@ -57,5 +57,22 @@ let testCommand: ((ContextType) -> Void) = {
       let verboseCommand = command(Flag("verbose")) { verbose in }
       try verboseCommand.run(["--verbose"])
     }
+
+    $0.it("supports help option") {
+      let verboseCommand = command(Flag("verbose")) { verbose in }
+      try expect(verboseCommand.run(["--help"])).toThrow()
+    }
+  }
+
+  $0.describe("without described arguments") {
+    $0.it("errors when invalid arguments are passed") {
+      let undescribedCommand = command {}
+      try expect(undescribedCommand.run(["--unknown"])).toThrow()
+    }
+
+    $0.it("supports help option") {
+      let undescribedCommand = command {}
+      try expect(undescribedCommand.run(["--help"])).toThrow()
+    }
   }
 }

@@ -155,7 +155,7 @@ let testGroup: ((ContextType) -> Void) = {
     }
   }
 
-  $0.context("Ga roup") {
+  $0.context("Group") {
     var group: Group!
 
     $0.before {

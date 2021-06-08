@@ -18,6 +18,16 @@ enum CommandError : Error {
 /// Create a command using a closure
 public func command(_ closure: @escaping () throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
+    let help = Help([])
+
+    if parser.hasOption("help") {
+      throw help
+    }
+
+    if !parser.isEmpty {
+      throw UsageError("Unknown Arguments: \(parser)", help)
+    }
+
     try closure()
   }
 }
