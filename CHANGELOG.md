@@ -1,5 +1,7 @@
 # Commander Changelog
 
+## 0.9.2 (2021-06-08)
+
 ### Bug Fixes
 
 - Commander will now throw an error when a command which takes no arguments or
