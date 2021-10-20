@@ -10,7 +10,7 @@
 /// Extensions to CommandType to provide convinience running methods for CLI tools
 extension CommandType {
   /// Run the command using the `Process.argument`, removing the executable name
-  public func run(_ version:String? = nil) -> Never  {
+  public func run(_ version:String? = nil) async -> Never  {
     let parser = ArgumentParser(arguments: CommandLine.arguments)
 
     if parser.hasOption("version") && !parser.hasOption("help") {
@@ -23,7 +23,7 @@ extension CommandType {
     let executableName = parser.shift()!  // Executable Name
 
     do {
-      try run(parser)
+      try await run(parser)
     } catch let error as Help {
       let help = error.reraise("$ \(executableName)")
       help.print()
