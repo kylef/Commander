@@ -1,18 +1,19 @@
+#if compiler(>=5.5)
 /// Represents a group of commands
-open class Group : CommandType {
-  struct SubCommand {
+open class AsyncGroup : AsyncCommandType {
+  struct AsyncSubCommand {
     let name: String
     let description: String?
-    let command: CommandType
+    let command: AsyncCommandType
 
-    init(name: String, description: String?, command: CommandType) {
+    init(name: String, description: String?, command: AsyncCommandType) {
       self.name = name
       self.description = description
       self.command = command
     }
   }
 
-  var commands = [SubCommand]()
+  var commands = [AsyncSubCommand]()
   public var commandNames: [String] {
     return commands.map { $0.name }
   }
@@ -21,28 +22,28 @@ open class Group : CommandType {
   public var unknownCommand: ((_ name: String, _ parser: ArgumentParser) throws -> ())?
 
   // When set, allows you to override the default no command behaviour
-  public var noCommand: ((_ path: String?, _ group: Group, _ parser: ArgumentParser) throws -> ())?
+  public var noAsyncCommand: ((_ path: String?, _ group: AsyncGroup, _ parser: ArgumentParser) throws -> ())?
 
   /// Create a new group
   public init() {}
 
   /// Add a named sub-command to the group
-  public func addCommand(_ name: String, _ command: CommandType) {
-    commands.append(SubCommand(name: name, description: nil, command: command))
+  public func addCommand(_ name: String, _ command: AsyncCommandType) {
+    commands.append(AsyncSubCommand(name: name, description: nil, command: command))
   }
 
   /// Add a named sub-command to the group with a description
-  public func addCommand(_ name: String, _ description: String?, _ command: CommandType) {
-    commands.append(SubCommand(name: name, description: description, command: command))
+  public func addCommand(_ name: String, _ description: String?, _ command: AsyncCommandType) {
+    commands.append(AsyncSubCommand(name: name, description: description, command: command))
   }
 
   /// Run the group command
   public func run(_ parser: ArgumentParser) async throws {
     guard let name = parser.shift() else {
-      if let noCommand = noCommand {
-        return try noCommand(nil, self, parser)
+      if let noAsyncCommand = noAsyncCommand {
+        return try noAsyncCommand(nil, self, parser)
       } else {
-        throw GroupError.noCommand(nil, self)
+        throw GroupError.noAsyncCommand(nil, self)
       }
     }
 
@@ -58,13 +59,13 @@ open class Group : CommandType {
       try await command.command.run(parser)
     } catch GroupError.unknownCommand(let childName) {
       throw GroupError.unknownCommand("\(name) \(childName)")
-    } catch GroupError.noCommand(let path, let group) {
+    } catch GroupError.noAsyncCommand(let path, let group) {
       let path = (path == nil) ? name : "\(name) \(path!)"
 
-      if let noCommand = noCommand {
-        try noCommand(path, group, parser)
+      if let noAsyncCommand = noAsyncCommand {
+        try noAsyncCommand(path, group, parser)
       } else {
-        throw GroupError.noCommand(path, group)
+        throw GroupError.noAsyncCommand(path, group)
       }
     } catch let error as Help {
       throw error.reraise(name)
@@ -72,14 +73,15 @@ open class Group : CommandType {
   }
 }
 
-extension Group {
-  public convenience init(closure: (Group) async -> ()) async {
+extension AsyncGroup {
+  public convenience init(closure: (AsyncGroup) -> ()) {
     self.init()
-    await closure(self)
+    closure(self)
   }
 
   /// Add a sub-group using a closure
-  public func group(_ name: String, _ description: String? = nil, closure: (Group) async -> ()) async  {
-    addCommand(name, description, await Group(closure: closure))
+  public func group(_ name: String, _ description: String? = nil, closure: (AsyncGroup) -> ()) {
+    addCommand(name, description, AsyncGroup(closure: closure))
   }
 }
+#endif
