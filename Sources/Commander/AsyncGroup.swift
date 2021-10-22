@@ -74,14 +74,14 @@ open class AsyncGroup : AsyncCommandType {
 }
 
 extension AsyncGroup {
-  public convenience init(closure: (AsyncGroup) -> ()) {
+  public convenience init(closure: (AsyncGroup) async -> ()) async {
     self.init()
-    closure(self)
+    await closure(self)
   }
 
   /// Add a sub-group using a closure
-  public func group(_ name: String, _ description: String? = nil, closure: (AsyncGroup) -> ()) {
-    addCommand(name, description, AsyncGroup(closure: closure))
+  public func group(_ name: String, _ description: String? = nil, closure: (AsyncGroup) async -> ()) async {
+    addCommand(name, description, await AsyncGroup(closure: closure))
   }
 }
 #endif
