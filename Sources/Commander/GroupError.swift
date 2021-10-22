@@ -33,19 +33,19 @@ public enum GroupError : Error, Equatable, CustomStringConvertible {
 #endif
     }
   }
-}
 
-public func == (lhs: GroupError, rhs: GroupError) -> Bool {
-  switch (lhs, rhs) {
-  case let (.unknownCommand(lhsCommand), .unknownCommand(rhsCommand)):
-    return lhsCommand == rhsCommand
-  case let (.noCommand(lhsPath, lhsGroup), .noCommand(rhsPath, rhsGroup)):
-    return lhsPath == rhsPath && lhsGroup === rhsGroup
-#if compiler(>=5.5)
-  case let (.noAsyncCommand(lhsPath, lhsGroup), .noAsyncCommand(rhsPath, rhsGroup)):
-    return lhsPath == rhsPath && lhsGroup === rhsGroup
-#endif
-  default:
-    return false
-  }
+	public static func == (lhs: Self, rhs: Self) -> Bool {
+	  switch (lhs, rhs) {
+	  case let (.unknownCommand(lhsCommand), .unknownCommand(rhsCommand)):
+		return lhsCommand == rhsCommand
+	  case let (.noCommand(lhsPath, lhsGroup), .noCommand(rhsPath, rhsGroup)):
+		return lhsPath == rhsPath && lhsGroup === rhsGroup
+	#if compiler(>=5.5)
+	  case let (.noAsyncCommand(lhsPath, lhsGroup), .noAsyncCommand(rhsPath, rhsGroup)):
+		return lhsPath == rhsPath && lhsGroup === rhsGroup
+	#endif
+	  default:
+		return false
+	  }
+	}
 }

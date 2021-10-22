@@ -1,18 +1,18 @@
 /// A simple CommandType using a closure
 struct AnonymousCommand : CommandType {
-  var closure:(ArgumentParser) async throws -> ()
+  var closure:(ArgumentParser) throws -> ()
 
-  init(_ closure:@escaping ((ArgumentParser) async throws -> ())) {
+  init(_ closure:@escaping ((ArgumentParser) throws -> ())) {
     self.closure = closure
   }
 
-  func run(_ parser:ArgumentParser) async throws {
-    try await closure(parser)
+  func run(_ parser:ArgumentParser) throws {
+    try closure(parser)
   }
 }
 
 /// Create a command using a closure
-public func command(_ closure: @escaping () async throws -> ()) async -> CommandType {
+public func command(_ closure: @escaping () throws -> ()) -> CommandType {
   return AnonymousCommand { parser in
     let help = Help([])
 
@@ -24,6 +24,6 @@ public func command(_ closure: @escaping () async throws -> ()) async -> Command
       throw UsageError("Unknown Arguments: \(parser)", help)
     }
 
-    try await closure()
+    try closure()
   }
 }

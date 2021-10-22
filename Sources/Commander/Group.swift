@@ -37,7 +37,7 @@ open class Group : CommandType {
   }
 
   /// Run the group command
-  public func run(_ parser: ArgumentParser) async throws {
+  public func run(_ parser: ArgumentParser) throws {
     guard let name = parser.shift() else {
       if let noCommand = noCommand {
         return try noCommand(nil, self, parser)
@@ -55,7 +55,7 @@ open class Group : CommandType {
     }
 
     do {
-      try await command.command.run(parser)
+      try command.command.run(parser)
     } catch GroupError.unknownCommand(let childName) {
       throw GroupError.unknownCommand("\(name) \(childName)")
     } catch GroupError.noCommand(let path, let group) {
@@ -73,13 +73,13 @@ open class Group : CommandType {
 }
 
 extension Group {
-  public convenience init(closure: (Group) async -> ()) async {
+  public convenience init(closure: (Group) -> ()) {
     self.init()
-    await closure(self)
+    closure(self)
   }
 
   /// Add a sub-group using a closure
-  public func group(_ name: String, _ description: String? = nil, closure: (Group) async -> ()) async  {
-    addCommand(name, description, await Group(closure: closure))
+  public func group(_ name: String, _ description: String? = nil, closure: (Group) -> ()) {
+    addCommand(name, description, Group(closure: closure))
   }
 }
