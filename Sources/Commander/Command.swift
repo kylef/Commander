@@ -11,10 +11,6 @@ struct AnonymousCommand : CommandType {
   }
 }
 
-enum CommandError : Error {
-  case invalidArgument
-}
-
 /// Create a command using a closure
 public func command(_ closure: @escaping () throws -> ()) -> CommandType {
   return AnonymousCommand { parser in

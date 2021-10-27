@@ -1,38 +1,3 @@
-public enum GroupError : Error, Equatable, CustomStringConvertible {
-  /// No-subcommand was found with the given name
-  case unknownCommand(String)
-
-  /// No command was given
-  /// :param: The current path to the command (i.e, all the group names)
-  /// :param: The group raising the error
-  case noCommand(String?, Group)
-
-  public var description:String {
-    switch self {
-    case .unknownCommand(let name):
-      return "Unknown command: `\(name)`"
-    case .noCommand(let path, let group):
-      let available = group.commands.map { $0.name }.sorted().joined(separator: ", ")
-      if let path = path {
-        return "Usage: \(path) COMMAND\n\nCommands: \(available)"
-      } else {
-        return "Commands: \(available)"
-      }
-    }
-  }
-}
-
-public func == (lhs: GroupError, rhs: GroupError) -> Bool {
-  switch (lhs, rhs) {
-  case let (.unknownCommand(lhsCommand), .unknownCommand(rhsCommand)):
-    return lhsCommand == rhsCommand
-  case let (.noCommand(lhsPath, lhsGroup), .noCommand(rhsPath, rhsGroup)):
-    return lhsPath == rhsPath && lhsGroup === rhsGroup
-  default:
-    return false
-  }
-}
-
 /// Represents a group of commands
 open class Group : CommandType {
   struct SubCommand {
