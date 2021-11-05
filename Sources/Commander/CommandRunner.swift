@@ -50,6 +50,7 @@ extension CommandType {
 
 #if compiler(>=5.5)
 /// Extensions to AsyncommandType to provide convinience running methods for CLI tools
+@available(macOS 12, *)
 extension AsyncCommandType {
   /// Run the command using the `Process.argument`, removing the executable name
   public func run(_ version:String? = nil) async -> Void  {

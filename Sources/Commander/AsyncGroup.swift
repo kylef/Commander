@@ -1,5 +1,6 @@
 #if compiler(>=5.5)
 /// Represents a group of commands
+
 open class AsyncGroup : AsyncCommandType {
   struct AsyncSubCommand {
     let name: String
@@ -25,19 +26,23 @@ open class AsyncGroup : AsyncCommandType {
   public var noAsyncCommand: ((_ path: String?, _ group: AsyncGroup, _ parser: ArgumentParser) throws -> ())?
 
   /// Create a new group
+  @available(macOS 12, *)
   public init() {}
 
   /// Add a named sub-command to the group
+  @available(macOS 12, *)
   public func addCommand(_ name: String, _ command: AsyncCommandType) {
     commands.append(AsyncSubCommand(name: name, description: nil, command: command))
   }
 
   /// Add a named sub-command to the group with a description
+  @available(macOS 12, *)
   public func addCommand(_ name: String, _ description: String?, _ command: AsyncCommandType) {
     commands.append(AsyncSubCommand(name: name, description: description, command: command))
   }
 
   /// Run the group command
+  @available(macOS 12, *)
   public func run(_ parser: ArgumentParser) async throws {
     guard let name = parser.shift() else {
       if let noAsyncCommand = noAsyncCommand {
@@ -74,12 +79,14 @@ open class AsyncGroup : AsyncCommandType {
 }
 
 extension AsyncGroup {
+@available(macOS 12, *)
   public convenience init(closure: (AsyncGroup) async -> ()) async {
     self.init()
     await closure(self)
   }
 
   /// Add a sub-group using a closure
+  @available(macOS 12, *)
   public func group(_ name: String, _ description: String? = nil, closure: (AsyncGroup) async -> ()) async {
     addCommand(name, description, await AsyncGroup(closure: closure))
   }

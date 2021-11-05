@@ -5,13 +5,15 @@
 
 
 /// Create an async command which takes 1 argument using a closure
-public func command<A:ArgumentConvertible>(_ closure: @escaping (A) async throws -> ()) -> AsyncCommandType {
+@available(macOS 12, *)
+  public func command<A:ArgumentConvertible>(_ closure: @escaping (A) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser))
   }
 }
 
 /// Create an async command which takes 2 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible>(_ closure: @escaping (A, A1) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser))
@@ -19,6 +21,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible>(_ closure: @e
 }
 
 /// Create an async command which takes 3 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible>(_ closure: @escaping (A, A1, A2) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser))
@@ -26,6 +29,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 4 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser))
@@ -33,6 +37,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 5 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser))
@@ -40,6 +45,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 6 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser))
@@ -47,6 +53,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 7 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser))
@@ -54,6 +61,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 8 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser))
@@ -61,6 +69,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 9 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser))
@@ -68,6 +77,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 10 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser))
@@ -75,6 +85,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 11 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser))
@@ -82,6 +93,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 12 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser))
@@ -89,6 +101,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 13 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser))
@@ -96,6 +109,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 14 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser))
@@ -103,6 +117,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 15 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser))
@@ -110,6 +125,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 16 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser))
@@ -117,6 +133,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 17 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser))
@@ -124,6 +141,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 18 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser))
@@ -131,6 +149,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 19 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser))
@@ -138,6 +157,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 20 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser))
@@ -145,6 +165,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 21 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser))
@@ -152,6 +173,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 22 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser))
@@ -159,6 +181,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 23 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser))
@@ -166,6 +189,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 24 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser))
@@ -173,6 +197,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 25 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser))
@@ -180,6 +205,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 26 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible, A25:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser), try A25(parser: parser))
@@ -187,6 +213,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 27 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible, A25:ArgumentConvertible, A26:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser), try A25(parser: parser), try A26(parser: parser))
@@ -194,6 +221,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 28 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible, A25:ArgumentConvertible, A26:ArgumentConvertible, A27:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser), try A25(parser: parser), try A26(parser: parser), try A27(parser: parser))
@@ -201,6 +229,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 29 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible, A25:ArgumentConvertible, A26:ArgumentConvertible, A27:ArgumentConvertible, A28:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser), try A25(parser: parser), try A26(parser: parser), try A27(parser: parser), try A28(parser: parser))
@@ -208,6 +237,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 30 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible, A25:ArgumentConvertible, A26:ArgumentConvertible, A27:ArgumentConvertible, A28:ArgumentConvertible, A29:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser), try A25(parser: parser), try A26(parser: parser), try A27(parser: parser), try A28(parser: parser), try A29(parser: parser))
@@ -215,6 +245,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 }
 
 /// Create an async command which takes 31 argument using a closure
+@available(macOS 12, *)
 public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentConvertible, A3:ArgumentConvertible, A4:ArgumentConvertible, A5:ArgumentConvertible, A6:ArgumentConvertible, A7:ArgumentConvertible, A8:ArgumentConvertible, A9:ArgumentConvertible, A10:ArgumentConvertible, A11:ArgumentConvertible, A12:ArgumentConvertible, A13:ArgumentConvertible, A14:ArgumentConvertible, A15:ArgumentConvertible, A16:ArgumentConvertible, A17:ArgumentConvertible, A18:ArgumentConvertible, A19:ArgumentConvertible, A20:ArgumentConvertible, A21:ArgumentConvertible, A22:ArgumentConvertible, A23:ArgumentConvertible, A24:ArgumentConvertible, A25:ArgumentConvertible, A26:ArgumentConvertible, A27:ArgumentConvertible, A28:ArgumentConvertible, A29:ArgumentConvertible, A30:ArgumentConvertible>(_ closure: @escaping (A, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     try await closure(try A(parser: parser), try A1(parser: parser), try A2(parser: parser), try A3(parser: parser), try A4(parser: parser), try A5(parser: parser), try A6(parser: parser), try A7(parser: parser), try A8(parser: parser), try A9(parser: parser), try A10(parser: parser), try A11(parser: parser), try A12(parser: parser), try A13(parser: parser), try A14(parser: parser), try A15(parser: parser), try A16(parser: parser), try A17(parser: parser), try A18(parser: parser), try A19(parser: parser), try A20(parser: parser), try A21(parser: parser), try A22(parser: parser), try A23(parser: parser), try A24(parser: parser), try A25(parser: parser), try A26(parser: parser), try A27(parser: parser), try A28(parser: parser), try A29(parser: parser), try A30(parser: parser))
@@ -226,6 +257,7 @@ public func command<A:ArgumentConvertible, A1:ArgumentConvertible, A2:ArgumentCo
 
 
 /// Create an async command which takes 1 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor>(_ descriptor:A, _ closure: @escaping (A.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -247,6 +279,7 @@ public func command<A:ArgumentDescriptor>(_ descriptor:A, _ closure: @escaping (
 }
 
 /// Create an async command which takes 2 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ closure: @escaping (A.ValueType, A1.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -270,6 +303,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor>(_ descriptor:A,
 }
 
 /// Create an async command which takes 3 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -295,6 +329,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 4 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -322,6 +357,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 5 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -351,6 +387,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 6 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -382,6 +419,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 7 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -415,6 +453,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 8 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -450,6 +489,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 9 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -487,6 +527,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 10 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -526,6 +567,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 11 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -567,6 +609,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 12 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -610,6 +653,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 13 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -655,6 +699,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 14 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -702,6 +747,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 15 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -751,6 +797,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 16 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -802,6 +849,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 17 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -855,6 +903,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 18 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -910,6 +959,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 19 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -967,6 +1017,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 20 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1026,6 +1077,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 21 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1087,6 +1139,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 22 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1150,6 +1203,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 23 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1215,6 +1269,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 24 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1282,6 +1337,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 25 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1351,6 +1407,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 26 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor, A25:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ descriptor25:A25, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType, A25.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1422,6 +1479,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 27 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor, A25:ArgumentDescriptor, A26:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ descriptor25:A25, _ descriptor26:A26, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType, A25.ValueType, A26.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1495,6 +1553,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 28 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor, A25:ArgumentDescriptor, A26:ArgumentDescriptor, A27:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ descriptor25:A25, _ descriptor26:A26, _ descriptor27:A27, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType, A25.ValueType, A26.ValueType, A27.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1570,6 +1629,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 29 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor, A25:ArgumentDescriptor, A26:ArgumentDescriptor, A27:ArgumentDescriptor, A28:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ descriptor25:A25, _ descriptor26:A26, _ descriptor27:A27, _ descriptor28:A28, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType, A25.ValueType, A26.ValueType, A27.ValueType, A28.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1647,6 +1707,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 30 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor, A25:ArgumentDescriptor, A26:ArgumentDescriptor, A27:ArgumentDescriptor, A28:ArgumentDescriptor, A29:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ descriptor25:A25, _ descriptor26:A26, _ descriptor27:A27, _ descriptor28:A28, _ descriptor29:A29, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType, A25.ValueType, A26.ValueType, A27.ValueType, A28.ValueType, A29.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1726,6 +1787,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 }
 
 /// Create an async command which takes 31 argument using a closure with arguments
+@available(macOS 12, *)
 public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDescriptor, A3:ArgumentDescriptor, A4:ArgumentDescriptor, A5:ArgumentDescriptor, A6:ArgumentDescriptor, A7:ArgumentDescriptor, A8:ArgumentDescriptor, A9:ArgumentDescriptor, A10:ArgumentDescriptor, A11:ArgumentDescriptor, A12:ArgumentDescriptor, A13:ArgumentDescriptor, A14:ArgumentDescriptor, A15:ArgumentDescriptor, A16:ArgumentDescriptor, A17:ArgumentDescriptor, A18:ArgumentDescriptor, A19:ArgumentDescriptor, A20:ArgumentDescriptor, A21:ArgumentDescriptor, A22:ArgumentDescriptor, A23:ArgumentDescriptor, A24:ArgumentDescriptor, A25:ArgumentDescriptor, A26:ArgumentDescriptor, A27:ArgumentDescriptor, A28:ArgumentDescriptor, A29:ArgumentDescriptor, A30:ArgumentDescriptor>(_ descriptor:A, _ descriptor1:A1, _ descriptor2:A2, _ descriptor3:A3, _ descriptor4:A4, _ descriptor5:A5, _ descriptor6:A6, _ descriptor7:A7, _ descriptor8:A8, _ descriptor9:A9, _ descriptor10:A10, _ descriptor11:A11, _ descriptor12:A12, _ descriptor13:A13, _ descriptor14:A14, _ descriptor15:A15, _ descriptor16:A16, _ descriptor17:A17, _ descriptor18:A18, _ descriptor19:A19, _ descriptor20:A20, _ descriptor21:A21, _ descriptor22:A22, _ descriptor23:A23, _ descriptor24:A24, _ descriptor25:A25, _ descriptor26:A26, _ descriptor27:A27, _ descriptor28:A28, _ descriptor29:A29, _ descriptor30:A30, _ closure: @escaping (A.ValueType, A1.ValueType, A2.ValueType, A3.ValueType, A4.ValueType, A5.ValueType, A6.ValueType, A7.ValueType, A8.ValueType, A9.ValueType, A10.ValueType, A11.ValueType, A12.ValueType, A13.ValueType, A14.ValueType, A15.ValueType, A16.ValueType, A17.ValueType, A18.ValueType, A19.ValueType, A20.ValueType, A21.ValueType, A22.ValueType, A23.ValueType, A24.ValueType, A25.ValueType, A26.ValueType, A27.ValueType, A28.ValueType, A29.ValueType, A30.ValueType) async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([
@@ -1808,7 +1870,7 @@ public func command<A:ArgumentDescriptor, A1:ArgumentDescriptor, A2:ArgumentDesc
 
 
 // MARK: AsyncGroup commands
-
+@available(macOS 12, *)
 extension AsyncGroup {
   // MARK: Argument Description Async Commands
 
