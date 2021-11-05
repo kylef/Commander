@@ -1,5 +1,6 @@
 #if compiler(>=5.5)
 /// A simple AsyncCommandType using a closure
+@available(macOS 12, *)
 struct AnonymousAsyncCommand : AsyncCommandType {
   var closure:(ArgumentParser) async throws -> ()
 
@@ -13,6 +14,7 @@ struct AnonymousAsyncCommand : AsyncCommandType {
 }
 
 /// Create a command using a closure
+@available(macOS 12, *)
 public func command(_ closure: @escaping () async throws -> ()) -> AsyncCommandType {
   return AnonymousAsyncCommand { parser in
     let help = Help([])
