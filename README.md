@@ -168,6 +168,7 @@ Hello Kyle
 ### Examples tools using Commander
 
 - [QueryKit](https://github.com/QueryKit/querykit-cli) via CocoaPods Rome
+- [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 
 ## Installation
 
