@@ -70,6 +70,20 @@ let testArgumentParser: ((ContextType) -> Void) = {
       try expect(value) == "value"
     }
 
+    $0.it("returns the flag value when found with equals") {
+      parser = ArgumentParser(arguments: ["-o=value"])
+      let value = try parser.shiftValue(for: "o" as ArgumentParser.Flag)
+
+      try expect(value) == "value"
+    }
+
+    $0.it("returns the flag value when found with empty value") {
+      parser = ArgumentParser(arguments: ["-o="])
+      let value = try parser.shiftValue(for: "o" as ArgumentParser.Flag)
+
+      try expect(value) == ""
+    }
+
     $0.it("removes the flag and it's value") {
       parser = ArgumentParser(arguments: ["-o", "value"])
       _ = try parser.shiftValue(for: "o" as ArgumentParser.Flag)

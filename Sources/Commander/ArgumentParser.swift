@@ -70,18 +70,28 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
       fixedArguments = []
     }
 
-    self.arguments = unfixedArguments.map { argument in
+    self.arguments = unfixedArguments.reduce([Arg]()) { arguments, argument in
       if argument.first == "-" {
         let flags = argument[argument.index(after: argument.startIndex)..<argument.endIndex]
 
         if flags.first == "-" {
           let option = flags[flags.index(after: flags.startIndex)..<flags.endIndex]
-          return .option(String(option))
+          return arguments + [.option(String(option))]
         }
-        return .flag(Array(String(flags)))
+
+        if let equalsIndex = flags.range(of: "=") {
+          let flag = flags[..<equalsIndex.lowerBound]
+          let value = flags[equalsIndex.upperBound...]
+
+          if flag.count == 1 {
+            return arguments + [.flag(Array(String(flag))), .argument(String(value))]
+          }
+        }
+
+        return arguments + [.flag(Array(String(flags)))]
       }
 
-      return .argument(argument)
+      return arguments + [.argument(argument)]
     }
     self.arguments.append(contentsOf: fixedArguments.map { .argument($0) })
   }

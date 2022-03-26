@@ -1,5 +1,12 @@
 # Commander Changelog
 
+## TBD
+
+### Enhancements
+
+- Supporting using `=` syntax with flags. For example `-o=file.tar.gz`. This
+  allows specifying negative, or empty values.
+
 ## 0.9.2 (2021-06-08)
 
 ### Bug Fixes
