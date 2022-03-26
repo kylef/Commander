@@ -4,8 +4,9 @@
 
 ### Enhancements
 
-- Supporting using `=` syntax with flags. For example `-o=file.tar.gz`. This
-  allows specifying negative, or empty values.
+- Supporting using `=` syntax with options and flags. For example
+  `--output=file.tar.gz` / `-o=file.tar.gz`. This allows specifying negative,
+  or empty values.
 
 ## 0.9.2 (2021-06-08)
 

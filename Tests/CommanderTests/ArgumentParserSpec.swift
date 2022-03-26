@@ -119,6 +119,18 @@ let testArgumentParser: ((ContextType) -> Void) = {
       try expect(value?.first) == "middle"
       try expect(value?.last) == "end"
     }
+
+    $0.it("should return equals values") {
+      let parser = ArgumentParser(arguments: ["--output=file.tar.gz"])
+      let value = try parser.shiftValue(for: "output")
+      try expect(value) == "file.tar.gz"
+    }
+
+    $0.it("should return empty values") {
+      let parser = ArgumentParser(arguments: ["--output="])
+      let value = try parser.shiftValue(for: "output")
+      try expect(value) == ""
+    }
   }
 
   $0.describe("variadic options") {

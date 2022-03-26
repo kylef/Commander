@@ -76,6 +76,13 @@ public final class ArgumentParser : ArgumentConvertible, CustomStringConvertible
 
         if flags.first == "-" {
           let option = flags[flags.index(after: flags.startIndex)..<flags.endIndex]
+
+          if let equalsIndex = option.range(of: "=") {
+            let key = option[..<equalsIndex.lowerBound]
+            let value = option[equalsIndex.upperBound...]
+            return arguments + [.option(String(key)), .argument(String(value))]
+          }
+
           return arguments + [.option(String(option))]
         }
 
